@@ -1,0 +1,35 @@
+{
+  "name": "dev-acad",
+  "version": "1.0.0",
+  "description": "un sitio web academico de tecnologia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WatchDog773/web-site-negocios-web.git"
+  },
+  "keywords": [
+    "cursos",
+    "tecnologia",
+    "desarrollo",
+    "web",
+    "negocios",
+    "seguridad",
+    "js",
+    "node",
+    "c++",
+    "java",
+    "c#",
+    "sql",
+    "mysql",
+    "firebase"
+  ],
+  "author": "Ramon Ventura, Camila Sampson, Nohemy Lemus y Alessandro Cardona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WatchDog773/web-site-negocios-web/issues"
+  },
+  "homepage": "https://github.com/WatchDog773/web-site-negocios-web#readme"
+}
