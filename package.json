@@ -4,7 +4,7 @@
   "description": "un sitio web academico de tecnologia",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/WatchDog773/web-site-negocios-web/issues"
   },
-  "homepage": "https://github.com/WatchDog773/web-site-negocios-web#readme"
+  "homepage": "https://github.com/WatchDog773/web-site-negocios-web#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
