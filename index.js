@@ -4,6 +4,12 @@ const exphbs = require("express-handlebars");
 
 const routes = require("./routes");
 
+const db = require("./config/dbdev-acad");
+
+db.sync()
+.then(() => console.log("Se conecto con el servidor de DB"))
+.catch((error) => console.log(error));
+
 const app = express();
 
 app.engine(
