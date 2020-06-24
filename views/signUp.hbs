@@ -1,6 +1,6 @@
- {{#if errores}}
-    {{#each errores}}
-        <div class="alert alert-danger" role="alert">
+ {{#if mensajes}}
+    {{#each mensajes}}
+        <div class="alert {{type}}" role="alert">
             {{error}}
         </div>
     {{/each}}
@@ -23,5 +23,5 @@
         <input type="password" class="form-control m-1" placeholder="Contraseña" name="password"
             id="exampleInputEmail1">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Registrate !!</button>
 </form>
