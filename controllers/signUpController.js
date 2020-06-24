@@ -9,7 +9,10 @@ exports.signUp = (req, res, next) => {
 // Verificacion y creacion de un nuevo usuario
 // La conexion es asincrona con async / await
 exports.signUpVerify = async (req, res, next) => {
+    /* console.log(req.body); */
+
     const { nombre, apellido, email, user, password } = req.body;
+    const usuario = user;
     const mensajes = [];
 
     if(!nombre)
@@ -47,17 +50,32 @@ exports.signUpVerify = async (req, res, next) => {
     }
     else
     {
-        // Insertar en la base de datos
-        await Usuario.create({nombre, apellido, email, user, password});
+        try {
+            // Insertar en la base de datos
+            await Usuario.create({ nombre, apellido, email, usuario, password });
+
+            mensajes.push({
+                error: "Se inserto en la base de datos",
+                type: "alert-success"
+            });
+
+            res.render("signUp", {
+                mensajes
+            });
+
+        } catch (error) {
+            mensajes.push({
+                error: "No se logro insertar, intente de nuevo",
+                type: "alert-danger"
+            });
+
+            res.render("signUp", {
+                mensajes
+            });
+
+            /* console.log(error); */
+        }
 
 
-        mensajes.push({
-            error: `Se ha registrado correctamente ${user}`,
-            type: "alert-success"
-        });
-
-        res.render("signUp", {
-            mensajes
-        });
     }
 };

@@ -11,7 +11,7 @@ const db = require("./config/dbdev-acad");
 require("./models/Usuario");
 
 db.sync()
-.then(() => console.log("Se conecto con el servidor de DB"))
+.then(() => console.log("===================== Se conecto con el servidor de DB =============="))
 .catch((error) => console.log(error));
 
 const app = express();
@@ -31,5 +31,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", routes());
 
 app.listen(7891, () => {
-    console.log("Servidor ejecutandose en el puerto 7891");
+    console.log("================== Servidor ejecutandose en el puerto 7891 ======================");
 });
