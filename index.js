@@ -2,9 +2,13 @@ const express = require("express");
 
 const exphbs = require("express-handlebars");
 
+const bodyParser = require("body-parser");
+
 const routes = require("./routes");
 
 const db = require("./config/dbdev-acad");
+
+require("./models/Usuario");
 
 db.sync()
 .then(() => console.log("Se conecto con el servidor de DB"))
@@ -21,6 +25,8 @@ app.engine(
 );
 
 app.set("view engine", "hbs");
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", routes());
 
