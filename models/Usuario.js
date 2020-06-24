@@ -52,29 +52,29 @@ const Usuario = db.define("usuario", {
         },
     },
     password: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: "Debes ingresar una contraseña",
-          },
+      type: Sequelize.STRING(100),
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Debes ingresar una contraseña",
         },
       },
-      /* token: Sequelize.STRING,
-      expiration: Sequelize.DATE, */
-    }
+    },
+    /* token: Sequelize.STRING,
+    expiration: Sequelize.DATE, */
+  }
 /*     {
-        hooks: {
-        beforeCreate(usuario) {
-            // Realizar el hash del password
-            // https://www.npmjs.com/package/bcrypt
-            usuario.password = bcrypt.hashSync(
-            usuario.password,
-            bcrypt.genSaltSync(13)
-            );
-        },
-        },
-    } */
+      hooks: {
+      beforeCreate(usuario) {
+          // Realizar el hash del password
+          // https://www.npmjs.com/package/bcrypt
+          usuario.password = bcrypt.hashSync(
+          usuario.password,
+          bcrypt.genSaltSync(13)
+          );
+      },
+      },
+  } */
 );
 
 module.exports = Usuario;
