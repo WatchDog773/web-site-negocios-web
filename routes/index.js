@@ -1,12 +1,15 @@
 const express = require("express");
 const routes = express.Router();
 
-const homeController = require("../controllers/homeController");
+const userController = require("../controllers/userController");
 
 // Rutas disponibles
 module.exports = function() {
     routes.get("/",
-    homeController.home);
+    userController.user);
+
+    routes.post("/home",
+    userController.respuesta);
 
     return routes;
 }
