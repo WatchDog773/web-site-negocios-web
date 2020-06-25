@@ -18,7 +18,7 @@ module.exports = function() {
 
     // Para iniciar sesion
     routes.get("/login",
-    usersController.loginVerify);
+    usersController.loginCharge);
 
     return routes;
 };

@@ -1,67 +1,57 @@
-// Import passport js
+// Importar passport
 const passport = require("passport");
 
-// Usar la estrategia local
-const LocalStategy = require("passport-local");
+// Utilizar la estrategia local
+const LocalStrategy = require("passport-local");
 
-// Improtar la referencia del modelo que contiene los datos de authenticacion
+// Importar la referencia al modelo que contiene los datos de autenticación
 const Usuario = require("../models/Usuario");
 
-// Definir la estrategia de auth
-passport.use (
-    new LocalStategy(
-        // Por defecto requiere de un user o correo en este caso y de una contraseña
-        {
-            usernameField: "email",
-            passwordField: "password"
-        },
-        // Verificar los datos enviados en la pagina son correctos
-        async (email, password, done) => {
-            try {
-                // Regresar la busqueda del user o usuario
-                const usuario = await Usuario.findOne(
-                    {
-                        where: {email}
-                    }
-                );
-
-                // Verificar la contrasenia
-                // Si fuera incorrecta
-                if (!usuario.comparePassword(password)) {
-                    return done(null, false,
-                        {
-                            message: "Nombre o contraseña incorrecta"
-                        }
-                        );
-                }
-
-                // Si la contrasenia fuera correcta
-                return done(null, usuario);
-
-            } catch (error) {
-                // El usuario no existe
-                return done(null, false,
-                    {
-                        message: "La cuenta de correo electronico no se encuentra registrada"
-                    }
-                );
-            }
-        }
-    )
-);
-
-// Serializar el usuario
-passport.serializeUser((usuario, callback) =>
+// Definir nuestra estrategia de autencitación
+// Local Strategy --> realizar un login con credenciales propias (user, pass)
+passport.use(
+  new LocalStrategy(
+    // Por defecto passport en LocalStrategy requiere de un usuario y una contraseña
     {
-        callback(null, usuario);
+      usernameField: "email",
+      passwordField: "password",
+    },
+    // Verificar si los datos enviados por el usuario son correctos
+    async (email, password, done) => {
+      try {
+        // Realizar la búsqueda del usuario
+        const usuario = await Usuario.findOne({
+          where: { email },
+        });
+
+        // Si el usuario existe, verificar si su contraseña es correcta
+        if (!usuario.comparePassword(password)) {
+          return done(null, false, {
+            message: "Nombre de usuario o contraseña incorrecta",
+          });
+        }
+
+        // El usuario y la contraseña son correctas
+        return done(null, usuario);
+      } catch (error) {
+        // El usuario no existe
+        return done(null, false, {
+          message: "La cuenta de correo electrónico no se encuentra registrada",
+        });
+      }
     }
+  )
 );
+
+// Permitir que passport lea los valores del objeto usuario
+// Serializar el usuario
+passport.serializeUser((usuario, callback) => {
+  callback(null, usuario);
+});
 
 // Deserializar el usuario
-passport.deserializeUser((usuario, callback) =>
-    {
-        callback(null, usuario);
-    }
-);
+passport.deserializeUser((usuario, callback) => {
+  callback(null, usuario);
+});
 
-exports.module = passport;
+module.exports = passport;

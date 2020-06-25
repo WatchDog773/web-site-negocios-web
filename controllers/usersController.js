@@ -87,7 +87,7 @@ exports.signUpVerify = async (req, res, next) => {
 };
 
 //Iniciar sesion
-exports.loginVerify = (req, res, next) => {
+exports.loginCharge = (req, res, next) => {
     res.render("login", {
         layout: "auth"
     }
