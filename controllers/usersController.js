@@ -60,7 +60,7 @@ exports.signUpVerify = async (req, res, next) => {
                 type: "alert-success"
             });
 
-            res.redirect("login");
+            res.redirect("/iniciar_sesion");
 
             // res.render("login", {
             //     layout: "auth",
