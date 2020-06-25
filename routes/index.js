@@ -13,8 +13,12 @@ module.exports = function() {
     routes.get("/registrate",
     usersController.signUpCharge);
 
-    routes.post("/registrar",
+    routes.post("/registrate",
     usersController.signUpVerify);
+
+    // Para iniciar sesion
+    routes.get("/login",
+    usersController.loginVerify);
 
     return routes;
 };

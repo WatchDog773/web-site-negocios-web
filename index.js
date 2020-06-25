@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 
 const routes = require("./routes");
 
+const passport = require("./config/passport");
+
 const db = require("./config/dbdev-acad");
 
 require("./models/Usuario");
@@ -27,6 +29,9 @@ app.engine(
 app.set("view engine", "hbs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", routes());
 

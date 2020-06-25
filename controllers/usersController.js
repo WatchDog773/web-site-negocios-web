@@ -2,7 +2,7 @@
 const Usuario = require("../models/Usuario");
 
 exports.signUpCharge = (req, res, next) => {
-    res.render("signUp");
+    res.render("signUp", { layout: "auth" });
 };
 
 
@@ -45,7 +45,8 @@ exports.signUpVerify = async (req, res, next) => {
     if(mensajes.length)
     {
         res.render("signUp", {
-           mensajes 
+            layout: "auth",
+            mensajes 
         });
     }
     else
@@ -59,17 +60,22 @@ exports.signUpVerify = async (req, res, next) => {
                 type: "alert-success"
             });
 
-            res.render("signUp", {
-                mensajes
-            });
+            res.redirect("login");
+
+            // res.render("login", {
+            //     layout: "auth",
+            //     mensajes
+            // });
+
 
         } catch (error) {
             mensajes.push({
-                error: "No se logro insertar, intente de nuevo",
+                error: "No se pudo registrar, verifica la consola",
                 type: "alert-danger"
             });
 
             res.render("signUp", {
+                layout: "auth",
                 mensajes
             });
 
@@ -78,6 +84,14 @@ exports.signUpVerify = async (req, res, next) => {
 
 
     }
+};
+
+//Iniciar sesion
+exports.loginVerify = (req, res, next) => {
+    res.render("login", {
+        layout: "auth"
+    }
+    );
 };
 
 // Llamar los usuarios (por si se necesita)
