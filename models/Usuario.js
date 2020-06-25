@@ -2,6 +2,8 @@ const Sequelize = require("sequelize");
 
 const db = require("../config/dbdev-acad");
 
+const bcrypt = require("bcrypt-nodejs");
+
 const Usuario = db.define(
     "usuario",
     {
@@ -34,13 +36,31 @@ const Usuario = db.define(
         },
 
         password: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING(100),
             allowNull: false,
             validate: {
                 notEmpty: {msg: "Debe ingresar su contraseña"}
             },
         },
+    },
+    {
+        hooks: {
+            beforeCreate(usuario) {
+                // Realizar el hash de la contraseña o password
+                usuario.password = bcrypt.hashSync(usuario.password, bcrypt.genSaltSync(13));
+            },
+        }
     }
 );
 
+// Metodo personalizado para hash
+// Permite agregar metodos aparte
+// Verificar si el password enviado (sin hash) es igual al almacenado
+Usuario.prototype.comparePassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
 module.exports = Usuario;
+
+// El usuario tendra muchos videos
+// Falta agregar el modelo

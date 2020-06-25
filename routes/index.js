@@ -2,7 +2,7 @@ const express = require("express");
 const routes = express.Router();
 
 const homeController = require("../controllers/homeController");
-const signUpController = require("../controllers/signUpController");
+const usersController = require("../controllers/usersController");
 
 // Rutas disponibles
 module.exports = function() {
@@ -11,10 +11,10 @@ module.exports = function() {
 
     // Rutas para registrarse
     routes.get("/registrate",
-    signUpController.signUp);
+    usersController.signUpCharge);
 
     routes.post("/registrar",
-    signUpController.signUpVerify);
+    usersController.signUpVerify);
 
     return routes;
 };

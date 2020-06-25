@@ -1,7 +1,7 @@
 // const routes = require("../routes");
 const Usuario = require("../models/Usuario");
 
-exports.signUp = (req, res, next) => {
+exports.signUpCharge = (req, res, next) => {
     res.render("signUp");
 };
 
@@ -73,9 +73,24 @@ exports.signUpVerify = async (req, res, next) => {
                 mensajes
             });
 
-            /* console.log(error); */
+            console.log(error);
         }
 
 
+    }
+};
+
+// Llamar los usuarios (por si se necesita)
+exports.allUsers = async (req, res, next) => {
+    const mensajes = [];
+
+    try {
+        const usuarios = await Usuario.findAll();
+
+    } catch (error) {
+        mensajes.push({
+            error: error,
+            type: "alert-danger",
+        });
     }
 };
