@@ -1,8 +1,8 @@
 // const routes = require("../routes");
 const Usuario = require("../models/Usuario");
 
-exports.signUp = (req, res, next) => {
-    res.render("signUp");
+exports.signUpCharge = (req, res, next) => {
+    res.render("signUp", { layout: "auth" });
 };
 
 
@@ -45,7 +45,8 @@ exports.signUpVerify = async (req, res, next) => {
     if(mensajes.length)
     {
         res.render("signUp", {
-           mensajes 
+            layout: "auth",
+            mensajes 
         });
     }
     else
@@ -59,23 +60,51 @@ exports.signUpVerify = async (req, res, next) => {
                 type: "alert-success"
             });
 
-            res.render("signUp", {
-                mensajes
-            });
+            res.redirect("/iniciar_sesion");
+
+            // res.render("login", {
+            //     layout: "auth",
+            //     mensajes
+            // });
+
 
         } catch (error) {
             mensajes.push({
-                error: "No se logro insertar, intente de nuevo",
+                error: "No se pudo registrar, verifica la consola",
                 type: "alert-danger"
             });
 
             res.render("signUp", {
+                layout: "auth",
                 mensajes
             });
 
-            /* console.log(error); */
+            console.log(error);
         }
 
 
+    }
+};
+
+//Iniciar sesion
+exports.loginCharge = (req, res, next) => {
+    res.render("login", {
+        layout: "auth"
+    }
+    );
+};
+
+// Llamar los usuarios (por si se necesita)
+exports.allUsers = async (req, res, next) => {
+    const mensajes = [];
+
+    try {
+        const usuarios = await Usuario.findAll();
+
+    } catch (error) {
+        mensajes.push({
+            error: error,
+            type: "alert-danger",
+        });
     }
 };
