@@ -8,6 +8,7 @@ const authController = require("../controllers/authController");
 // Rutas disponibles
 module.exports = function() {
     routes.get("/",
+    authController.userVerifyAuth,
     homeController.home);
 
     // Rutas para registrarse
@@ -23,6 +24,9 @@ module.exports = function() {
 
     routes.post("/iniciar_sesion",
     authController.autenticarUsuario);
+
+    // Cerrar sesion
+    routes.get("/cerrar_sesion", authController.logout);
 
     return routes;
 };
