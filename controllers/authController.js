@@ -13,3 +13,22 @@ exports.autenticarUsuario = passport.authenticate("local",
 
     }
 );
+
+// Cerrar la sesion del usuario actual
+exports.logout = (req, res, next) => {
+    // Al cerrar sesion redirigir el usuario al login
+    req.session.destroy(() => {
+        res.redirect("/iniciar_sesion");
+    });
+};
+
+// Verifica si el usuario esta autenticado o no
+exports.userVerifyAuth = (req, res, next) => {
+    // Si el usuario se autentico que continue la peticion
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    // Si el usuario no esta autenticado
+    return res.redirect("iniciar_sesion");
+};
