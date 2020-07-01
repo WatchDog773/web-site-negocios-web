@@ -24,8 +24,10 @@ module.exports = function () {
   routes.get(
     "/agregar_curso",
     authController.userVerifyAuth,
-    cursoController.crearCurso
+    cursoController.agregarCurso
   );
+
+  routes.post("/agregar_curso", authController.userVerifyAuth);
 
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
