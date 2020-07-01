@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 // Importar la base de datos
 const db = require("../config/dbdev-acad");
 
-const Inscription = db.define(
+const Inscripcion = db.define(
   "inscription",
   {
     id: {
