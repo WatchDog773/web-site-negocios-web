@@ -21,14 +21,38 @@ module.exports = function () {
   routes.post("/iniciar_sesion", authController.autenticarUsuario);
 
   // Rutas para los cursos
+  //Cargar la vista para agregar los cursos
   routes.get(
     "/agregar_curso",
     authController.userVerifyAuth,
     cursoController.agregarCurso
   );
+  // Metodo POST para insertar los cursos
+  routes.post(
+    "/agregar_curso",
+    authController.userVerifyAuth,
+    cursoController.insertarCurso
+  );
+  // Cargar la vista para ver la lista de los cursos que se estan impartiendo
+  routes.get(
+    "/lista_curso_doc",
+    authController.userVerifyAuth,
+    cursoController.listaCursoDoc
+  );
 
-  routes.post("/agregar_curso", authController.userVerifyAuth);
+  // Cargar la vista para ver la lista de los cursos que se puede inscribir
+  routes.get(
+    "/lista_curso_alu",
+    authController.userVerifyAuth,
+    cursoController.listaCursoAlu
+  );
 
+  // Cargar la vista para ver la informacion del curso
+  routes.get(
+    "/info_curso/:url",
+    authController.userVerifyAuth,
+    cursoController.infoCurso
+  );
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
 
