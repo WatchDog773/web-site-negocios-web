@@ -28,6 +28,9 @@ const Curso = db.define(
     precio: {
       type: Sequelize.FLOAT,
     },
+    categoria: {
+      type: Sequelize.STRING,
+    },
     url: {
       type: Sequelize.STRING,
     },

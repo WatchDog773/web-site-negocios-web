@@ -3,12 +3,21 @@
 
 {{!-- Formulario de registrarse --}}
 
-<form action="/iniciar_sesion" method="POST">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Inicia Sesion</label>
-        <input type="email" class="form-control m-1" placeholder="johnconnor@sky.net" name="email"
-            id="exampleInputEmail1" aria-describedby="emailHelp" required>
-        <input type="password" class="form-control m-1" placeholder="Contraseña" name="password" required>
+<form class="form-signin" action="/iniciar_sesion" method="POST">
+    {{>mensajes}}
+    <div class="mb-4 text-center">
+        <h1>Unete a nuestra comunidad de mejores desarrolladores</h1>
     </div>
-    <button type="submit" class="btn btn-primary">Entra ya !!</button>
+    <div class="form-label-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+    </div>
+    <div class="form-label-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div class="mb3">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+        <p class="text-center text-muted mt-5">©2020 Negocios Web - UNICAH</p>
+    </div>
 </form>
