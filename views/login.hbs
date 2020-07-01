@@ -1,0 +1,23 @@
+<h1>Bienvenido a Dev-Acad</h1>
+<h2>Inicie sesion para continuar</h2>
+
+{{!-- Formulario de registrarse --}}
+
+<form class="form-signin" action="/iniciar_sesion" method="POST">
+    {{>mensajes}}
+    <div class="mb-4 text-center">
+        <h1>Unete a nuestra comunidad de mejores desarrolladores</h1>
+    </div>
+    <div class="form-label-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+    </div>
+    <div class="form-label-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div class="mb3">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+        <p class="text-center text-muted mt-5">©2020 Negocios Web - UNICAH</p>
+    </div>
+</form>

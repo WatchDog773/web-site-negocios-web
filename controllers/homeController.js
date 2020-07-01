@@ -1,3 +1,5 @@
+const routes = require("../routes");
+
 exports.home = (req, res, next) => {
-    res.render("start");
+    res.render("home");
 };
