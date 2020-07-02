@@ -4,6 +4,7 @@ const routes = express.Router();
 const homeController = require("../controllers/homeController");
 const usersController = require("../controllers/usersController");
 const cursoController = require("../controllers/cursosController");
+const inscripcionController = require("../controllers/inscripcionController");
 const authController = require("../controllers/authController");
 
 // Rutas disponibles
@@ -53,8 +54,19 @@ module.exports = function () {
     authController.userVerifyAuth,
     cursoController.infoCurso
   );
+  routes.get(
+    "/inscripcion_curso/:url",
+    authController.userVerifyAuth,
+    cursoController.inscripcionCurso
+  );
+
+  routes.get(
+    "/lista_curso_inscrito",
+    authController.userVerifyAuth,
+    inscripcionController.listaInscrito
+  );
+
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
-
   return routes;
 };
