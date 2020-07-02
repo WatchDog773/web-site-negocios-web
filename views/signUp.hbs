@@ -28,8 +28,14 @@
                         <div class="logo-image">
                          <img src="https://trello-attachments.s3.amazonaws.com/5ee82d96e1be721fd7c55a82/591x687/2b9bc935c0034d515912db44c869779e/Logo.png" alt="Logo" title="Logo" width="138">
                         </div>
-                        <h3 class="text-center text-black pt-5">Registrarse</h3>
-                        {{>mensajes}}
+                        <h3 class="text-center text-black pt-5">Registrarte</h3>
+                        {{#if mensajes}}
+                            {{#each mensajes}}
+                                <div class="alert {{type}}" role="alert">
+                                    {{error}}
+                                </div>
+                            {{/each}}
+                        {{/if}}
                             <div class="form-group">
                                 <label for="email" class=" text-black">Nombre:</label><br>
                                 <input type="text" class="form-control m-1" placeholder="Nombre" name="nombre" id="exampleInputEmail1" required autofocus>
@@ -89,13 +95,7 @@
 
 
 
- {{#if mensajes}}
-    {{#each mensajes}}
-        <div class="alert {{type}}" role="alert">
-            {{error}}
-        </div>
-    {{/each}}
- {{/if}}
+ 
 
 
 
