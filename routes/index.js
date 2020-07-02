@@ -57,7 +57,7 @@ module.exports = function () {
   routes.get(
     "/inscripcion_curso/:url",
     authController.userVerifyAuth,
-    cursoController.inscripcionCurso
+    inscripcionController.inscripcionCurso
   );
 
   routes.get(
