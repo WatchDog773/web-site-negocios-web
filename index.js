@@ -31,11 +31,6 @@ db.sync()
 
 const app = express();
 
-
-//Indicar la carpeta de archivos estáticos
-app.use(express.static("public"));
-
-
 app.engine(
   "hbs",
   exphbs({
