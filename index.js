@@ -31,6 +31,9 @@ db.sync()
 
 const app = express();
 
+
+app.use(express.static("public"));
+
 app.engine(
   "hbs",
   exphbs({

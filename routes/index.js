@@ -57,4 +57,6 @@ module.exports = function () {
   routes.get("/cerrar_sesion", authController.logout);
 
   return routes;
+
+  
 };
