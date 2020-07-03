@@ -9,6 +9,10 @@ header {
   color: black !important;
 }
 
+p {
+  color: black !important;
+}
+
 #logo {
   width: 5em;
   padding-left: 2em;
@@ -37,9 +41,4 @@ header {
   -o-border-radius: 10px 0 0 10px;
   border: 0 none;
   width: 15em;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
 }
