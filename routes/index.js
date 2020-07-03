@@ -66,6 +66,13 @@ module.exports = function () {
     inscripcionController.listaInscrito
   );
 
+  // Cargar la vista para ver la informacion del curso inscrito
+  routes.get(
+    "/info_curso_inscrito/:url",
+    authController.userVerifyAuth,
+    inscripcionController.infoCursoInscrito
+  );
+
   // Abrir informacion para la administracion del curso
   routes.get(
     "/admin_curso/:url",
