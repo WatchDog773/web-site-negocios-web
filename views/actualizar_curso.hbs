@@ -1,0 +1,24 @@
+{{!-- Formulario para actualizar informacion de los cursos --}}
+{{>alertas}}
+<form method="POST" action="/actualizar_curso/{{curso.id}}">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre del curso" id="nombre" name="nombre"
+            value="{{curso.nombre}}">
+    </div>
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion"
+            value="{{curso.descripcion}}">
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio USD</label>
+        <input type="text" class="form-control" placeholder="Precio" id="precio" name="precio" value="{{curso.precio}}">
+    </div>
+    <div class="form-group">
+        <label for="categoria">Categoria</label>
+        <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria"
+            value="{{curso.categoria}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

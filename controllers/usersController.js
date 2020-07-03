@@ -105,3 +105,62 @@ exports.allUsers = async (req, res, next) => {
     });
   }
 };
+
+// Ver informacion del usuario
+exports.verPerfilUsuario = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  res.render("actualizar_perfil", { usuario });
+};
+
+exports.actualizarPerfil = async (req, res, next) => {
+  const mensajes = [];
+  const usuarioSesion = res.locals.usuario;
+  const { nombre, apellido, email, usuario } = req.body;
+  if (!nombre) {
+    mensajes.push({
+      mensaje: "El nombre no puede ir vacio.",
+      type: "alert-danger",
+    });
+  }
+  if (!apellido) {
+    mensajes.push({
+      mensaje: "El nombre no puede ir vacio.",
+      type: "alert-danger",
+    });
+  }
+  if (!email) {
+    mensajes.push({
+      mensaje: "El nombre no puede ir vacio.",
+      type: "alert-danger",
+    });
+  }
+  if (!usuario) {
+    mensajes.push({
+      mensaje: "El nombre no puede ir vacio.",
+      type: "alert-danger",
+    });
+  }
+  // Verificar si hay errores
+  if (mensajes.length) {
+    res.render("actualizar_perfil", { mensajes, usuarioSesion });
+  } else {
+    try {
+      await Usuario.update(
+        { nombre, apellido, email, usuario },
+        { where: { id: usuarioSesion.id } }
+      );
+      mensajes.push({
+        mensaje:
+          "La informacion se ha actualizado exitosamente, es necesario que cierres tu sesion y vuelvas a iniciar",
+        type: "alert-success",
+      });
+      res.render("actualizar_perfil", { mensajes, usuarioSesion });
+    } catch (error) {
+      mensajes.push({
+        mensaje: "Ha ocurrido un erro al momento de actualizar la informacion.",
+        type: "alert-danger",
+      });
+      res.render("actualizar_perfil", { mensajes, usuarioSesion });
+    }
+  }
+};

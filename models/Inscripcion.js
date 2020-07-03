@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 const db = require("../config/dbdev-acad");
 
 const Inscripcion = db.define(
-  "inscription",
+  "inscripcion",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -26,4 +26,4 @@ const Inscripcion = db.define(
   }
 );
 
-module.exports = Inscription;
+module.exports = Inscripcion;
