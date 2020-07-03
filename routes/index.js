@@ -85,6 +85,18 @@ module.exports = function () {
     authController.userVerifyAuth,
     cursoController.actualizarCurso
   );
+
+  // Ver el perfil del usuario
+  routes.get(
+    "/actualizar_perfil",
+    authController.userVerifyAuth,
+    usersController.verPerfilUsuario
+  );
+  routes.post(
+    "/actualizar_perfil",
+    authController.userVerifyAuth,
+    usersController.actualizarPerfil
+  );
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;

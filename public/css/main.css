@@ -38,3 +38,8 @@ header {
   border: 0 none;
   width: 15em;
 }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
