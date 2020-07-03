@@ -13,7 +13,7 @@
 
 </head>
 
-<body  class="d-flex flex-column h-100" >
+<body  class="d-flex flex-column h-100  color" >
     <header>
        <!--Navbar -->
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
@@ -38,10 +38,10 @@
                     </li>
                     <li class="nav-item">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><strong>Cursos</strong></a>
+                        <a class="nav-link" href="/agregar"><strong>Cursos</strong></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/course_list">Cursos<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/agregar_curso">Agregar cursos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/agregar_curso">Instructores</a>
@@ -66,7 +66,7 @@
     </header>
 
     {{!-- Formulario login --}}
-    <div id="login">
+    <div id="login" class="">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
@@ -97,11 +97,9 @@
     </div>
 
 
-    <div class="mb3">
-        
-        <p class="text-center text-muted mt-5">©2020 Negocios Web - UNICAH</p>
-    </div>
-    </main>
+    
+    
+
     {{!-- Final de contenido --}}
 
     {{!-- NO TOCAR SCRIPTS DE BOOTSTRAP --}}
@@ -115,6 +113,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+        <div class="mb3">
+        
+        <p class="text-center text-muted mt-5">©2020 Negocios Web - UNICAH</p>
+    </div>
+    </main>
+
 </body>
 
 </html>

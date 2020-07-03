@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #c4e1c9;
+    background-color: #388087;
     height: 100vh;
     
   }
@@ -13,6 +13,7 @@ body {
     background-color: #EAEAEA;
     
   }
+
   #login .container #login-row #login-column #login-box #login-form {
     padding: 20px;
     
@@ -34,6 +35,14 @@ body {
     margin-top: 50px;
     max-width: 600px;
     height: 800px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+    
+  }
+  #agregar_curso .container #login-row #login-column #login-box {
+    margin-top: 50px;
+    max-width: 600px;
+    height: 550px;
     border: 1px solid #9C9C9C;
     background-color: #EAEAEA;
     
