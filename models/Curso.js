@@ -7,6 +7,8 @@ const Sequelize = require("sequelize");
 const slug = require("slug");
 const shortid = require("shortid");
 
+const Inscripcion = require("./Inscripcion");
+
 // Importar la conexion a la base de datos
 const db = require("../config/dbdev-acad");
 
@@ -50,5 +52,6 @@ const Curso = db.define(
     },
   }
 );
+Curso.hasMany(Inscripcion);
 
 module.exports = Curso;

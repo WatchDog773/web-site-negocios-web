@@ -5,6 +5,7 @@ const db = require("../config/dbdev-acad");
 const bcrypt = require("bcrypt-nodejs");
 
 const Curso = require("./Curso");
+const Inscripcion = require("./Inscripcion");
 
 const Usuario = db.define(
   "usuario",
@@ -78,6 +79,7 @@ const Usuario = db.define(
 
 // Un usuario puede tener muchos cursos
 Usuario.hasMany(Curso);
+Usuario.hasMany(Inscripcion);
 
 // Metodo personalizado para hash
 // Permite agregar metodos aparte
