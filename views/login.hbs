@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/styleN.css" />
 </head>
 
-<body  class="d-flex flex-column h-100" >
+<body class="d-flex flex-column h-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <a class="navbar-brand" href="/">Dev-Acad</a>
@@ -49,18 +49,19 @@
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="/iniciar_sesion" method="post">
-                        <h3 class="text-center text-black pt-5">Registrarse</h3>
-                        {{>mensajes}}
+                            <h3 class="text-center text-black pt-5">Registrarse</h3>
+                            {{>mensajes}}
                             <div class="form-group">
                                 <label for="email" class=" text-black">E-mail:</label><br>
                                 <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="contrasena" class="text-black">Contraseña:</label><br>
-                                <input type="text" name="contrasena" id="contrasena" class="form-control">
+                                <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="recordar" class="text-black"><span>Recordar</span> <span><input id="recordar" name="recordar" type="checkbox"></span></label><br>
+                                <label for="recordar" class="text-black"><span>Recordar</span> <span><input
+                                            id="recordar" name="recordar" type="checkbox"></span></label><br>
                             </div>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
                         </form>
@@ -72,7 +73,7 @@
 
 
     <div class="mb3">
-        
+
         <p class="text-center text-muted mt-5">©2020 Negocios Web - UNICAH</p>
     </div>
     </main>
@@ -96,6 +97,3 @@
 
 
 {{!-- Formulario de registrarse --}}
-
-
-

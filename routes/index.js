@@ -66,9 +66,26 @@ module.exports = function () {
     inscripcionController.listaInscrito
   );
 
+  // Abrir informacion para la administracion del curso
+  routes.get(
+    "/admin_curso/:url",
+    authController.userVerifyAuth,
+    cursoController.infoCursoDoc
+  );
+
+  // Cargar la vista para editar los campos del curso
+  routes.get(
+    "/actualizar_curso/:id",
+    authController.userVerifyAuth,
+    cursoController.cargarActualizarCurso
+  );
+  // Ejecutar la actualizacion del curso
+  routes.post(
+    "/actualizar_curso/:id",
+    authController.userVerifyAuth,
+    cursoController.actualizarCurso
+  );
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;
-
-  
 };
