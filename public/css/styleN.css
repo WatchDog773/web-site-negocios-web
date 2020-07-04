@@ -5,6 +5,8 @@ body {
     height: 100vh;
     
   }
+ 
+
   #login .container #login-row #login-column #login-box {
     margin-top: 50px;
     max-width: 600px;
@@ -39,11 +41,4 @@ body {
     background-color: #EAEAEA;
     
   }
-  #agregar_curso .container #login-row #login-column #login-box {
-    margin-top: 50px;
-    max-width: 600px;
-    height: 550px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-    
-  }
+ 

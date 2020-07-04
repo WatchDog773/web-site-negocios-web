@@ -9,49 +9,51 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styleN.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/agreg.css" />
 
 </head>
 
-<body  class="d-flex flex-column h-100" >
+<body  class="d-flex flex-column h-100" id="color">
     <header>
       
     </header>
-
     {{!-- Formulario de registro --}}
     {{!-- Formulario de agregar curso --}}
-    <div id="agregar_curso">
+    {{#if mensajes}}
+        {{#each mensajes}}
+            <div class="alert {{type}}" role="alert">
+                {{error}}
+            </div>
+        {{/each}}
+    {{/if}}
+    <div id="agregar_curso" class="">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
+                <div id="login-column" class="col-md-12">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="/agregar_curso" method="post">
-                            <h3 class="text-center text-black pt-5">Agregar curso</h3>
-                            {{#if mensajes}}
-                                {{#each mensajes}}
-                                    <div class="alert {{type}}" role="alert">
-                                        {{error}}
-                                    </div>
-                                {{/each}}
-                            {{/if}}
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label><br>
+                        <form>
+                            <h3 class="text-center text-black pt-5">Agregar curso</h3><br>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="nombre">Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre del curso" id="nombre" name="nombre">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="Precio">Precio</label>
+                                <input type="text" class="form-control" placeholder="Precio" id="precio" name="precio">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="descripcion">Descripcion:</label><br>
+                                <label for="descripcion">Descripción</label>
                                 <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion">
-                            </div>
+                                </div>
                             <div class="form-group">
-                                <label for="precio">Precio:</label><br>
-                                <input type="text" class="form-control" placeholder="Descripcion" id="precio" name="precio">
-                            </div>
-                            <div class="form-group">
-                                <label for="categoria">Categoria:</label><br>
+                                <label for="categoria">Categoria</label>
                                 <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria">
-                            </div>
-                            <button type="submit" class="btn btn-lg btn-primary btn-block iniciar-btn">Guardar</button>
-                         </form>
+                                </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-block iniciar-btn">Guardar</button>
+                            </form>
                     </div>
                 </div>
             </div>
