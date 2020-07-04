@@ -18,11 +18,23 @@ const Leccion = db.define("leccion",
         },
 
         nombre: {
-            type: Sequelize.STRING(30)
+            type: Sequelize.STRING(30),
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "Debes ingresar el nombre de la leccion"
+                }
+            }
         },
 
         descripcion: {
-            type: Sequelize.STRING(100)
+            type: Sequelize.STRING(100),
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "La leccion debe tener una descripcion"
+                },
+            },
         },
 
         url: {

@@ -109,6 +109,10 @@ module.exports = function () {
   // Agregar leccion
   routes.get("/agregar_leccion/:id",
     authController.userVerifyAuth,
+    leccionController.cargarFormularioInsertarLeccion
+  );
+  routes.post("/agregar_leccion/:id",
+    authController.userVerifyAuth,
     leccionController.insertarLeccion
   );
 
