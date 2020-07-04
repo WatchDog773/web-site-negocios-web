@@ -105,7 +105,7 @@ header {
   display: flex;
   flex-direction: column;
   background-color: #6fb3b8;
-  color: black;
+  color: white;
 }
 
 .card-body .btn {
@@ -118,10 +118,4 @@ header {
 .card-body .btn:hover {
   background-color: #bbe0e7;
   color: black;
-}
-
-.hero-background {
-  height: 25em;
-  background-color: #388087;
-  color: white;
 }
