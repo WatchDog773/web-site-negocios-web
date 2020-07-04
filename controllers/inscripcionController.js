@@ -52,7 +52,6 @@ exports.infoCursoInscrito = async (req, res, next) => {
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
     res.render("info_curso_ins", {
-      layout: "secondary",
       curso: curso.dataValues,
     });
   } catch (error) {

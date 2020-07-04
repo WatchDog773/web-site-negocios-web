@@ -1,15 +1,24 @@
 <div class="row">
-    {{#each cursos}}
+  {{#each cursos}}
     <div class="col-lg-4 col-md-6 pt-5">
-        <div class="card h-100">
-            <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="...">
-            <div class="card-body">
-                <h4 class="card-title">{{dataValues.nombre}}</h4>
-                <p class="card-text">{{dataValues.descripcion}}</p>
-                <h4 class="card-title">{{dataValues.precio}} $USD</h4>
-                <a href="/info_curso/{{dataValues.url}}" class="mt-auto btn btn-lg">Ver Mas</a>
-            </div>
+      <div class="card h-100">
+        <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">
+            {{dataValues.nombre}}
+          </h4>
+          <p class="card-text">
+            {{dataValues.descripcion}}
+          </p>
+          <h4 class="card-title">
+            {{dataValues.precio}}
+            $USD
+          </h4>
+          <a href="/info_curso/{{dataValues.url}}" class="mt-auto btn btn-lg">
+            Ver Mas
+          </a>
         </div>
+      </div>
     </div>
-    {{/each}}
+  {{/each}}
 </div>
