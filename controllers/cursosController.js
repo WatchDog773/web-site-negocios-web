@@ -2,6 +2,10 @@
 const Curso = require("../models/Curso");
 const Inscripcion = require("../models/Inscripcion");
 const { Op } = require("sequelize");
+
+// Importar el modelo de leccion
+const Leccion = require("../models/Leccion");
+
 // Renderizar la vista de agregar curso
 exports.agregarCurso = (req, res, next) => {
   res.render("agregar_curso");
@@ -130,7 +134,10 @@ exports.infoCursoDoc = async (req, res, next) => {
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
-    res.render("info_curso_doc", { curso: curso.dataValues });
+    const lecciones = await Leccion.findAll({
+      where: { cursoId: curso.id }
+    });
+    res.render("info_curso_doc", { curso: curso.dataValues, lecciones });
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error al momento de administrar el curso",

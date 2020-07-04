@@ -7,10 +7,9 @@ const shortid = require("shortid");
 
 // Traer la conexion a la base de datos
 const db = require("../config/dbdev-acad");
-const Curso = require("./Curso");
 
 // Tabla de leccion
-const Leccion = db.define("curso",
+const Leccion = db.define("leccion",
     {
         id: {
             type: Sequelize.INTEGER,

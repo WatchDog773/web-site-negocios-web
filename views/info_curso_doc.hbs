@@ -2,3 +2,17 @@
 <h1>{{curso.descripcion}}</h1>
 <h1>{{curso.precio}}</h1>
 <a href="/actualizar_curso/{{curso.id}}" class="btn btn-primary">Actualizar</a>
+
+{{#if lecciones}}
+    {{#each lecciones}}
+        <h2>{{lecciones.id}}</h2>
+        <h2>{{lecciones.nombre}}</h2>
+        <h2>{{lecciones.descripcion}}</h2>
+        <h2>{{lecciones.url}}</h2>
+    {{/each}}
+
+{{else}}
+    <h2>Todabia no hay lecciones</h2>
+    <h2>Agrega una !!</h2>
+    <a href="/agregar_leccion/{{curso.id}}" class="btn btn-primary">Agregar Leccion</a>
+{{/if}}
