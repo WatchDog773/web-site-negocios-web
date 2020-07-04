@@ -1,12 +1,14 @@
-{{#each cursos}}
-<div class="card">
-    <div class="card-header">
-        {{dataValues.nombre}}
+<div class="row">
+    {{#each cursos}}
+    <div class="col-lg-4 col-md-6 pt-5">
+        <div class="card h-100">
+            <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{dataValues.nombre}}</h5>
+                <p class="card-text">{{dataValues.descripcion}}</p>
+                <a href="/admin_curso/{{dataValues.url}}" class="mt-auto btn btn-primary btn-lg">Administrar</a>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">{{dataValues.precio}}</h5>
-        <p class="card-text">{{dataValues.descripcion}}</p>
-        <a href="#" class="btn btn-primary">Administrar</a>
-    </div>
+    {{/each}}
 </div>
-{{/each}}
