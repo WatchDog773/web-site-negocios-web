@@ -26,30 +26,39 @@
             </div>
         {{/each}}
     {{/if}}
-    <form>
-        <h3 class="text-center text-black pt-5">Agregar curso</h3><br>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre del curso" id="nombre" name="nombre">
-            </div>
-            <div class="form-group col-md-6">
-            <label for="Precio">Precio</label>
-            <input type="text" class="form-control" placeholder="Descripcion" id="precio" name="precio">
+    <div id="agregar_curso" class="">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-12">
+                    <div id="login-box" class="col-md-12">
+                        <form>
+                            <h3 class="text-center text-black pt-5">Agregar curso</h3><br>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre del curso" id="nombre" name="nombre">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="Precio">Precio</label>
+                                <input type="text" class="form-control" placeholder="Precio" id="precio" name="precio">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion">
+                                </div>
+                            <div class="form-group">
+                                <label for="categoria">Categoria</label>
+                                <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria">
+                                </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-block iniciar-btn">Guardar</button>
+                            </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion">
-            </div>
-        <div class="form-group">
-            <label for="categoria">Categoria</label>
-            <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria">
-            </div>
-        
-        <button type="submit" class="btn btn-lg btn-primary btn-block iniciar-btn">Guardar</button>
-        </form>
-    
+    </div>
 
 
     <div class="mb3">
