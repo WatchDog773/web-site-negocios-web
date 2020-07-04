@@ -43,31 +43,6 @@ header {
   width: 15em;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  background-color: #6fb3b8;
-  color: black;
-}
-
-.card-body .btn {
-  background-color: #388087;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.card-body .btn:hover {
-  background-color: #bbe0e7;
-  color: black;
-}
-
-.hero-background {
-  height: 25em;
-  background-color: #388087;
-  color: white;
-}
-
 .footer {
   text-align: center;
   text-decoration: none;
@@ -123,4 +98,30 @@ header {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+}
+
+/* Estilos para las tarjetas */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #6fb3b8;
+  color: black;
+}
+
+.card-body .btn {
+  background-color: #388087;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card-body .btn:hover {
+  background-color: #bbe0e7;
+  color: black;
+}
+
+.hero-background {
+  height: 25em;
+  background-color: #388087;
+  color: white;
 }
