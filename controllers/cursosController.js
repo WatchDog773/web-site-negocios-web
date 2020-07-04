@@ -125,7 +125,14 @@ exports.listaCursoAlu = async (req, res, next) => {
 exports.infoCurso = async (req, res, next) => {
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
-    res.render("info_curso", { curso });
+
+    // Buscar las lecciones
+    const lecciones = await Leccion.findAll(
+      {
+        where: {cursoId: curso.id}
+      }
+    );
+    res.render("info_curso", { curso, lecciones });
   } catch {}
 };
 
