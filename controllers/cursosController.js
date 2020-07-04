@@ -51,6 +51,7 @@ exports.insertarCurso = async (req, res, next) => {
         mensaje: "Curso guardado exitosamente",
         type: "alert-success",
       });
+      res.redirect("/lista_curso_doc");
     } catch {
       mensajes.push({
         mensaje: "Ha ocurrido un error con la base de datos",
