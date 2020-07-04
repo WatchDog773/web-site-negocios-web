@@ -1,26 +1,39 @@
-<h1>{{curso.dataValues.nombre}}</h1>
-<h1>{{curso.dataValues.descripcion}}</h1>
-<h1>{{curso.dataValues.precio}}</h1>
-<a href="/inscripcion_curso/{{curso.dataValues.url}}" class="btn btn-primary">Ver mas</a>
-<h1 class="mt-3">Lecciones</h1>
-
+<h1>
+  {{curso.dataValues.nombre}}
+</h1>
+<h1>
+  {{curso.dataValues.descripcion}}
+</h1>
+<h1>
+  {{curso.dataValues.precio}}
+</h1>
+<a href="/inscripcion_curso/{{curso.dataValues.url}}" class="btn btn-primary">
+  Ver mas
+</a>
+<h1 class="mt-3">
+  Lecciones
+</h1>
 {{#if lecciones}}
-    {{#each lecciones}}
-    <div class="card m-5" >
-        <div class="card-body">
-            <h5 class="card-title">
-            {{dataValues.nombre}}
-            </h5>
-            <p class="card-text">
-            {{dataValues.descripcion}}
-            </p>
-            <a href="#" class="btn btn-primary">
-            Abrir
-            </a>
-        </div>
+  {{#each lecciones}}
+    <div class="card m-5">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{dataValues.nombre}}
+        </h5>
+        <p class="card-text">
+          {{dataValues.descripcion}}
+        </p>
+        <a href="#" class="btn btn-primary">
+          Abrir
+        </a>
+      </div>
     </div>
-    {{/each}}
+  {{/each}}
 {{else}}
-    <h2>Todabia no hay lecciones</h2>
-    <h2>Pronto se agregaran</h2>
+  <h2>
+    Todabia no hay lecciones
+  </h2>
+  <h2>
+    Pronto se agregaran
+  </h2>
 {{/if}}
