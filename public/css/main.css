@@ -9,7 +9,7 @@ header {
   color: black !important;
 }
 
-.paragraph{
+.paragraph {
   color: black !important;
 }
 
@@ -43,7 +43,6 @@ header {
   width: 15em;
 }
 
-<<<<<<< HEAD
 .card-body {
   display: flex;
   flex-direction: column;
@@ -68,9 +67,8 @@ header {
   background-color: #388087;
   color: white;
 }
-=======
 
-.footer{
+.footer {
   text-align: center;
   text-decoration: none;
   align-items: center;
@@ -79,11 +77,11 @@ header {
   padding-top: 1em;
 }
 
-.footer a{  
+.footer a {
   color: white;
 }
 
-.footer p{  
+.footer p {
   color: white !important;
 }
 
@@ -97,11 +95,11 @@ header {
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .fa-facebook {
-  background: #3B5998;
+  background: #3b5998;
   color: white;
 }
 
@@ -120,15 +118,9 @@ header {
   color: white;
 }
 
-
-
-
 .row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-
 }
-
->>>>>>> develop
