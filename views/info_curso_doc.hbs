@@ -2,3 +2,26 @@
 <h1>{{curso.descripcion}}</h1>
 <h1>{{curso.precio}}</h1>
 <a href="/actualizar_curso/{{curso.id}}" class="btn btn-primary">Actualizar</a>
+
+{{#if lecciones}}
+    {{#each lecciones}}
+    <div class="card m-5" >
+        <div class="card-body">
+            <h5 class="card-title">
+            {{dataValues.nombre}}
+            </h5>
+            <p class="card-text">
+            {{dataValues.descripcion}}
+            </p>
+            <a href="#" class="btn btn-primary">
+            Abrir
+            </a>
+        </div>
+    </div>
+    {{/each}}
+    <a href="/agregar_leccion/{{curso.id}}" class="btn btn-primary">Agregar Leccion</a>
+{{else}}
+    <h2>Todabia no hay lecciones</h2>
+    <h2>Agrega una !!</h2>
+    <a href="/agregar_leccion/{{curso.id}}" class="btn btn-primary">Agregar Leccion</a>
+{{/if}}

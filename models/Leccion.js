@@ -7,10 +7,9 @@ const shortid = require("shortid");
 
 // Traer la conexion a la base de datos
 const db = require("../config/dbdev-acad");
-const Curso = require("./Curso");
 
 // Tabla de leccion
-const Leccion = db.define("curso",
+const Leccion = db.define("leccion",
     {
         id: {
             type: Sequelize.INTEGER,
@@ -19,11 +18,23 @@ const Leccion = db.define("curso",
         },
 
         nombre: {
-            type: Sequelize.STRING(30)
+            type: Sequelize.STRING(30),
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "Debes ingresar el nombre de la leccion"
+                }
+            }
         },
 
         descripcion: {
-            type: Sequelize.STRING(100)
+            type: Sequelize.STRING(100),
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "La leccion debe tener una descripcion"
+                },
+            },
         },
 
         url: {

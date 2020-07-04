@@ -6,6 +6,7 @@ const usersController = require("../controllers/usersController");
 const cursoController = require("../controllers/cursosController");
 const inscripcionController = require("../controllers/inscripcionController");
 const authController = require("../controllers/authController");
+const leccionController = require("../controllers/leccionController");
 
 // Rutas disponibles
 module.exports = function () {
@@ -104,6 +105,17 @@ module.exports = function () {
     authController.userVerifyAuth,
     usersController.actualizarPerfil
   );
+
+  // Agregar leccion
+  routes.get("/agregar_leccion/:id",
+    authController.userVerifyAuth,
+    leccionController.cargarFormularioInsertarLeccion
+  );
+  routes.post("/agregar_leccion/:id",
+    authController.userVerifyAuth,
+    leccionController.insertarLeccion
+  );
+
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;
