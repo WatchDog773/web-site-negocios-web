@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f2;
+    height: 100vh;
+    
+  }
+  
+  #agregar_curso .container #login-row #login-column #login-box {
+    margin-top: 50px;
+    max-width: 600px;
+    height: 550px;
+    border: 1px solid #9C9C9C;
+    background-color: #BBE0e7;
+    
+  }
