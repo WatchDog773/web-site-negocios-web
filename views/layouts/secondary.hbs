@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dev-Acad</title>
+    {{!-- CDN DE CSS BOOTSTRAP --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100 ">
+
+
+    <header>
+
+        <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+            <a class="navbar-brand" href="#"><img id="logo" src="/src/Logo2.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+
+                <ul class="navbar-nav ml-auto">
+                    <form id="searchthis" action="/search" style="display:inline;" method="get">
+                        <!-- Search box for blogger by Namanyay Goel //-->
+                        <input id="namanyay-search-box" name="q" type="text" placeholder="¿Buscas algun curso?" />
+                        <i class="large material-icons namanyay-search-btn" type="submit">search</i>
+                    </form>
+
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect waves-light" href="#">
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><strong>Cursos</strong></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/course_list">Alumno <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/agregar_curso">Instructor</a>
+                    </li>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Perfil </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                            aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item waves-effect waves-light" href="#">Mi cuenta</a>
+                            <a class="dropdown-item waves-effect waves-light" href="#">Cerrar sesion</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/.Navbar -->
+    </header>
+
+
+
+
+    {{!-- Inicio del contenido --}}
+    <main class="flex-shrink-0">
+        <div class="">
+            {{{body}}}
+        </div>
+    </main>
+
+
+
+
+
+
+    {{!-- Final de contenido --}}
+
+    {{!-- NO TOCAR SCRIPTS DE BOOTSTRAP --}}
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

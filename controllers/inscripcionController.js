@@ -45,3 +45,21 @@ exports.listaInscrito = async (req, res, next) => {
     console.log(error);
   }
 };
+
+// Mostrar la informacion del curso inscrito
+exports.infoCursoInscrito = async (req, res, next) => {
+  const mensajes = [];
+  try {
+    const curso = await Curso.findOne({ where: { url: req.params.url } });
+    res.render("info_curso_ins", {
+      layout: "secondary",
+      curso: curso.dataValues,
+    });
+  } catch (error) {
+    mensajes.push({
+      mensaje: "Ha ocurrido un error, el curso no se encuentra disponible",
+      type: "alert-danger",
+    });
+    res.render("lista_curso_inscrito", { mensajes });
+  }
+};
