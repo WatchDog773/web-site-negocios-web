@@ -101,21 +101,21 @@ header {
 }
 
 /* Estilos para las tarjetas */
-.card-body {
-  display: flex;
-  flex-direction: column;
+.card {
   background-color: #6fb3b8;
   color: white;
 }
 
-.card-body .btn {
+.card-body .btn,
+.leccion-btn {
   background-color: #388087;
   color: white;
   font-weight: bold;
   text-decoration: none;
 }
 
-.card-body .btn:hover {
+.card-body .btn:hover,
+.leccion-btn:hover {
   background-color: #bbe0e7;
   color: black;
 }

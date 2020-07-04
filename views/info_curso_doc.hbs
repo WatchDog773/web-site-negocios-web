@@ -1,27 +1,68 @@
-<h1>{{curso.nombre}}</h1>
-<h1>{{curso.descripcion}}</h1>
-<h1>{{curso.precio}}</h1>
-<a href="/actualizar_curso/{{curso.id}}" class="btn btn-primary">Actualizar</a>
-
-{{#if lecciones}}
-    {{#each lecciones}}
-    <div class="card m-5" >
-        <div class="card-body">
-            <h5 class="card-title">
-            {{dataValues.nombre}}
-            </h5>
-            <p class="card-text">
-            {{dataValues.descripcion}}
-            </p>
-            <a href="#" class="btn btn-primary">
-            Abrir
-            </a>
-        </div>
+<div class="card mb-3" style="max-width: 1400px;">
+  {{! Centrar imagen verticalmente en la tarjeta: d-flex flex-wrap align-items-center }}
+  <div class="row no-gutters d-flex flex-wrap align-items-center">
+    <div class="col-md-4">
+      <img src="/src/sample2.jpg" class="card-img img-fluid" alt="..." />
     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">
+          {{curso.nombre}}
+        </h5>
+        <p class="card-text">
+          {{curso.descripcion}}
+        </p>
+        <h1 class="card-title font-weight-bold">
+          {{curso.precio}}
+          US$
+        </h1>
+        <a href="/actualizar_curso/{{curso.id}}" class="btn">
+          Editar Curso
+        </a>
+        <a href="/actualizar_curso/{{curso.id}}" class="btn">
+          Eliminar Curso
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{{! Contenedor para las lecciones }}
+<div class="my-5">
+  <h3 class="font-weight-bold">
+    Contenido
+  </h3>
+  {{#if lecciones}}
+    {{#each lecciones}}
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            {{dataValues.nombre}}
+          </h5>
+          <p class="card-text">
+            {{dataValues.descripcion}}
+          </p>
+          <a href="#" class="btn">
+            Abrir
+          </a>
+        </div>
+      </div>
     {{/each}}
-    <a href="/agregar_leccion/{{curso.id}}" class="btn btn-primary">Agregar Leccion</a>
-{{else}}
-    <h2>Todabia no hay lecciones</h2>
-    <h2>Agrega una !!</h2>
-    <a href="/agregar_leccion/{{curso.id}}" class="btn btn-primary">Agregar Leccion</a>
-{{/if}}
+    <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn">
+      Agregar Leccion
+    </a>
+  {{else}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">
+          Todavia no tienes ninguna leccion.
+        </h5>
+        <p class="card-text">
+          Que esperas para crear tu primera leccion.
+        </p>
+      </div>
+    </div>
+    <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn">
+      Agregar Leccion
+    </a>
+  {{/if}}
+</div>
