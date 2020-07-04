@@ -9,6 +9,10 @@ header {
   color: black !important;
 }
 
+p {
+  color: black !important;
+}
+
 #logo {
   width: 5em;
   padding-left: 2em;
@@ -38,6 +42,7 @@ header {
   border: 0 none;
   width: 15em;
 }
+<<<<<<< HEAD
 
 .card-body {
   display: flex;
@@ -63,3 +68,5 @@ header {
   background-color: #388087;
   color: white;
 }
+=======
+>>>>>>> develop
