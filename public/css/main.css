@@ -9,7 +9,7 @@ header {
   color: black !important;
 }
 
-.paragraph{
+.paragraph {
   color: black !important;
 }
 
@@ -34,7 +34,7 @@ header {
 
 #namanyay-search-box {
   background: #eee;
-  padding: 0.3125em 0.625em;
+  padding: 0.5em 0.6em;
   border-radius: 0.625em 0 0 0.625em;
   -moz-border-radius: 0.625em 0 0 0.625em;
   -webkit-border-radius: 0.625em 0 0 0.625em;
@@ -43,8 +43,7 @@ header {
   width: 15em;
 }
 
-
-.footer{
+.footer {
   text-align: center;
   text-decoration: none;
   align-items: center;
@@ -53,29 +52,29 @@ header {
   padding-top: 1em;
 }
 
-.footer a{  
+.footer a {
   color: white;
 }
 
-.footer p{  
+.footer p {
   color: white !important;
 }
 
 .fa {
-  padding: 1.25em;
-  font-size: 1.875em;
-  width: 4.375em;
+  padding: 1em;
+  font-size: 1.2em;
+  width: 3.3em;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .fa-facebook {
-  background: #3B5998;
+  background: #3b5998;
   color: white;
 }
 
@@ -94,14 +93,9 @@ header {
   color: white;
 }
 
-
-
-
 .row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-
 }
-
