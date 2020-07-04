@@ -5,11 +5,11 @@ header {
   text-align: center;
 }
 
-.navbar a {
+.navbar .paragraph {
   color: black !important;
 }
 
-p {
+.paragraph{
   color: black !important;
 }
 
@@ -23,22 +23,22 @@ p {
   color: white;
   text-align: center;
   vertical-align: middle;
-  padding: 5px 10px;
-  border-radius: 0 10px 10px 0;
-  -moz-border-radius: 0 10px 10px 0;
-  -webkit-border-radius: 0 10px 10px 0;
-  -o-border-radius: 0 10px 10px 0;
+  padding: 0.3125em 0.625em;
+  border-radius: 0 0.625em 0.625em 0;
+  -moz-border-radius: 0 0.625em 0.625em 0;
+  -webkit-border-radius: 0 0.625em 0.625em 0;
+  -o-border-radius: 0 0.625em 0.625em 0;
   border: 0 none;
   font-weight: bold;
 }
 
 #namanyay-search-box {
   background: #eee;
-  padding: 5px 10px;
-  border-radius: 10px 0 0 10px;
-  -moz-border-radius: 10px 0 0 10px;
-  -webkit-border-radius: 10px 0 0 10px;
-  -o-border-radius: 10px 0 0 10px;
+  padding: 0.3125em 0.625em;
+  border-radius: 0.625em 0 0 0.625em;
+  -moz-border-radius: 0.625em 0 0 0.625em;
+  -webkit-border-radius: 0.625em 0 0 0.625em;
+  -o-border-radius: 0.625em 0 0 0.625em;
   border: 0 none;
   width: 15em;
 }
@@ -62,9 +62,9 @@ p {
 }
 
 .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 70px;
+  padding: 1.25em;
+  font-size: 1.875em;
+  width: 4.375em;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
