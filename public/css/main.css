@@ -1,8 +1,19 @@
 header {
-  background-color: #ececb7;
+ 
   align-items: center;
   font-family: "Roboto", sans-serif;
   text-align: center;
+}
+
+.back-color{
+  background-color: #ececb7 !important;
+}
+
+.search-button{
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  
 }
 
 .navbar .paragraph {
@@ -13,7 +24,7 @@ header {
   color: black !important;
 }
 
-#logo {
+.logo {
   width: 5em;
   padding-left: 2em;
 }
