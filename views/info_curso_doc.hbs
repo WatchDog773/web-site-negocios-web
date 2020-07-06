@@ -16,6 +16,10 @@
           {{curso.precio}}
           US$
         </h1>
+        <h6 class="card-title">
+          Publicado:
+          {{hace}}
+        </h6>
         <a href="/actualizar_curso/{{curso.id}}" class="btn">
           Editar Curso
         </a>
@@ -44,9 +48,12 @@
           <a href="#" class="btn">
             Abrir
           </a>
-
-          <a href="/actualizar_leccion/{{dataValues.url}}/{{dataValues.cursoId}}" class="btn">Editar Lección</a>
-
+          <a
+            href="/actualizar_leccion/{{dataValues.url}}/{{dataValues.cursoId}}"
+            class="btn"
+          >
+            Editar Lección
+          </a>
           <button
             id="eliminar-leccion"
             data-leccion-id={{dataValues.id}}
@@ -58,11 +65,8 @@
         </div>
       </div>
     {{/each}}
-    <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn">
-      Agregar Leccion
-    </a>
   {{else}}
-    <div class="card">
+    <div class="card mb-5">
       <div class="card-body">
         <h5 class="card-title font-weight-bold">
           Todavia no tienes ninguna leccion.
@@ -72,8 +76,8 @@
         </p>
       </div>
     </div>
-    <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn">
-      Agregar Leccion
-    </a>
   {{/if}}
+  <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn btn-lg">
+    Agregar Leccion
+  </a>
 </div>

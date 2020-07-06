@@ -37,11 +37,16 @@ const Curso = db.define(
     url: {
       type: Sequelize.STRING,
     },
+    fecha: {
+      type: Sequelize.DATE,
+    },
   },
   {
     hooks: {
       beforeCreate(curso) {
         const url = slug(curso.nombre).toLocaleLowerCase();
+        const fecha = new Date();
+        curso.fecha = fecha.toISOString();
         curso.url = `${url}_${shortid.generate()}`;
         console.log("Ejecutando before create en curso");
       },
