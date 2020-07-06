@@ -28,31 +28,31 @@ exports.signUpVerify = async (req, res, next) => {
   }
   if (!nombre) {
     mensajes.push({
-      error: "Ud tiene que tener un nombre",
+      mensaje: "Ud tiene que tener un nombre",
       type: "alert-danger",
     });
   }
   if (!apellido) {
     mensajes.push({
-      error: "Ud tiene que tener un apellido",
+      mensaje: "Ud tiene que tener un apellido",
       type: "alert-danger",
     });
   }
   if (!email) {
     mensajes.push({
-      error: "Tiene que ingresar un correo",
+      mensaje: "Tiene que ingresar un correo",
       type: "alert-danger",
     });
   }
   if (!user) {
     mensajes.push({
-      error: "El usuario no puede estar vacio",
+      mensaje: "El usuario no puede estar vacio",
       type: "alert-danger",
     });
   }
   if (!password) {
     mensajes.push({
-      error: "La contraseña no puede estar vacia",
+      mensaje: "La contraseña no puede estar vacia",
       type: "alert-danger",
     });
   }
@@ -69,7 +69,7 @@ exports.signUpVerify = async (req, res, next) => {
       await Usuario.create({ nombre, apellido, email, usuario, password });
 
       mensajes.push({
-        error: "Se inserto en la base de datos",
+        mensaje: "Se inserto en la base de datos",
         type: "alert-success",
       });
 
@@ -81,7 +81,7 @@ exports.signUpVerify = async (req, res, next) => {
       // });
     } catch (error) {
       mensajes.push({
-        error: "No se pudo registrar, verifica la consola",
+        mensaje: "No se pudo registrar, verifica la consola",
         type: "alert-danger",
       });
 

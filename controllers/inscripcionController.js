@@ -2,7 +2,8 @@
 const Inscripcion = require("../models/Inscripcion");
 // Importar modelo de cursos
 const Curso = require("../models/Curso");
-
+// Importar el modelo de lecciones
+const Leccion = require("../models/Leccion");
 // Inscribirse a un determinado curso
 // Esta insercion apunta a la tabla de inscripciones
 exports.inscripcionCurso = async (req, res, next) => {
@@ -51,8 +52,12 @@ exports.infoCursoInscrito = async (req, res, next) => {
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
+    const lecciones = await Leccion.findAll({
+      where: { cursoId: curso.id },
+    });
     res.render("info_curso_ins", {
       curso: curso.dataValues,
+      lecciones,
     });
   } catch (error) {
     mensajes.push({
