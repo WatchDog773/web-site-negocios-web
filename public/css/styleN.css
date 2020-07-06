@@ -2,13 +2,12 @@ body {
   margin: 0;
   padding: 0;
   background-color: #388087;
-  height: 100vh;
 }
 
 #login .container #login-row #login-column #login-box {
   margin-top: 50px;
   max-width: 600px;
-  height: 600px;
+  height: 50%;
   border: 1px solid #9c9c9c;
   background-color: #eaeaea;
 }
@@ -38,7 +37,7 @@ p {
 #registro .container #login-row #login-column #login-box {
   margin-top: 50px;
   max-width: 600px;
-  height: 800px;
+  height: 80%;
   border: 1px solid #9c9c9c;
   background-color: #eaeaea;
 }
