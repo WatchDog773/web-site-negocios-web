@@ -6,6 +6,10 @@ const { Op } = require("sequelize");
 // Importar el modelo de leccion
 const Leccion = require("../models/Leccion");
 
+// Importar el modelo de moment
+const moment = require("moment");
+moment.locale("es");
+
 // Renderizar la vista de agregar curso
 exports.agregarCurso = (req, res, next) => {
   res.render("agregar_curso");
@@ -123,6 +127,7 @@ exports.listaCursoAlu = async (req, res, next) => {
 
 // Mostrar la informacion para cada curso si somos alumnos
 exports.infoCurso = async (req, res, next) => {
+  const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
 
@@ -130,19 +135,39 @@ exports.infoCurso = async (req, res, next) => {
     const lecciones = await Leccion.findAll({
       where: { cursoId: curso.id },
     });
-    res.render("info_curso", { curso: curso.dataValues, lecciones });
-  } catch {}
+    const hace = moment(curso.dataValues.fecha).fromNow();
+    res.render("info_curso", {
+      curso: curso.dataValues,
+      lecciones,
+      hace,
+    });
+  } catch (error) {
+    mensajes.push({
+      mensaje: "Ha ocurrido un error al momento de cargar los cursos",
+      type: "alert-danger",
+    });
+  }
 };
 
 // Mostrar la informacion para cada curso si somos docentes
 exports.infoCursoDoc = async (req, res, next) => {
+  const usuario = res.locals.usuario;
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
-    const lecciones = await Leccion.findAll({
-      where: { cursoId: curso.id },
-    });
-    res.render("info_curso_doc", { curso: curso.dataValues, lecciones });
+    if (curso.usuarioId != usuario.id) {
+      res.redirect("/");
+    } else {
+      const lecciones = await Leccion.findAll({
+        where: { cursoId: curso.id },
+      });
+      const hace = moment(curso.dataValues.fecha).fromNow();
+      res.render("info_curso_doc", {
+        curso: curso.dataValues,
+        lecciones,
+        hace,
+      });
+    }
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error al momento de administrar el curso",

@@ -1,19 +1,17 @@
 header {
- 
   align-items: center;
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
-.back-color{
+.back-color {
   background-color: #ececb7 !important;
 }
 
-.search-button{
+.search-button {
   text-align: center;
   align-items: center;
   vertical-align: middle;
-  
 }
 
 .navbar .paragraph {
