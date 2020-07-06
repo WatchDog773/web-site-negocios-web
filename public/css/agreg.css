@@ -1,40 +1,39 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f6f6f2;
-    height: 100vh;
-    
-  }
-  
-  #login .container #login-row #login-column #login-box #login-form {
-    padding: 20px;
-    
-  }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
-    
-  }
-  .iniciar-btn {
-    background-color: #388087;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    
-  }
-  
-  .iniciar-btn:hover{
-    background-color: #c4e1c9;
-    color: black;
-    text-align: center;
-    font-weight: bold;
-  }
-  #agregar_curso .container #login-row #login-column #login-box {
-    margin-top: 20px;
-    max-width: 1500px;
-    height: 450px;
-    border: 1px solid #9C9C9C;
-    background-color: #6fb3b8;
-    
-  }
+  margin: 0;
+  padding: 0;
+  background-color: #f6f6f2;
+  height: 100vh;
+}
 
-  
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login
+  .container
+  #login-row
+  #login-column
+  #login-box
+  #login-form
+  #register-link {
+  margin-top: -85px;
+}
+.iniciar-btn {
+  background-color: #388087;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.iniciar-btn:hover {
+  background-color: #c4e1c9;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+#agregar_curso .container #login-row #login-column #login-box {
+  margin-top: 20px;
+  max-width: 1500px;
+  height: 60%;
+  border: 1px solid #9c9c9c;
+  background-color: #6fb3b8;
+}
