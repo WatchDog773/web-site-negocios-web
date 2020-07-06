@@ -118,12 +118,25 @@ module.exports = function () {
     leccionController.insertarLeccion
   );
 
+  // Actualizar leccion
+  routes.get(
+    "/actualizar_leccion/:url/:cursoId",
+    authController.userVerifyAuth,
+    leccionController.cargarFormularioactualizarLeccion
+  );
+  routes.post(
+    "/actualizar_leccion/:id/:cursoUrl",
+    authController.userVerifyAuth,
+    leccionController.actualizarLeccion
+  );
+
   // eliminar leccion
   routes.delete(
     "/leccion/:id",
     authController.userVerifyAuth,
     leccionController.eliminarLeccion
   );
+
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;
