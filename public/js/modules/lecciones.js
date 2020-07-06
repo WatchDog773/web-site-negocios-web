@@ -33,7 +33,11 @@ for (var i = 0; i < btnEliminarLeccion.length; i++) {
         axios
           .delete(url, { params: { id: idLeccion } })
           .then(function (response) {
-            Swal.fire("Eliminado!", "La leccion se ha eliminado.", "success");
+            Swal.fire("Eliminado!", "La leccion se ha eliminado.", "success").then(
+              function() {
+                location.reload(); // Solucion temporal de refrescar la pagina
+              }
+            );
           })
           .catch(() => {
             Swal.fire("Error!");
@@ -42,3 +46,14 @@ for (var i = 0; i < btnEliminarLeccion.length; i++) {
     });
   });
 }
+
+
+// Refrescar la pagina
+/*
+then.(function(){ 
+   location.reload();
+   }
+); 
+
+obtenido de https://stackoverflow.com/questions/36300919/how-to-reload-a-page-after-clicked-ok-using-sweetalert
+ */
