@@ -1,0 +1,14 @@
+<form method="POST" action="/actualizar_leccion/{{leccion.id}}/{{curso.url}}">
+    {{>alertas}}
+  <div class="form-group">
+      <h1>{{curso.nombre}}</h1>
+      <h2>Actualizar leccion "{{leccion.nombre}}"</h2>
+    <label>Nombre de la leccion</label>
+    <input value="{{leccion.nombre}}" name="nombre" placeholder="Ejemplo: Introduccion a..." type="text" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Descripción de la leccion</label>
+    <input value="{{leccion.descripcion}}" name="descripcion" placeholder="Ejemplo: Conoceras los terminos de..." type="text" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
