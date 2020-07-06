@@ -1,14 +1,39 @@
-<div class="row">
+{{#if cursos}}
+  <div class="row">
     {{#each cursos}}
-    <div class="col-lg-4 col-md-6 pt-5">
+      <div class="col-lg-4 col-md-6 pt-5">
         <div class="card h-100">
-            <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{dataValues.nombre}}</h5>
-                <p class="card-text">{{dataValues.descripcion}}</p>
-                <a href="/info_curso_inscrito/{{dataValues.url}}" class="mt-auto btn btn-lg">Ver Mas</a>
-            </div>
+          <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">
+              {{dataValues.nombre}}
+            </h5>
+            <p class="card-text">
+              {{dataValues.descripcion}}
+            </p>
+            <a
+              href="/info_curso_inscrito/{{dataValues.url}}"
+              class="mt-auto btn btn-lg"
+            >
+              Ver Mas
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
     {{/each}}
-</div>
+  </div>
+{{else}}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title font-weight-bold">
+        Todavia no estas inscrito en ningun curso.
+      </h5>
+      <p class="card-text">
+        Que esperas para inscribirte y comenzar a aprender.
+      </p>
+    </div>
+  </div>
+  <a href="/lista_curso_alu" class="leccion-btn btn mt-5 btn-lg">
+    Buscar Cursos
+  </a>
+{{/if}}

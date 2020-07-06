@@ -127,12 +127,10 @@ exports.infoCurso = async (req, res, next) => {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
 
     // Buscar las lecciones
-    const lecciones = await Leccion.findAll(
-      {
-        where: {cursoId: curso.id}
-      }
-    );
-    res.render("info_curso", { curso, lecciones });
+    const lecciones = await Leccion.findAll({
+      where: { cursoId: curso.id },
+    });
+    res.render("info_curso", { curso: curso.dataValues, lecciones });
   } catch {}
 };
 
@@ -142,7 +140,7 @@ exports.infoCursoDoc = async (req, res, next) => {
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
     const lecciones = await Leccion.findAll({
-      where: { cursoId: curso.id }
+      where: { cursoId: curso.id },
     });
     res.render("info_curso_doc", { curso: curso.dataValues, lecciones });
   } catch (error) {

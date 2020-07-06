@@ -1,44 +1,44 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #388087;
-    height: 100vh;
-    
-  }
- 
+  margin: 0;
+  padding: 0;
+  background-color: #388087;
+  height: 100vh;
+}
 
-  #login .container #login-row #login-column #login-box {
-    margin-top: 50px;
-    max-width: 600px;
-    height: 600px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-    
-  }
+#login .container #login-row #login-column #login-box {
+  margin-top: 50px;
+  max-width: 600px;
+  height: 600px;
+  border: 1px solid #9c9c9c;
+  background-color: #eaeaea;
+}
 
-  #login .container #login-row #login-column #login-box #login-form {
-    padding: 20px;
-    
-  }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
-    
-  }
-  .iniciar-btn {
-    background-color: #378087;
-    color: white;
-    text-align: center;
-    
-  }
-  .logo-image, h1, p {
-    text-align: center;
-  }
-  #registro .container #login-row #login-column #login-box {
-    margin-top: 50px;
-    max-width: 600px;
-    height: 800px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-    
-  }
- 
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login
+  .container
+  #login-row
+  #login-column
+  #login-box
+  #login-form
+  #register-link {
+  margin-top: -85px;
+}
+.iniciar-btn {
+  background-color: #378087;
+  color: white;
+  text-align: center;
+}
+.logo-image,
+h1,
+p {
+  text-align: center;
+}
+#registro .container #login-row #login-column #login-box {
+  margin-top: 50px;
+  max-width: 600px;
+  height: 800px;
+  border: 1px solid #9c9c9c;
+  background-color: #eaeaea;
+}
