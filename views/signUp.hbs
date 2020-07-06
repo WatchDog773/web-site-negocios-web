@@ -85,23 +85,28 @@
                         
                             <div class="form-group">
                                 <label for="email" class=" text-black">Nombre:</label><br>
-                                <input type="text" class="form-control m-1" placeholder="Nombre" name="nombre" id="exampleInputEmail1" required autofocus>
+                                <input type="text" class="form-control m-1" placeholder="Ejemplo: Candido" name="nombre" id="exampleInputEmail1" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena" class="text-black">Apellido:</label><br>
-                                <input type="text" class="form-control m-1" placeholder="Apellido" name="apellido" id="exampleInputEmail1" required>
+                                <input type="text" class="form-control m-1" placeholder="Ejemplo: Panchame" name="apellido" id="exampleInputEmail1" required>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena" class="text-black">E-mail:</label><br>
-                                <input type="email" class="form-control m-1" placeholder="Email" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                <input type="email" class="form-control m-1" placeholder="Ejemplo: mrRobot@funSociety.com" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena" class="text-black">Nombre de usuario:</label><br>
-                                <input type="text" class="form-control m-1" placeholder="Usuario" name="user" id="exampleInputEmail1" required>
+                                <input type="text" class="form-control m-1" placeholder="Ejemplo: theSrAnderson" name="user" required>
                             </div>
                             <div class="form-group">
                                 <label for="contrasena" class="text-black">Contraseña:</label><br>
                                 <input type="password" class="form-control m-1" placeholder="Contraseña" name="password" id="exampleInputEmail1" required>
+                            </div>
+                            {{!-- Verificar contraseña --}}
+                            <div class="form-group">
+                                <label for="contrasena-verify" class="text-black">Verifica la constraseña:</label><br>
+                                <input type="password" class="form-control m-1" placeholder="Confirma contraseña" name="password_verify" id="exampleInputEmail1" required>
                             </div>
                             
                             <button class="btn btn-lg btn-primary btn-block iniciar-btn" type="submit">Registrate</button>

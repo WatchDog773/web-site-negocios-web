@@ -10,10 +10,22 @@ exports.signUpCharge = (req, res, next) => {
 exports.signUpVerify = async (req, res, next) => {
   /* console.log(req.body); */
 
-  const { nombre, apellido, email, user, password } = req.body;
+  const { nombre, apellido, email, user, password, password_verify } = req.body;
   const usuario = user;
   const mensajes = [];
-
+  
+  if (password != password_verify) {
+    mensajes.push({
+      error: "Las contraseñas no coinciden",
+      type: "alert-warning"
+    });
+  }
+  if (!password_verify) {
+    mensajes.push({
+      error: "Tienes que confirmar la contraseña",
+      type: "alert-danger",
+    });
+  }
   if (!nombre) {
     mensajes.push({
       error: "Ud tiene que tener un nombre",
