@@ -13,11 +13,11 @@ exports.signUpVerify = async (req, res, next) => {
   const { nombre, apellido, email, user, password, password_verify } = req.body;
   const usuario = user;
   const mensajes = [];
-  
+
   if (password != password_verify) {
     mensajes.push({
       error: "Las contraseñas no coinciden",
-      type: "alert-warning"
+      type: "alert-warning",
     });
   }
   if (!password_verify) {
@@ -136,19 +136,19 @@ exports.actualizarPerfil = async (req, res, next) => {
   }
   if (!apellido) {
     mensajes.push({
-      mensaje: "El nombre no puede ir vacio.",
+      mensaje: "El apellido no puede ir vacio.",
       type: "alert-danger",
     });
   }
   if (!email) {
     mensajes.push({
-      mensaje: "El nombre no puede ir vacio.",
+      mensaje: "El email no puede ir vacio.",
       type: "alert-danger",
     });
   }
   if (!usuario) {
     mensajes.push({
-      mensaje: "El nombre no puede ir vacio.",
+      mensaje: "El usuario no puede ir vacio.",
       type: "alert-danger",
     });
   }
