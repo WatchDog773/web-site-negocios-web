@@ -13,6 +13,16 @@ exports.signUpVerify = async (req, res, next) => {
   const { nombre, apellido, email, user, password, password_verify } = req.body;
   const usuario = user;
   const mensajes = [];
+  const temp = [];
+
+  temp.push(
+    {
+      _nombre: nombre,
+      _apellido: apellido,
+      _email: email,
+      _user: user,
+    }
+  );
 
   if (password != password_verify) {
     mensajes.push({
@@ -59,6 +69,7 @@ exports.signUpVerify = async (req, res, next) => {
 
   // Si hay mensajes
   if (mensajes.length) {
+    console.log(temp);
     res.render("signUp", {
       layout: "auth",
       mensajes,
