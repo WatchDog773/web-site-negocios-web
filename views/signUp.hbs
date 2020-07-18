@@ -8,13 +8,10 @@
             <div class="logo-image">
               <img
                 src="https://trello-attachments.s3.amazonaws.com/5ee82d96e1be721fd7c55a82/591x687/2b9bc935c0034d515912db44c869779e/Logo.png"
-                alt="Logo"
-                title="Logo"
-                width="138"
-              />
+                alt="Logo" title="Logo" width="138" />
             </div>
             <h3 class="text-center text-black pt-5">
-              Registrarte {{temp._nombre}}
+              Registrarte
             </h3>
             {{>alertas}}
             <div class="form-group">
@@ -22,70 +19,42 @@
                 Nombre:
               </label>
               <br />
-              <input
-                type="text"
-                class="form-control m-1"
-                placeholder="Ejemplo: Candido"
-                name="nombre"
-                id="exampleInputEmail1",
-                required
-                autofocus/>
+              {{!-- Poner un objeto en HBS
+              https://www.it-swarm.dev/es/javascript/handlebars.js-parse-object-en-lugar-de-object-object/1067507694/ --}}
+              <input type="text" class="form-control m-1" placeholder="Ejemplo: Candido" name="nombre"
+                id="exampleInputEmail1" value="{{temp._nombre}}" required autofocus />
             </div>
             <div class="form-group">
               <label for="contrasena" class="text-black">
                 Apellido:
               </label>
               <br />
-              <input
-                type="text"
-                class="form-control m-1"
-                placeholder="Ejemplo: Panchame"
-                name="apellido"
-                id="exampleInputEmail1"
-                required
-              />
+              <input type="text" class="form-control m-1" placeholder="Ejemplo: Panchame" name="apellido"
+                id="exampleInputEmail1" value="{{temp._apellido}}" required />
             </div>
             <div class="form-group">
               <label for="contrasena" class="text-black">
                 E-mail:
               </label>
               <br />
-              <input
-                type="email"
-                class="form-control m-1"
-                placeholder="Ejemplo: mrRobot@funSociety.com"
-                name="email"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                required
-              />
+              <input type="email" class="form-control m-1" placeholder="Ejemplo: mrRobot@funSociety.com" name="email"
+                id="exampleInputEmail1" aria-describedby="emailHelp" value="{{temp._email}}" required />
             </div>
             <div class="form-group">
               <label for="contrasena" class="text-black">
                 Nombre de usuario:
               </label>
               <br />
-              <input
-                type="text"
-                class="form-control m-1"
-                placeholder="Ejemplo: theSrAnderson"
-                name="user"
-                required
-              />
+              <input value="{{temp._user}}" type="text" class="form-control m-1" placeholder="Ejemplo: theSrAnderson"
+                name="user" required />
             </div>
             <div class="form-group">
               <label for="contrasena" class="text-black">
                 Contraseña:
               </label>
               <br />
-              <input
-                type="password"
-                class="form-control m-1"
-                placeholder="Contraseña"
-                name="password"
-                id="exampleInputEmail1"
-                required
-              />
+              <input type="password" class="form-control m-1" placeholder="Contraseña" name="password"
+                id="exampleInputEmail1" required />
             </div>
             {{! Verificar contraseña }}
             <div class="form-group">
@@ -93,19 +62,10 @@
                 Verifica la constraseña:
               </label>
               <br />
-              <input
-                type="password"
-                class="form-control m-1"
-                placeholder="Confirma contraseña"
-                name="password_verify"
-                id="exampleInputEmail1"
-                required
-              />
+              <input type="password" class="form-control m-1" placeholder="Confirma contraseña" name="password_verify"
+                id="exampleInputEmail1" required />
             </div>
-            <button
-              class="btn btn-lg leccion-btn mb-3 w-100"
-              type="submit"
-            >
+            <button class="btn btn-lg leccion-btn mb-3 w-100" type="submit">
               Registrate
             </button>
           </form>
