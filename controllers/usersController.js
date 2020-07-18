@@ -100,8 +100,9 @@ exports.signUpVerify = async (req, res, next) => {
             res.render("signUp", {
                 layout: "auth",
                 mensajes,
+                temp
             });
-
+            delete temp;
             console.log(error);
         }
     }
