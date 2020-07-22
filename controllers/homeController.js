@@ -42,3 +42,7 @@ exports.home = async (req, res, next) => {
     res.render("home", { mensajes });
   }
 };
+
+exports.inicio = (req, res, next) => {
+  res.render("inicio", { layout: "layout_inicio" });
+};

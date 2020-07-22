@@ -1,0 +1,176 @@
+:root {
+  --light-color: #ffffff;
+  --nav-color: #ffffff;
+  --back-color: #f2f2f2;
+  --dark-button-color: #388087;
+  --dark-button-color-hover: #285e63;
+  --footer-color: #003a40;
+}
+
+body {
+  background-color: var(--back-color);
+}
+
+/* Estilos de Nav Bar */
+.navbar {
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  background-color: var(--nav-color);
+}
+
+.navbar .btn {
+  background-color: var(--dark-button-color);
+  color: white;
+}
+
+.navbar .btn:hover {
+  background-color: var(--dark-button-color-hover);
+}
+
+.navbar-brand img {
+  width: 3em;
+}
+.navbar-nav li {
+  padding-right: 1em;
+}
+
+.form-inline .input-group input,
+.form-inline .input-group button {
+  border-radius: 10em;
+}
+/*Aqui terminan los estilos de Nav Bar */
+
+/* Estilos del slider */
+.carousel-item {
+  height: 90vh;
+  position: relative !important;
+}
+
+.black-overlay {
+  position: absolute;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption h1 {
+  font-size: 4em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.carousel-caption .btn {
+  padding: 0.5em 1em;
+}
+.carousel-item {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/*---Change Carousel Transition Speed --*/
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: block;
+  transition: -webkit-transform 1.2s ease;
+  transition: transform 1.2s ease;
+  transition: transform 1.2s ease, -webkit-transform 1.2s ease;
+}
+/* Aqui terminan los estilos del slider */
+
+/* Estilos para las tarjetas */
+.card {
+  transition: all 0.25s;
+}
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+  font-size: 8em;
+  text-align: center;
+  margin-top: 0.2em;
+}
+/* Aqui terminan los Estilos para las tarjetas */
+
+/* Estilos para instructor y promocion alumno */
+.ser-instructor,
+.prom-alumno {
+  background-color: #ffffff;
+}
+
+.prom-alumno {
+  margin-top: 10em;
+}
+.ser-instructor .container .row .col-md-6 p,
+.prom-alumno .container .row .col-md-6 p {
+  font-size: 1.5em;
+}
+
+.ser-instructor .btn,
+.prom-alumno .btn {
+  background-color: var(--dark-button-color);
+  color: white;
+}
+.ser-instructor .btn:hover,
+.prom-alumno .btn:hover {
+  background-color: var(--dark-button-color-hover);
+}
+/* Aqui terminan los Estilos para instructor y promocion alumno */
+
+/* Estilos para el pie de pagina */
+.footer {
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  background-color: var(--footer-color);
+  color: white;
+  padding-top: 1em;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer p {
+  color: white !important;
+}
+
+.fa {
+  padding: 1em;
+  font-size: 1.2em;
+  width: 3.3em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-trello {
+  background: #125688;
+  color: white;
+}
+
+.fa-github {
+  background: #430297;
+  color: white;
+}

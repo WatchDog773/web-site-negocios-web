@@ -10,7 +10,7 @@ const leccionController = require("../controllers/leccionController");
 
 // Rutas disponibles
 module.exports = function () {
-  routes.get("/", authController.userVerifyAuth, homeController.home);
+  routes.get("/", homeController.inicio);
 
   // Rutas para registrarse
   routes.get("/registrate", usersController.signUpCharge);
