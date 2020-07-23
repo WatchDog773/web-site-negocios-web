@@ -12,6 +12,8 @@ const leccionController = require("../controllers/leccionController");
 module.exports = function () {
   routes.get("/", homeController.inicio);
 
+  routes.get("/inicio", homeController.home);
+
   // Rutas para registrarse
   routes.get("/registrate", usersController.signUpCharge);
 

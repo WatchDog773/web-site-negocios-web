@@ -1,35 +1,41 @@
 <div class="card">
   <div class="card-body">
     <form method="POST" action="/agregar_curso">
-    {{>alertas}}
+      {{>alertas}}
       <h3 class="text-center font-weight-bold">
         Agregar Curso
       </h3>
       <br />
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-10">
           <label for="nombre" class="font-weight-bold">
-            Nombre
+            Título
           </label>
           <input
             type="text"
             class="form-control"
-            placeholder="Nombre del curso"
+            placeholder="Aprende Photoshop CS6 desde cero"
             id="nombre"
             name="nombre"
           />
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-2">
           <label for="Precio" class="font-weight-bold">
             Precio
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Precio"
-            id="precio"
-            name="precio"
-          />
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="0.00"
+              id="precio"
+              name="precio"
+              aria-label="Amount (to the nearest dollar)"
+            />
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -39,22 +45,44 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Descripcion"
+          placeholder="Aprende desde cero a crear diseños de alto impacto para tus clientes."
           id="descripcion"
           name="descripcion"
         />
       </div>
       <div class="form-group">
         <label for="categoria" class="font-weight-bold">
-          Categoria
+          Categorías
         </label>
         <input
           type="text"
           class="form-control"
-          placeholder="Categoria"
+          placeholder="Diseño, Diseño Gráfico, etc"
           id="categoria"
           name="categoria"
+          data-role="tagsinput"
         />
+      </div>
+      <div class="form-group">
+        <label for="informacion" class="font-weight-bold">
+          Información
+        </label>
+        <textarea
+          class="form-control"
+          id="informacion"
+          name="informacion"
+          rows="3"
+        >
+        Es importante que expliques como mínimo lo que se aprenderá 
+        en este curso, los requisitos y una descripción mas extensa del 
+        contenido de tu curso. Además si así lo deseas puedes agregar otra 
+        información que consideres importante y adjuntar imágenes para atraer 
+        más alumnos a tu curso.
+          <h3><strong>Lo que aprenderás</strong></h3>
+          <h3><strong>Requisitos</strong></h3>
+          <h3><strong>Descripción</strong></h3>
+          </textarea
+        >
       </div>
       <button type="submit" class="btn btn-lg">
         Guardar

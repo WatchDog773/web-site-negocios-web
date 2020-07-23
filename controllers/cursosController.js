@@ -18,7 +18,8 @@ exports.agregarCurso = (req, res, next) => {
 // Insertar el curso a la bd
 exports.insertarCurso = async (req, res, next) => {
   const usuario = res.locals.usuario;
-  const { nombre, descripcion, precio, categoria } = req.body;
+  console.log(req.body);
+  const { nombre, descripcion, informacion, precio, categoria } = req.body;
   const mensajes = [];
   if (!nombre) {
     mensajes.push({
@@ -51,6 +52,7 @@ exports.insertarCurso = async (req, res, next) => {
       await Curso.create({
         nombre,
         descripcion,
+        informacion,
         precio,
         categoria,
         usuarioId: usuario.id,
@@ -193,7 +195,7 @@ exports.cargarActualizarCurso = async (req, res, next) => {
 exports.actualizarCurso = async (req, res, nex) => {
   const mensajes = [];
   const usuario = res.locals.usuario;
-  const { nombre, descripcion, precio, categoria } = req.body;
+  const { nombre, descripcion, informacion, precio, categoria } = req.body;
   if (!nombre) {
     mensajes.push({
       mensaje: "El nombre del curso no puede ir vacio",
@@ -202,7 +204,13 @@ exports.actualizarCurso = async (req, res, nex) => {
   }
   if (!descripcion) {
     mensajes.push({
-      mensaje: "La descripcion del curso no puede ir vacio",
+      mensaje: "La descripción del curso no puede ir vacio",
+      type: "alert-danger",
+    });
+  }
+  if (!informacion) {
+    mensajes.push({
+      mensaje: "La información del curso no puede ir vacio",
       type: "alert-danger",
     });
   }
@@ -219,7 +227,7 @@ exports.actualizarCurso = async (req, res, nex) => {
     });
   }
   if (mensajes.length) {
-    const curso = Curso.findByPk(req.params.id);
+    const curso = await Curso.findByPk(req.params.id);
     res.render("actualizar_curso", { mensajes, curso: curso.dataValues });
   } else {
     try {
@@ -227,6 +235,7 @@ exports.actualizarCurso = async (req, res, nex) => {
         {
           nombre,
           descripcion,
+          informacion,
           precio,
           categoria,
         },
