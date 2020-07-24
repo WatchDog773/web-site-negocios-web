@@ -1,6 +1,7 @@
 // Importar el modelo de cursos
 const Curso = require("../models/Curso");
 const Inscripcion = require("../models/Inscripcion");
+const Usuario = require("../models/Usuario");
 const { Op } = require("sequelize");
 
 // Importar el modelo de leccion
@@ -117,7 +118,12 @@ exports.listaCursoAlu = async (req, res, next) => {
               [Op.notIn]: usuarioInscripcion,
             },
           },
+          include: {
+            model: Usuario,
+            required: true,
+          },
         });
+        console.log(JSON.stringify(cursos, null, 2));
         res.render("lista_curso_alu", { cursos });
       })
       .catch();
@@ -135,15 +141,28 @@ exports.infoCurso = async (req, res, next) => {
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
+    // Buscar el usuario que imparte el curso
+    const usuarioCreado = await Usuario.findOne({
+      where: { id: curso.usuarioId },
+    });
 
     // Buscar las lecciones
     const lecciones = await Leccion.findAll({
       where: { cursoId: curso.id },
     });
+
+    // Contar el numero de personas inscritas
+    const cantidadInscritos = await Inscripcion.findAndCountAll({
+      where: { cursoId: curso.id },
+    });
+
+    // Obtener la fecha de publicacion del curso
     const hace = moment(curso.dataValues.fecha).fromNow();
     res.render("info_curso", {
       curso: curso.dataValues,
+      usuarioCreado: usuarioCreado.dataValues,
       lecciones,
+      cantidadInscritos,
       hace,
     });
   } catch (error) {
@@ -166,11 +185,16 @@ exports.infoCursoDoc = async (req, res, next) => {
       const lecciones = await Leccion.findAll({
         where: { cursoId: curso.id },
       });
+      const cantidadInscritos = await Inscripcion.findAndCountAll({
+        where: { cursoId: curso.id },
+      });
+      console.log(cantidadInscritos);
       const hace = moment(curso.dataValues.fecha).fromNow();
       res.render("info_curso_doc", {
         curso: curso.dataValues,
         lecciones,
         hace,
+        cantidadInscritos,
       });
     }
   } catch (error) {

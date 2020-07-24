@@ -1,9 +1,19 @@
 // Importar modelo de inscripciones
 const Inscripcion = require("../models/Inscripcion");
+
 // Importar modelo de cursos
 const Curso = require("../models/Curso");
+
 // Importar el modelo de lecciones
 const Leccion = require("../models/Leccion");
+
+// Importar el modelo de usuarioas
+const Usuario = require("../models/Usuario");
+
+// Importar moment para obtener las fechas
+const moment = require("moment");
+moment.locale("es");
+
 // Inscribirse a un determinado curso
 // Esta insercion apunta a la tabla de inscripciones
 exports.inscripcionCurso = async (req, res, next) => {
@@ -37,6 +47,10 @@ exports.listaInscrito = async (req, res, next) => {
         console.log(usuarioInscripcion);
         const cursos = await Curso.findAll({
           where: { id: usuarioInscripcion },
+          include: {
+            model: Usuario,
+            required: "true",
+          },
         });
         console.log(cursos);
         res.render("lista_curso_inscrito", { cursos });
@@ -51,13 +65,32 @@ exports.listaInscrito = async (req, res, next) => {
 exports.infoCursoInscrito = async (req, res, next) => {
   const mensajes = [];
   try {
+    // Obtener la informacion del curso inscrito
     const curso = await Curso.findOne({ where: { url: req.params.url } });
+
+    // Buscar el usuario que imparte el curso
+    const usuarioCreado = await Usuario.findOne({
+      where: { id: curso.usuarioId },
+    });
+
+    // Obtener las lecciones
     const lecciones = await Leccion.findAll({
       where: { cursoId: curso.id },
     });
+
+    // Obtener la cantidad de personas inscritas
+    const cantidadInscritos = await Inscripcion.findAndCountAll({
+      where: { cursoId: curso.id },
+    });
+
+    // Obtener la fecha de publicacion del cuerso
+    const hace = moment(curso.dataValues.fecha).fromNow();
     res.render("info_curso_ins", {
       curso: curso.dataValues,
+      usuarioCreado: usuarioCreado.dataValues,
+      cantidadInscritos,
       lecciones,
+      hace,
     });
   } catch (error) {
     mensajes.push({
