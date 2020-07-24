@@ -198,6 +198,7 @@ exports.cargarActualizarCurso = async (req, res, next) => {
 exports.actualizarCurso = async (req, res, nex) => {
   const mensajes = [];
   const usuario = res.locals.usuario;
+  const imagen = req.file.filename;
   const { nombre, descripcion, informacion, precio, categoria } = req.body;
   if (!nombre) {
     mensajes.push({
@@ -241,6 +242,7 @@ exports.actualizarCurso = async (req, res, nex) => {
           informacion,
           precio,
           categoria,
+          imagen,
         },
         { where: { id: req.params.id } }
       );
