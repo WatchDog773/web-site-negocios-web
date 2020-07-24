@@ -28,10 +28,16 @@ const Curso = db.define(
     descripcion: {
       type: Sequelize.STRING,
     },
+    informacion: {
+      type: Sequelize.TEXT,
+    },
     precio: {
       type: Sequelize.FLOAT,
     },
     categoria: {
+      type: Sequelize.STRING,
+    },
+    imagen: {
       type: Sequelize.STRING,
     },
     url: {

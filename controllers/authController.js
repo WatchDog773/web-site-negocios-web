@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 
 // Verificar si el usuario se puede autenticar
 exports.autenticarUsuario = passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/inicio",
   failureRedirect: "/iniciar_sesion",
   badRequestMessage: "Debes ingrear tu correo electronico y tu contraseña",
   failureFlash: true,
