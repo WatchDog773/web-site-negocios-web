@@ -79,6 +79,8 @@ const Usuario = db.define(
 
 // Un usuario puede tener muchos cursos
 Usuario.hasMany(Curso);
+Curso.belongsTo(Usuario);
+
 Usuario.hasMany(Inscripcion);
 
 // Metodo personalizado para hash
