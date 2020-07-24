@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    <form method="POST" action="/actualizar_curso/{{ curso.id }}">
+    <form method="POST" action="/actualizar_curso/{{curso.id}}" enctype="multipart/form-data">
       {{>alertas}}
       <h3 class="text-center font-weight-bold">
         Editar Curso
@@ -8,6 +8,22 @@
       <br />
       <div class="form-row">
         <div class="form-group col-md-6">
+          <label for="image" class="font-weight-bold">
+            Imagen de Portada
+          </label>
+          <input type="file" class="form-control" name="image" id="image" />
+        </div>
+        <div class="form-group col-md-6">
+          <img
+            src="/uploads/img/{{curso.imagen}}"
+            alt="hola"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-10">
           <label for="nombre" class="font-weight-bold">
             Título
           </label>
@@ -17,16 +33,18 @@
             placeholder="Nombre del curso"
             id="nombre"
             name="nombre"
-            value="{{ curso.nombre }}"
+            value="{{curso.nombre}}"
           />
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-2">
           <label for="Precio" class="font-weight-bold">
             Precio
           </label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
+              <span class="input-group-text">
+                $
+              </span>
             </div>
             <input
               type="text"
@@ -50,7 +68,7 @@
           placeholder="Descripcion"
           id="descripcion"
           name="descripcion"
-          value="{{ curso.descripcion }}"
+          value="{{curso.descripcion}}"
         />
       </div>
       <div class="form-group">
@@ -63,7 +81,7 @@
           placeholder="Categoria"
           id="categoria"
           name="categoria"
-          value="{{ curso.categoria }}"
+          value="{{curso.categoria}}"
           data-role="tagsinput"
         />
       </div>
@@ -77,7 +95,7 @@
           name="informacion"
           rows="3"
         >
-        {{{curso.informacion}}}
+          {{{curso.informacion}}}
         </textarea>
       </div>
       <button type="submit" class="btn btn-lg">

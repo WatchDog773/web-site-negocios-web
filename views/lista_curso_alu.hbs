@@ -2,7 +2,11 @@
   {{#each cursos}}
     <div class="col-lg-4 col-md-6 pt-5">
       <div class="card h-100">
-        <img src="/src/sample.jpg" class="card-img-top img-fluid" alt="..." />
+        <img
+          src="/uploads/img/{{dataValues.imagen}}"
+          class="card-img-top img-fluid"
+          alt="..."
+        />
         <div class="card-body d-flex flex-column">
           <h5 class="card-title font-weight-bold">
             {{dataValues.nombre}}
