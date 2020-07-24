@@ -18,7 +18,9 @@ exports.agregarCurso = (req, res, next) => {
 // Insertar el curso a la bd
 exports.insertarCurso = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const imagen = req.file.filename;
   console.log(req.body);
+  console.log(imagen);
   const { nombre, descripcion, informacion, precio, categoria } = req.body;
   const mensajes = [];
   if (!nombre) {
@@ -55,6 +57,7 @@ exports.insertarCurso = async (req, res, next) => {
         informacion,
         precio,
         categoria,
+        imagen,
         usuarioId: usuario.id,
       });
       mensajes.push({

@@ -37,6 +37,9 @@ const Curso = db.define(
     categoria: {
       type: Sequelize.STRING,
     },
+    imagen: {
+      type: Sequelize.STRING,
+    },
     url: {
       type: Sequelize.STRING,
     },
