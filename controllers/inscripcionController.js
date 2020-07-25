@@ -10,6 +10,8 @@ const Leccion = require("../models/Leccion");
 // Importar el modelo de usuarioas
 const Usuario = require("../models/Usuario");
 
+const Comentario = require("../models/Comentario");
+
 // Importar moment para obtener las fechas
 const moment = require("moment");
 moment.locale("es");
@@ -78,9 +80,21 @@ exports.infoCursoInscrito = async (req, res, next) => {
       where: { cursoId: curso.id },
     });
 
+    //
+    const comentarios = await Comentario.findAll({
+      where: {
+        cursoId: curso.id,
+      },
+      include: {
+        model: Usuario,
+        required: true,
+      },
+    });
     // Obtener la cantidad de personas inscritas
     const cantidadInscritos = await Inscripcion.findAndCountAll({
-      where: { cursoId: curso.id },
+      where: {
+        cursoId: curso.id,
+      },
     });
 
     // Obtener la fecha de publicacion del cuerso
@@ -90,6 +104,7 @@ exports.infoCursoInscrito = async (req, res, next) => {
       usuarioCreado: usuarioCreado.dataValues,
       cantidadInscritos,
       lecciones,
+      comentarios,
       hace,
     });
   } catch (error) {
