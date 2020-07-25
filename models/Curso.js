@@ -9,7 +9,7 @@ const shortid = require("shortid");
 
 const Inscripcion = require("./Inscripcion");
 const Leccion = require("./Leccion");
-
+const Comentario = require("./Comentario");
 // Importar la conexion a la base de datos
 const db = require("../config/dbdev-acad");
 
@@ -66,5 +66,6 @@ const Curso = db.define(
 );
 Curso.hasMany(Inscripcion);
 Curso.hasMany(Leccion);
+Curso.hasMany(Comentario);
 
 module.exports = Curso;

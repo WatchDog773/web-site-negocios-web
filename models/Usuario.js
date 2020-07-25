@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt-nodejs");
 
 const Curso = require("./Curso");
 const Inscripcion = require("./Inscripcion");
+const Comentario = require("./Comentario");
 
 const Usuario = db.define(
   "usuario",
@@ -83,6 +84,8 @@ Curso.belongsTo(Usuario);
 
 Usuario.hasMany(Inscripcion);
 
+Usuario.hasMany(Comentario);
+Comentario.belongsTo(Usuario);
 // Metodo personalizado para hash
 // Permite agregar metodos aparte
 // Verificar si el password enviado (sin hash) es igual al almacenado
