@@ -65,6 +65,7 @@ exports.listaInscrito = async (req, res, next) => {
 
 // Mostrar la informacion del curso inscrito
 exports.infoCursoInscrito = async (req, res, next) => {
+  const usuario = res.locals.usuario;
   const mensajes = [];
   try {
     // Obtener la informacion del curso inscrito
@@ -90,6 +91,13 @@ exports.infoCursoInscrito = async (req, res, next) => {
         required: true,
       },
     });
+    // Verificar si el usuario ya tiene comentarios
+    const comentarioUsuario = await Comentario.findAll({
+      where: {
+        usuarioId: usuario.id,
+      },
+    });
+
     // Obtener la cantidad de personas inscritas
     const cantidadInscritos = await Inscripcion.findAndCountAll({
       where: {
@@ -105,6 +113,7 @@ exports.infoCursoInscrito = async (req, res, next) => {
       cantidadInscritos,
       lecciones,
       comentarios,
+      comentarioUsuario,
       hace,
     });
   } catch (error) {

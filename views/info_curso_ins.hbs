@@ -3,7 +3,7 @@
   <div class="row no-gutters d-flex flex-wrap align-items-center">
     <div class="col-lg-6">
       <img
-        src="/uploads/img/{{ curso.imagen }}"
+        src="/uploads/img/{{curso.imagen}}"
         class="card-img img-fluid"
         alt="..."
       />
@@ -11,27 +11,27 @@
     <div class="col-lg-6">
       <div class="card-body">
         <h5 class="card-title font-weight-bold">
-          {{ curso.nombre }}
+          {{curso.nombre}}
         </h5>
         <p class="card-text">
-          {{ curso.descripcion }}
+          {{curso.descripcion}}
         </p>
         <h1 class="card-title font-weight-bold">
-          {{ curso.precio }}
+          {{curso.precio}}
           US$
         </h1>
         <h6>
-          {{ cantidadInscritos.count }}
+          {{cantidadInscritos.count}}
         </h6>
         <h6>
           Creado por:
           <a>
-            {{ usuarioCreado.nombre }}
+            {{usuarioCreado.nombre}}
           </a>
         </h6>
         <h6 class="card-title">
           Publicado:
-          {{ hace }}
+          {{hace}}
         </h6>
       </div>
     </div>
@@ -41,7 +41,9 @@
   Información
 </h3>
 <div class="card">
-  <div class="card-body">{{{curso.informacion}}}</div>
+  <div class="card-body">
+    {{{curso.informacion}}}
+  </div>
 </div>
 {{! Contenedor para las lecciones }}
 <div class="my-5">
@@ -49,69 +51,74 @@
     Contenido
   </h3>
   {{#if lecciones}}
-  {{#each lecciones}}
-  <div class="card mb-5">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">
-        {{ dataValues.nombre }}
-      </h5>
-      <p class="card-text">
-        {{ dataValues.descripcion }}
-      </p>
-      <a href="#" class="btn">
-        Abrir
-      </a>
-    </div>
-  </div>
-  {{/each}}
+    {{#each lecciones}}
+      <div class="card mb-5">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            {{dataValues.nombre}}
+          </h5>
+          <p class="card-text">
+            {{dataValues.descripcion}}
+          </p>
+          <a href="#" class="btn">
+            Abrir
+          </a>
+        </div>
+      </div>
+    {{/each}}
   {{else}}
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title font-weight-bold">
-        Todavia no tienes ninguna leccion.
-      </h5>
-      <p class="card-text">
-        Se paciente, el docente agregara nuevas lecciones pronto.
-      </p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">
+          Todavia no tienes ninguna leccion.
+        </h5>
+        <p class="card-text">
+          Se paciente, el docente agregara nuevas lecciones pronto.
+        </p>
+      </div>
     </div>
-  </div>
   {{/if}}
 </div>
 <div class="card">
   <div class="card-body">
     {{#if comentarios}}
-    {{#each comentarios}}
-    <div>
-      {{ dataValues.usuario.dataValues.nombre }} {{ 
-        dataValues.usuario.dataValues.apellido }}
-    </div>
-    <div>
-      {{ dataValues.comentario }}
-    </div>
-    {{/each}}
+      {{#each comentarios}}
+        <div>
+          {{dataValues.usuario.dataValues.nombre}} {{
+            dataValues.usuario.dataValues.apellido
+          }}
+        </div>
+        <div>
+          {{dataValues.comentario}}
+        </div>
+      {{/each}}
     {{else}}
-    <div>
-      Todavia no hay comentarios
-    </div>
-    {{/if}}
-    <form method="POST" action="/agregar_comentario/{{ curso.url }}">
-      {{>alertas}}
-      <div class="form-group">
-        <label for="comentario">
-          Escribe tu reseña
-        </label>
-        <textarea
-          class="form-control"
-          name="comentario"
-          id="comentario"
-          cols="30"
-          rows="5"
-          required
-        ></textarea>
+      <div>
+        Todavia no hay comentarios
       </div>
-      <button type="submit" class="btn btn-lg">
-        Publicar Reseña
-      </button>
-    </form>
+    {{/if}}
+    {{#if comentarioUsuario}}
+    <div>Ya publicaste tu reseña</div>
+    {{else}}
+      <form method="POST" action="/agregar_comentario/{{curso.url}}">
+        {{>alertas}}
+        <div class="form-group">
+          <label for="comentario">
+            Escribe tu reseña
+          </label>
+          <textarea
+            class="form-control"
+            name="comentario"
+            id="comentario"
+            cols="30"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-lg">
+          Publicar Reseña
+        </button>
+      </form>
+    {{/if}}
   </div>
 </div>

@@ -1,11 +1,20 @@
 // Importar el modelo de cursos
 const Curso = require("../models/Curso");
+
+// Importar el modelo de inscripcion
 const Inscripcion = require("../models/Inscripcion");
+
+// Importar el modelo de usuarios
 const Usuario = require("../models/Usuario");
-const { Op } = require("sequelize");
 
 // Importar el modelo de leccion
 const Leccion = require("../models/Leccion");
+
+// Importar el modelo de comentarios
+const Comentario = require("../models/Comentario");
+
+// Importar los operadores de sequelize
+const { Op } = require("sequelize");
 
 // Importar el modelo de moment
 const moment = require("moment");
@@ -146,12 +155,23 @@ exports.infoCurso = async (req, res, next) => {
       where: { id: curso.usuarioId },
     });
 
-    // Buscar las lecciones
+    // Buscar las lecciones del curso
     const lecciones = await Leccion.findAll({
       where: { cursoId: curso.id },
     });
 
-    // Contar el numero de personas inscritas
+    // Buscar los comentarios del curso
+    const comentarios = await Comentario.findAll({
+      where: {
+        cursoId: curso.id,
+      },
+      include: {
+        model: Usuario,
+        required: true,
+      },
+    });
+
+    // Contar el numero de personas inscritas en el curso
     const cantidadInscritos = await Inscripcion.findAndCountAll({
       where: { cursoId: curso.id },
     });
@@ -162,6 +182,7 @@ exports.infoCurso = async (req, res, next) => {
       curso: curso.dataValues,
       usuarioCreado: usuarioCreado.dataValues,
       lecciones,
+      comentarios,
       cantidadInscritos,
       hace,
     });
@@ -182,9 +203,21 @@ exports.infoCursoDoc = async (req, res, next) => {
     if (curso.usuarioId != usuario.id) {
       res.redirect("/");
     } else {
+      // Obtener las lecciones de acuerdo al id del curso
       const lecciones = await Leccion.findAll({
         where: { cursoId: curso.id },
       });
+      // Obtener los comentarios del curso
+      const comentarios = await Comentario.findAll({
+        where: {
+          cursoId: curso.id,
+        },
+        include: {
+          model: Usuario,
+          required: true,
+        },
+      });
+      // Obtener la cantidad de alumnos inscritos
       const cantidadInscritos = await Inscripcion.findAndCountAll({
         where: { cursoId: curso.id },
       });
@@ -193,6 +226,7 @@ exports.infoCursoDoc = async (req, res, next) => {
       res.render("info_curso_doc", {
         curso: curso.dataValues,
         lecciones,
+        comentarios,
         hace,
         cantidadInscritos,
       });

@@ -79,3 +79,26 @@
     </div>
   {{/if}}
 </div>
+<h3>
+  Comentarios
+</h3>
+<div class="card">
+  <div class="card-body">
+    {{#if comentarios}}
+      {{#each comentarios}}
+        <div>
+          {{dataValues.usuario.dataValues.nombre}} {{
+            dataValues.usuario.dataValues.apellido
+          }}
+        </div>
+        <div>
+          {{dataValues.comentario}}
+        </div>
+      {{/each}}
+    {{else}}
+      <div>
+        Todavia no hay comentarios
+      </div>
+    {{/if}}
+  </div>
+</div>
