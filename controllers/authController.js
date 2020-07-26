@@ -28,5 +28,5 @@ exports.userVerifyAuth = (req, res, next) => {
   }
 
   // Si el usuario no esta autenticado
-  return res.redirect("/iniciar_sesion");
+  return res.redirect("/");
 };
