@@ -14,8 +14,14 @@ exports.cargarFormularioInsertarLeccion = async (req, res, next) => {
         const curso = await Curso.findOne({
             where: { id: req.params.id },
         });
-        console.log(usuario.id);
-        res.render("agregar_leccion", { curso: curso.dataValues });
+
+        if (usuario.id == curso.usuarioId) {
+            res.render("agregar_leccion", { curso: curso.dataValues });
+        }
+        else {
+            res.send("Lo sentimos, no se pudo cargar");
+        }
+
     } catch (error) {
         res.send("Ocurrio un error, contacta con el administrador (consola)");
         console.log(error);
