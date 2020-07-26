@@ -87,9 +87,17 @@
     {{#if comentarios}}
       {{#each comentarios}}
         <div>
-          {{dataValues.usuario.dataValues.nombre}} {{
-            dataValues.usuario.dataValues.apellido
-          }}
+          {{dataValues.usuario.dataValues.nombre}}
+          {{dataValues.usuario.dataValues.apellido}}
+          <input
+            type="number"
+            name="puntaje"
+            id="rating-readonly"
+            class="rating text-warning"
+            data-clearable="remove"
+            value="{{dataValues.puntaje}}"
+            data-readonly
+          />
         </div>
         <div>
           {{dataValues.comentario}}

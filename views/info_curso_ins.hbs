@@ -84,9 +84,17 @@
     {{#if comentarios}}
       {{#each comentarios}}
         <div>
-          {{dataValues.usuario.dataValues.nombre}} {{
-            dataValues.usuario.dataValues.apellido
-          }}
+          {{dataValues.usuario.dataValues.nombre}}
+          {{dataValues.usuario.dataValues.apellido}}
+          <input
+            type="number"
+            name="puntaje"
+            id="rating-readonly"
+            class="rating text-warning"
+            data-clearable="remove"
+            value="{{dataValues.puntaje}}"
+            data-readonly
+          />
         </div>
         <div>
           {{dataValues.comentario}}
@@ -98,7 +106,9 @@
       </div>
     {{/if}}
     {{#if comentarioUsuario}}
-    <div>Ya publicaste tu reseña</div>
+      <div>
+        Ya publicaste tu reseña
+      </div>
     {{else}}
       <form method="POST" action="/agregar_comentario/{{curso.url}}">
         {{>alertas}}
@@ -106,6 +116,14 @@
           <label for="comentario">
             Escribe tu reseña
           </label>
+          {{! Input que funcionara para introducir el puntaje }}
+          <input
+            type="number"
+            name="puntaje"
+            id="puntaje"
+            class="rating text-warning"
+            data-clearable="remove"
+          />
           <textarea
             class="form-control"
             name="comentario"
