@@ -1,22 +1,27 @@
 // Importar el modelo de comentarios
 const Comentario = require("../models/Comentario");
+
+// Importar el modelo de cursos
 const Curso = require("../models/Curso");
+
 exports.publicarComentario = async (req, res, next) => {
-  // Capturamos el comentario por destructuring
   const usuario = res.locals.usuario;
   const url = req.params.url;
   console.log(url);
-  const { comentario } = req.body;
+  // Capturamos el comentario y el puntaje de la reseña por destructuring
+  const { comentario, puntaje } = req.body;
   console.log(req.body);
+
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url } });
     if (!comentario) {
       mensajes.push({
-        mensaje: "La reseña no puede ir vacia",
+        mensaje: "El comentario de la reseña no puede ir vacio",
         type: "alert-danger",
       });
     }
+
     if (mensajes.length) {
       res.render("info_curso_ins", {
         curso,
@@ -25,6 +30,7 @@ exports.publicarComentario = async (req, res, next) => {
     } else {
       await Comentario.create({
         comentario,
+        puntaje,
         cursoId: curso.id,
         usuarioId: usuario.id,
       });

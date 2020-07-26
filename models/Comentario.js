@@ -16,6 +16,9 @@ const Comentario = db.define(
     comentario: {
       type: Sequelize.TEXT,
     },
+    puntaje: {
+      type: Sequelize.INTEGER,
+    },
     fecha: {
       type: Sequelize.DATE,
     },
