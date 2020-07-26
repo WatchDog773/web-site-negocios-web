@@ -15,6 +15,7 @@ exports.cargarFormularioInsertarLeccion = async (req, res, next) => {
             where: { id: req.params.id },
         });
 
+        // Solo el usuario propietario del curso puede agregar lecciones
         if (usuario.id == curso.usuarioId) {
             res.render("agregar_leccion", { curso: curso.dataValues });
         }
@@ -101,6 +102,7 @@ exports.eliminarLeccion = async (req, res, next) => {
 exports.cargarFormularioactualizarLeccion = async (req, res, next) => {
     /* res.send(req.params.cursoId); */
     try {
+        const usuario = res.locals.usuario;
         const leccion = await Leccion.findOne({
             where: { url: req.params.url }
         });
@@ -111,7 +113,14 @@ exports.cargarFormularioactualizarLeccion = async (req, res, next) => {
             }
         );
 
-        res.render("actualizar_leccion", { leccion: leccion.dataValues, curso: curso.dataValues });
+        // Solo el usuario propietario del curso puede editar las lecciones
+        if (usuario.id == curso.usuarioId) {
+            res.render("actualizar_leccion", { leccion: leccion.dataValues, curso: curso.dataValues });
+        }
+        else {
+            res.send("Lo sentimos, no se pudo cargar");
+        }
+
     } catch (error) {
         res.send("Ocurrio un error, contacta con el administrador (consola)");
         console.log(error);
