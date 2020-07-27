@@ -14,11 +14,7 @@
           <input type="file" class="form-control" name="image" id="image" />
         </div>
         <div class="form-group col-md-6">
-          <img
-            src="/uploads/img/{{curso.imagen}}"
-            alt="hola"
-            class="img-fluid"
-          />
+          <img src="/uploads/img/{{curso.imagen}}" alt="hola" class="img-fluid" />
         </div>
       </div>
 
@@ -27,14 +23,8 @@
           <label for="nombre" class="font-weight-bold">
             Título
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Nombre del curso"
-            id="nombre"
-            name="nombre"
-            value="{{curso.nombre}}"
-          />
+          <input type="text" class="form-control" placeholder="Nombre del curso" id="nombre" name="nombre"
+            value="{{curso.nombre}}" />
         </div>
         <div class="form-group col-md-2">
           <label for="Precio" class="font-weight-bold">
@@ -46,15 +36,8 @@
                 $
               </span>
             </div>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="0.00"
-              id="precio"
-              name="precio"
-              value="{{curso.precio}}"
-              aria-label="Amount (to the nearest dollar)"
-            />
+            <input type="text" class="form-control" placeholder="0.00" id="precio" name="precio"
+              value="{{curso.precio}}" aria-label="Amount (to the nearest dollar)" />
           </div>
         </div>
       </div>
@@ -62,39 +45,21 @@
         <label for="descripcion" class="font-weight-bold">
           Descripción
         </label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Descripcion"
-          id="descripcion"
-          name="descripcion"
-          value="{{curso.descripcion}}"
-        />
+        <input type="text" class="form-control" placeholder="Descripcion" id="descripcion" name="descripcion"
+          value="{{curso.descripcion}}" />
       </div>
       <div class="form-group">
         <label for="categoria" class="font-weight-bold">
           Categorías
         </label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Categoria"
-          id="categoria"
-          name="categoria"
-          value="{{curso.categoria}}"
-          data-role="tagsinput"
-        />
+        <input type="text" class="form-control" placeholder="Categoria" id="categoria" name="categoria"
+          value="{{curso.categoria}}" data-role="tagsinput" />
       </div>
       <div class="form-group">
         <label for="informacion" class="font-weight-bold">
           Información
         </label>
-        <textarea
-          class="form-control"
-          id="informacion"
-          name="informacion"
-          rows="3"
-        >
+        <textarea class="form-control" id="informacion" name="informacion" rows="3">
           {{{curso.informacion}}}
         </textarea>
       </div>
