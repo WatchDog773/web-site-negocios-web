@@ -68,6 +68,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
   destination: path.join(__dirname, "/public/uploads/img"),
   filename: (req, file, cb) => {
+    // Concatenar la fecha mas un numero random al nombre de la imagen
+    // https://github.com/expressjs/multer
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     cb(null, uniqueSuffix + '-' + file.originalname);
   },
