@@ -327,7 +327,10 @@ exports.actualizarCurso = async (req, res, nex) => {
                     mensaje: "Curso actualizado exitosamente",
                     type: "alert-success",
                 });
-                res.render("actualizar_curso", { mensajes });
+
+                const curso = await Curso.findByPk(req.params.id);
+                res.redirect(`/admin_curso/${curso.url}`);
+                /* res.render("actualizar_curso", { mensajes }); */
             } catch {
                 mensajes.push({
                     mensaje: "Ha ocurrido un error con la base de datos",
@@ -388,7 +391,10 @@ exports.actualizarCurso = async (req, res, nex) => {
                     mensaje: "Curso actualizado exitosamente",
                     type: "alert-success",
                 });
-                res.render("actualizar_curso", { mensajes });
+
+                const curso = await Curso.findByPk(req.params.id);
+                res.redirect(`/admin_curso/${curso.url}`);
+                /* res.render("actualizar_curso", { mensajes }); */
             } catch {
                 mensajes.push({
                     mensaje: "Ha ocurrido un error con la base de datos",
