@@ -63,14 +63,14 @@ exports.enviarToken = async (req, res, next) => {
     // Crear una url de restablecer contraseña
     const resetUrl = `http://${req.headers.host}/restablecerPassword/${usuario.token}`;
 
-    // TODO: Enviar el correo electronico al usuario con el link que contiene el token generado
+    // Enviar el correo electronico al usuario con el link que contiene el token generado
     await enviarCorreo.enviarCorreo(
         {
             usuario,
             subject: "Restablece tu contraseña de Dev - Acad",
             resetUrl,
             vista: "restablecer_correo_electrónico",
-            text: "¡Has solicitado restablecer tu contraseña de Dev - Acada! Autoriza el contenido HTML"
+            text: "¡Has solicitado restablecer tu contraseña de Dev - Acada! Autoriza el contenido HTML."
         }
     );
 

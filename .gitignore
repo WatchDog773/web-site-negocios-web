@@ -118,3 +118,6 @@ dist
 
 # variables de entorno de desarrollo
 variables.env
+
+# Respaldo de variables bak
+variables.env.bak

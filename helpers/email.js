@@ -4,6 +4,11 @@ const nodemailer = require("nodemailer");
 // Importar configuracion de mailtrap.io
 const mailtrapConfig = require("../config/email");
 
+// Importar Handlebars
+const hbs = require("handlebars");
+const fs = require("fs");
+const path = require("path");
+
 // Realizar el vio del correo electronico mediante nodemail hacia mailtrap
 exports.enviarCorreo = async (opciones) => {
     // Crear nuestro transportador SMTP reutilizable
@@ -19,18 +24,36 @@ exports.enviarCorreo = async (opciones) => {
         }
     );
 
-    // Generar un html para el cuerpo del correo
-    // TODO: Crear un archivo HTML 
-    const html = "<html><body><h1>Prueba Dev Acad</h1></body></html>";
+    //Obtener y construir el template del correo electronico
+    fs.readFile(
+        path.resolve(__dirname, "../views/emails/restablecer_correo_electrónico.hbs"),
+        "utf8",
+        async function (error, source) {
+            if (error) {
+                console.log("No se puede cargar el template correcto");
+                throw error;
+            }
 
-    // Enviar el correo electrónico
-    const info = await transporter.sendMail(
-        {
-            from: "Dev - Acad <noreply@devacad.es>",
-            to: opciones.usuario.email, // Lista que recibe la direccion
-            subject: opciones.subject, // Asunto
-            text: opciones.text, // Plain text o el body
-            html
+            // Generar un html para el cuerpo del correo
+            const data = {
+                usuario: opciones.usuario.usuario,
+                resetUrl: opciones.resetUrl
+            };
+
+            // Decirle el template
+            const template = hbs.compile(source.toString());
+            const html = template(data);
+
+            // Enviar el correo electrónico
+            const info = await transporter.sendMail(
+                {
+                    from: "Dev Acad <noreply@devacad.es>",
+                    to: opciones.usuario.email, // Lista que recibe la direccion
+                    subject: opciones.subject, // Asunto
+                    text: opciones.text, // Plain text o el body
+                    html
+                }
+            );
         }
     );
 };
