@@ -7,6 +7,9 @@ const Sequelize = require("sequelize");
 // Importar crypto
 const crypto = require("crypto");
 
+// Importar la configuracion de envio de correo electronico
+const enviarCorreo = require("../helpers/email");
+
 // Verificar si el usuario se puede autenticar
 exports.autenticarUsuario = passport.authenticate("local", {
     successRedirect: "/inicio",
@@ -61,6 +64,16 @@ exports.enviarToken = async (req, res, next) => {
     const resetUrl = `http://${req.headers.host}/restablecerPassword/${usuario.token}`;
 
     // TODO: Enviar el correo electronico al usuario con el link que contiene el token generado
+    await enviarCorreo.enviarCorreo(
+        {
+            usuario,
+            subject: "Restablece tu contraseña de Dev - Acad",
+            resetUrl,
+            vista: "restablecer_correo_electrónico",
+            text: "¡Has solicitado restablecer tu contraseña de Dev - Acada! Autoriza el contenido HTML"
+        }
+    );
+
     // Redireccionar al usuario al inicio de sesion
     req.flash("succes", "Se envió un enlace para restablecer tu contraseña a tu correo electrónico");
     res.redirect("/iniciar_sesion");
