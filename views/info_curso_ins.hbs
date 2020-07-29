@@ -16,6 +16,15 @@
         <p class="card-text">
           {{curso.descripcion}}
         </p>
+        <input
+          type="number"
+          name="puntaje"
+          id="rating-readonly"
+          class="rating text-warning"
+          data-clearable="remove"
+          value="{{puntajePromedio}}"
+          data-readonly
+        />
         <h1 class="card-title font-weight-bold">
           {{curso.precio}}
           US$
