@@ -1,15 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #388087;
+  background: linear-gradient(#eaeaea,#378087);
 }
 
 #login .container #login-row #login-column #login-box {
-  margin-top: 50px;
-  max-width: 600px;
+  margin-top: 1em;
+  max-width: 600em;
   height: 50%;
-  border: 1px solid #9c9c9c;
+  border: 0.2em solid #9c9c9c;
   background-color: #eaeaea;
+  border-radius: 1em;
 }
 
 #login .container #login-row #login-column #login-box #login-form {
