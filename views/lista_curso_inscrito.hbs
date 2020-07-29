@@ -1,27 +1,36 @@
-{{#if cursos}}
+{{#if cursosArrayView}}
   <div class="row">
-    {{#each cursos}}
+    {{#each cursosArrayView}}
       <div class="col-lg-4 col-md-6 pt-5">
         <div class="card h-100">
           <img
-            src="/uploads/img/{{dataValues.imagen}}"
+            src="/uploads/img/{{imagen}}"
             class="card-img-top img-fluid"
             alt="..."
           />
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">
-              {{dataValues.nombre}}
-            </h5>
-            <h5 class="card-title">
-              {{dataValues.usuario.dataValues.nombre}} {{
-                dataValues.usuario.dataValues.apellido
-              }}
-            </h5>
-            <p class="card-text">
-              {{dataValues.descripcion}}
-            </p>
+            <div class="card-titulo-curso">
+              {{nombreCurso}}
+            </div>
+            <div class="card-autor-curso">
+              {{nombre}} {{apellido}}
+            </div>
+            <div class="card-puntaje-curso">
+              <input
+                type="number"
+                name="puntaje"
+                id="rating-readonly"
+                class="rating text-warning"
+                data-clearable="remove"
+                value="{{puntaje}}"
+                data-readonly
+              />
+            </div>
+            <div class="card-precio">
+              {{precio}} US$
+            </div>
             <a
-              href="/info_curso_inscrito/{{dataValues.url}}"
+              href="/info_curso_inscrito/{{url}}"
               class="mt-auto btn btn-lg w-100"
             >
               Ver Mas
