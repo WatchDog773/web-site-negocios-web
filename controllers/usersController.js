@@ -189,3 +189,9 @@ exports.actualizarPerfil = async (req, res, next) => {
         }
     }
 };
+
+
+// Formulario de restablecer contraseña
+exports.cargarFormularioRestablecerPassword = async (req, res, next) => {
+    res.render("restablecer_password", { layout: "layout_inicio" });
+};
