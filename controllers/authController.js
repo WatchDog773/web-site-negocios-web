@@ -93,21 +93,37 @@ exports.validarToken = async (req, res, next) => {
     try {
         // Buscar  si el token enviado existe
         const { token } = req.params;
+        const mensajes = [];
 
         const usuario = await Usuario.findOne(
             {
-                where: { token }
+                where: {
+                    token,
+                    expiration: {
+                        [Op.gte]: Date.now()
+                    }
+                }
             }
         );
 
         // Si el usuario no encuentra el usuario
         if (!usuario) {
-            req.flash("error", "¡El enlace que seguiste no es valido!");
-            res.redirect("/restablecer_password");
+            req.flash("error", "¡El enlace que seguiste no es valido o el token ha expirado!");
+            mensajes.push(
+                {
+                    mensaje: "¡El enlace que seguiste no es valido o el token ha expirado!",
+                    type: "alert-danger"
+                }
+            );
+
+            res.render("restablecer_password", { layout: "layout_inicio", mensajes });
+            /* res.redirect("/restablecer_password"); */
+        }
+        else {
+            // Si el usuario existe y su token no ha expirado, mostrar el formulario de generar nueva contraseña
+            res.render("resetear_password", { layout: "layout_inicio", token });
         }
 
-        // Si el usuario existe, mostrar el formulario de generar nueva contraseña
-        res.render("resetear_password", { layout: "layout_inicio", token });
     } catch (error) {
         res.redirect("/iniciar_sesion");
     }
