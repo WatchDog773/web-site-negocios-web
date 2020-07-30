@@ -4,11 +4,11 @@ require("dotenv").config({ path: "variables.env" });
 
 // Parametros para la base de datos
 const db = new Sequelize(
-  "dbdev-acad",
+  process.env.MYSQLDB,
   process.env.MYSQLUSER,
   process.env.MYSQLPASS,
   {
-    host: "localhost",
+    host: process.env.MYSQLSERVERURL,
     dialect: "mysql",
     port: process.env.MYSQLPORT,
     operatorAliases: false,

@@ -8,6 +8,7 @@ const inscripcionController = require("../controllers/inscripcionController");
 const authController = require("../controllers/authController");
 const leccionController = require("../controllers/leccionController");
 const comentarioController = require("../controllers/comentarioController");
+const Usuario = require("../models/Usuario");
 
 // Rutas disponibles
 module.exports = function () {
@@ -29,6 +30,28 @@ module.exports = function () {
     routes.get("/iniciar_sesion", usersController.loginCharge);
 
     routes.post("/iniciar_sesion", authController.autenticarUsuario);
+
+    // Rutas para restablecer contraseñas de un usuario
+    routes.get(
+        "/restablecer_password",
+        usersController.cargarFormularioRestablecerPassword
+    );
+
+    routes.post(
+        "/restablecer_password",
+        authController.enviarToken
+    );
+
+    // Reseteo de contraseña
+    routes.get(
+        "/resetear_password/:token",
+        authController.validarToken
+    );
+
+    routes.post(
+        "/resetear_password/:token",
+        authController.actualizarContraseña
+    );
 
     // Rutas para los cursos
     //Cargar la vista para agregar los cursos
