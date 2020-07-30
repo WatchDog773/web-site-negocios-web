@@ -48,6 +48,11 @@ module.exports = function () {
         authController.validarToken
     );
 
+    routes.post(
+        "/resetear_password/:token",
+        authController.actualizarContraseña
+    );
+
     // Rutas para los cursos
     //Cargar la vista para agregar los cursos
     routes.get(
