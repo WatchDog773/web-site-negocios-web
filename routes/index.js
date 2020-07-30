@@ -42,6 +42,12 @@ module.exports = function () {
         authController.enviarToken
     );
 
+    // Reseteo de contraseña
+    routes.get(
+        "/resetear_password/:token",
+        authController.validarToken
+    );
+
     // Rutas para los cursos
     //Cargar la vista para agregar los cursos
     routes.get(
