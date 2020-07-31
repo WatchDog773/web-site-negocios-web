@@ -28,7 +28,7 @@ exports.agregarCurso = (req, res, next) => {
 // Insertar el curso a la bd
 exports.insertarCurso = async (req, res, next) => {
   const usuario = res.locals.usuario;
-  const imagen = req.file.filename;
+  const imagen = req.files.image[0].filename;
   /*   console.log(req.body);
       console.log(imagen); */
   const { nombre, descripcion, informacion, precio, categoria } = req.body;
@@ -426,149 +426,88 @@ exports.cargarActualizarCurso = async (req, res, next) => {
     });
   }
 };
+
 // Ejecutar la actualizacion
 exports.actualizarCurso = async (req, res, nex) => {
   const mensajes = [];
   const usuario = res.locals.usuario;
   const { nombre, descripcion, informacion, precio, categoria } = req.body;
-
-  // Asignar la variable de la imagen para uso local
-  let imagen = "";
   try {
-    imagen = req.file.filename;
+    // Obtener los datos del curso por actualizarse
+    const curso = await Curso.findByPk(req.params.id);
+
+    // Verificar si el usuario subio una imagen
+    let imagen = "";
+    if (Object.keys(req.files).length == 0) {
+      imagen = curso.imagen;
+    } else {
+      imagen = req.files.image[0].filename;
+    }
+
+    // Verificar que campos estan vacios
+    if (!nombre) {
+      mensajes.push({
+        mensaje: "El nombre del curso no puede ir vacio",
+        type: "alert-danger",
+      });
+    }
+    if (!descripcion) {
+      mensajes.push({
+        mensaje: "La descripción del curso no puede ir vacio",
+        type: "alert-danger",
+      });
+    }
+    if (!informacion) {
+      mensajes.push({
+        mensaje: "La información del curso no puede ir vacio",
+        type: "alert-danger",
+      });
+    }
+    if (!precio) {
+      mensajes.push({
+        mensaje: "El precio del curso no puede ir vacio",
+        type: "alert-danger",
+      });
+    }
+    if (!categoria) {
+      mensajes.push({
+        mensaje: "La categoria del curso no puede ir vacio",
+        type: "alert-danger",
+      });
+    }
+
+    if (mensajes.length) {
+      res.render("actualizar_curso", {
+        mensajes,
+        curso: curso.dataValues,
+      });
+    } else {
+      // Actualizamos los valores del curso
+      await Curso.update(
+        {
+          nombre,
+          descripcion,
+          informacion,
+          precio,
+          categoria,
+          imagen,
+        },
+        { where: { id: req.params.id } }
+      );
+      mensajes.push({
+        mensaje: "Curso actualizado exitosamente",
+        type: "alert-success",
+      });
+
+      res.redirect(`/admin_curso/${curso.url}`);
+    }
   } catch (error) {
-    /* console.log(error); */
-    console.log("No viene imagen, dara error en la consola XD");
-  }
-
-  ////////////////////////////////
-  if (imagen) {
-    // Insercion en la base con imagenes
-    if (!nombre) {
-      mensajes.push({
-        mensaje: "El nombre del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!descripcion) {
-      mensajes.push({
-        mensaje: "La descripción del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!informacion) {
-      mensajes.push({
-        mensaje: "La información del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!precio) {
-      mensajes.push({
-        mensaje: "El precio del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!categoria) {
-      mensajes.push({
-        mensaje: "La categoria del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (mensajes.length) {
-      const curso = await Curso.findByPk(req.params.id);
-      res.render("actualizar_curso", { mensajes, curso: curso.dataValues });
-    } else {
-      try {
-        await Curso.update(
-          {
-            nombre,
-            descripcion,
-            informacion,
-            precio,
-            categoria,
-            imagen,
-          },
-          { where: { id: req.params.id } }
-        );
-        mensajes.push({
-          mensaje: "Curso actualizado exitosamente",
-          type: "alert-success",
-        });
-
-        const curso = await Curso.findByPk(req.params.id);
-        res.redirect(`/admin_curso/${curso.url}`);
-        /* res.render("actualizar_curso", { mensajes }); */
-      } catch {
-        mensajes.push({
-          mensaje: "Ha ocurrido un error con la base de datos",
-          type: "alert-danger",
-        });
-        res.render("agregar_curso", { mensajes });
-      }
-    }
-  } else {
-    if (!nombre) {
-      mensajes.push({
-        mensaje: "El nombre del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!descripcion) {
-      mensajes.push({
-        mensaje: "La descripción del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!informacion) {
-      mensajes.push({
-        mensaje: "La información del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!precio) {
-      mensajes.push({
-        mensaje: "El precio del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (!categoria) {
-      mensajes.push({
-        mensaje: "La categoria del curso no puede ir vacio",
-        type: "alert-danger",
-      });
-    }
-    if (mensajes.length) {
-      const curso = await Curso.findByPk(req.params.id);
-      res.render("actualizar_curso", { mensajes, curso: curso.dataValues });
-    } else {
-      try {
-        await Curso.update(
-          {
-            nombre,
-            descripcion,
-            informacion,
-            precio,
-            categoria,
-            /* imagen, */
-          },
-          { where: { id: req.params.id } }
-        );
-        mensajes.push({
-          mensaje: "Curso actualizado exitosamente",
-          type: "alert-success",
-        });
-
-        const curso = await Curso.findByPk(req.params.id);
-        res.redirect(`/admin_curso/${curso.url}`);
-        /* res.render("actualizar_curso", { mensajes }); */
-      } catch {
-        mensajes.push({
-          mensaje: "Ha ocurrido un error con la base de datos",
-          type: "alert-danger",
-        });
-        res.render("agregar_curso", { mensajes });
-      }
-    }
+    mensajes.push({
+      mensaje: "Ha ocurrido un error con la base de datos",
+      type: "alert-danger",
+    });
+    res.render("actualizar_curso", {
+      mensajes,
+    });
   }
 };
-// Mostrar la lista de los

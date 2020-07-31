@@ -1,19 +1,51 @@
 <div class="card">
   <div class="card-body">
-    <form method="POST" action="/actualizar_leccion/{{leccion.id}}/{{curso.url}}">
-    {{>alertas}}
-  <div class="form-group">
-      <h3 class="text-center font-weight-bold">
-        Editar Lección 
-      </h3>
-    <label class="font-weight-bold">Nombre de la leccion</label>
-    <input value="{{leccion.nombre}}" name="nombre" placeholder="Ejemplo: Introduccion a..." type="text" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label class="font-weight-bold">Descripción de la leccion</label>
-    <input value="{{leccion.descripcion}}" name="descripcion" placeholder="Ejemplo: Conoceras los terminos de..." type="text" class="form-control" required>
-  </div>
-  <button type="submit" class="btn btn-lg">Actualizar</button>
-</form>
+    <form
+      method="POST"
+      action="/actualizar_leccion/{{leccion.id}}/{{curso.url}}"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <h3 class="text-center font-weight-bold">
+          Editar Lección
+        </h3>
+        <label class="font-weight-bold">
+          Nombre de la leccion
+        </label>
+        <input
+          value="{{leccion.nombre}}"
+          name="nombre"
+          placeholder="Ejemplo: Introduccion a..."
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold">
+          Descripción de la leccion
+        </label>
+        <input
+          value="{{leccion.descripcion}}"
+          name="descripcion"
+          placeholder="Ejemplo: Conoceras los terminos de..."
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="video" class="font-weight-bold">
+          Video
+        </label>
+        <input type="file" class="form-control" name="video" id="video" />
+      </div>
+      <video class="w-100 d-block" controls>
+        <source src="/uploads/{{leccion.video}}" type="video/mp4" />
+      </video>
+      <button type="submit" class="btn btn-lg">
+        Actualizar
+      </button>
+    </form>
   </div>
 </div>
