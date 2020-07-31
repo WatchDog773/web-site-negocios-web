@@ -66,18 +66,29 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Indicarle al servidor en que ruta se subiran los archivos
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, "/public/uploads/img"),
+  destination: path.join(__dirname, "/public/uploads/"),
   filename: (req, file, cb) => {
     // Concatenar la fecha mas un numero random al nombre de la imagen
     // https://github.com/expressjs/multer
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + '-' + file.originalname);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + "-" + file.originalname);
   },
 });
 
 // Enviamos la ruta en donde se guardaran los archivos y el nombre del input
 // que guardara la imagen en el servidor
-app.use(multer({ storage }).single("image"));
+app.use(
+  multer({ storage }).fields([
+    {
+      name: "image",
+      maxCount: 1,
+    },
+    {
+      name: "video",
+      maxCount: 1,
+    },
+  ])
+);
 
 // Habilitar el uso de cookie parser
 app.use(cookieParser());
