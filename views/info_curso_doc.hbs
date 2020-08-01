@@ -1,143 +1,145 @@
 <div class="container">
-  <div class="card mb-3" style="max-width: 1400px;">
-    {{! Centrar imagen verticalmente en la tarjeta: d-flex flex-wrap align-items-center }}
-    <div class="row no-gutters d-flex flex-wrap align-items-center">
-      <div class="col-lg-6">
-        <img
-          src="/uploads/{{curso.imagen}}"
-          class="card-img img-fluid"
-          alt="..."
-        />
-      </div>
-      <div class="col-lg-6">
-        <div class="card-body">
-          <h3 class="card-title font-weight-bold">
-            {{curso.nombre}}
-          </h3>
-          <p class="card-text">
-            {{curso.descripcion}}
-          </p>
-          <input
-            type="number"
-            name="puntaje"
-            id="rating-readonly"
-            class="rating text-warning"
-            data-clearable="remove"
-            value="{{puntajePromedio}}"
-            data-readonly
+  <div class="container">
+    <div class="card mb-3" style="max-width: 1400px;">
+      {{! Centrar imagen verticalmente en la tarjeta: d-flex flex-wrap align-items-center }}
+      <div class="row no-gutters d-flex flex-wrap align-items-center">
+        <div class="col-lg-6">
+          <img
+            src="/uploads/{{curso.imagen}}"
+            class="card-img img-fluid"
+            alt="..."
           />
-          <h1 class="card-title font-weight-bold">
-            {{curso.precio}}
-            US$
-          </h1>
-          <h5>
-            {{cantidadInscritos.count}}
-          </h5>
-          <h6 class="card-title">
-            Publicado:
-            {{hace}}
-          </h6>
-          <a href="/actualizar_curso/{{curso.id}}" class="btn">
-            Editar Curso
-          </a>
-          <a href="/actualizar_curso/{{curso.id}}" class="btn">
-            Eliminar Curso
-          </a>
         </div>
-      </div>
-    </div>
-  </div>
-  <h3 class="font-weight-bold">
-    Información
-  </h3>
-  <div class="card">
-    <div class="card-body">
-      {{{curso.informacion}}}
-    </div>
-  </div>
-  {{! Contenedor para las lecciones }}
-  <div class="my-5">
-    <h3 class="font-weight-bold">
-      Contenido
-    </h3>
-    {{#if lecciones}}
-      {{#each lecciones}}
-        <div class="card mb-5">
+        <div class="col-lg-6">
           <div class="card-body">
-            <h5 class="card-title font-weight-bold">
-              {{dataValues.nombre}}
-            </h5>
+            <h3 class="card-title font-weight-bold">
+              {{curso.nombre}}
+            </h3>
             <p class="card-text">
-              {{dataValues.descripcion}}
+              {{curso.descripcion}}
             </p>
-            <a href="#" class="btn">
-              Ver Mas
-            </a>
-            <a
-              href="/actualizar_leccion/{{dataValues.url}}/{{
-                dataValues.cursoId
-              }}"
-              class="btn"
-            >
-              Editar Lección
-            </a>
-            <button
-              id="eliminar-leccion"
-              data-leccion-id={{dataValues.id}}
-              type="button"
-              class="btn"
-            >
-              Eliminar Lección
-            </button>
-          </div>
-        </div>
-      {{/each}}
-    {{else}}
-      <div class="card mb-5">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            Todavia no tienes ninguna leccion.
-          </h5>
-          <p class="card-text">
-            Que esperas para crear tu primera leccion.
-          </p>
-        </div>
-      </div>
-    {{/if}}
-    <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn btn-lg">
-      Agregar Leccion
-    </a>
-  </div>
-  <h3>
-    Comentarios
-  </h3>
-  <div class="card">
-    <div class="card-body">
-      {{#if comentarios}}
-        {{#each comentarios}}
-          <div>
-            {{dataValues.usuario.dataValues.nombre}} {{
-              dataValues.usuario.dataValues.apellido
-            }}
             <input
               type="number"
               name="puntaje"
               id="rating-readonly"
               class="rating text-warning"
               data-clearable="remove"
-              value="{{dataValues.puntaje}}"
+              value="{{puntajePromedio}}"
               data-readonly
             />
+            <h1 class="card-title font-weight-bold">
+              {{curso.precio}}
+              US$
+            </h1>
+            <h5>
+              {{cantidadInscritos.count}}
+            </h5>
+            <h6 class="card-title">
+              Publicado:
+              {{hace}}
+            </h6>
+            <a href="/actualizar_curso/{{curso.id}}" class="btn">
+              Editar Curso
+            </a>
+            <a href="/actualizar_curso/{{curso.id}}" class="btn">
+              Eliminar Curso
+            </a>
           </div>
-          <div>
-            {{dataValues.comentario}}
+        </div>
+      </div>
+    </div>
+    <h3 class="font-weight-bold">
+      Información
+    </h3>
+    <div class="card">
+      <div class="card-body">
+        {{{curso.informacion}}}
+      </div>
+    </div>
+    {{! Contenedor para las lecciones }}
+    <div class="my-5">
+      <h3 class="font-weight-bold">
+        Contenido
+      </h3>
+      {{#if lecciones}}
+        {{#each lecciones}}
+          <div class="card mb-5">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">
+                {{dataValues.nombre}}
+              </h5>
+              <p class="card-text">
+                {{dataValues.descripcion}}
+              </p>
+              <a href="#" class="btn">
+                Ver Mas
+              </a>
+              <a
+                href="/actualizar_leccion/{{dataValues.url}}/{{
+                  dataValues.cursoId
+                }}"
+                class="btn"
+              >
+                Editar Lección
+              </a>
+              <button
+                id="eliminar-leccion"
+                data-leccion-id={{dataValues.id}}
+                type="button"
+                class="btn"
+              >
+                Eliminar Lección
+              </button>
+            </div>
           </div>
         {{/each}}
       {{else}}
-        <div>
-          Todavia no hay comentarios
+        <div class="card mb-5">
+          <div class="card-body">
+            <h5 class="card-title font-weight-bold">
+              Todavia no tienes ninguna leccion.
+            </h5>
+            <p class="card-text">
+              Que esperas para crear tu primera leccion.
+            </p>
+          </div>
         </div>
       {{/if}}
+      <a href="/agregar_leccion/{{curso.id}}" class="leccion-btn btn btn-lg">
+        Agregar Leccion
+      </a>
+    </div>
+    <h3>
+      Comentarios
+    </h3>
+    <div class="card">
+      <div class="card-body">
+        {{#if comentarios}}
+          {{#each comentarios}}
+            <div>
+              {{dataValues.usuario.dataValues.nombre}} {{
+                dataValues.usuario.dataValues.apellido
+              }}
+              <input
+                type="number"
+                name="puntaje"
+                id="rating-readonly"
+                class="rating text-warning"
+                data-clearable="remove"
+                value="{{dataValues.puntaje}}"
+                data-readonly
+              />
+            </div>
+            <div>
+              {{dataValues.comentario}}
+            </div>
+          {{/each}}
+        {{else}}
+          <div>
+            Todavia no hay comentarios
+          </div>
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

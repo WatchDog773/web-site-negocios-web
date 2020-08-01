@@ -1,121 +1,40 @@
-<div class="card mb-3" style="max-width: 1400px;">
-  {{! Centrar imagen verticalmente en la tarjeta: d-flex flex-wrap align-items-center }}
-  <div class="row no-gutters d-flex flex-wrap align-items-center">
-    <div class="col-lg-6">
-      <img
-        src="/uploads/img/{{curso.imagen}}"
-        class="card-img img-fluid"
-        alt="..."
-      />
-    </div>
-    <div class="col-lg-6">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">
-          {{curso.nombre}}
-        </h5>
-        <p class="card-text">
-          {{curso.descripcion}}
-        </p>
-        <input
-          type="number"
-          name="puntaje"
-          id="rating-readonly"
-          class="rating text-warning"
-          data-clearable="remove"
-          value="{{puntajePromedio}}"
-          data-readonly
-        />
-        <h1 class="card-title font-weight-bold">
-          {{curso.precio}}
-          US$
-        </h1>
-        <h6>
-          {{cantidadInscritos.count}}
-        </h6>
-        <h6>
-          Creado por:
-          <a>
-            {{usuarioCreado.nombre}}
-          </a>
-        </h6>
-        <h6 class="card-title">
-          Publicado:
-          {{hace}}
-        </h6>
-        <a href="/inscripcion_curso/{{curso.url}}" class="btn">
-          Comprar Curso
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<h3 class="font-weight-bold">
-  Información
-</h3>
-<div class="card">
-  <div class="card-body">
-    {{{curso.informacion}}}
-  </div>
-</div>
-{{! Contenedor para las lecciones }}
-<div class="my-5">
-  <h3 class="font-weight-bold">
-    Contenido
-  </h3>
-  {{#if lecciones}}
-    {{#each lecciones}}
-      <div class="card mb-5">
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            {{dataValues.nombre}}
-          </h5>
-          <p class="card-text">
-            {{dataValues.descripcion}}
-          </p>
+<div class="container">
+  <div class="row">
+    {{#each cursosArrayView}}
+      <div class="col-lg-4 col-md-6 pt-5">
+        <div class="card h-100">
+          <img
+            src="/uploads/img/{{imagen}}"
+            class="card-img-top img-fluid"
+            alt="..."
+          />
+          <div class="card-body d-flex flex-column">
+            <div class="card-titulo-curso">
+              {{nombreCurso}}
+            </div>
+            <div class="card-autor-curso">
+              {{nombre}} {{apellido}}
+            </div>
+            <div class="card-puntaje-curso">
+              <input
+                type="number"
+                name="puntaje"
+                id="rating-readonly"
+                class="rating text-warning"
+                data-clearable="remove"
+                value="{{puntaje}}"
+                data-readonly
+              />
+            </div>
+            <div class="card-precio">
+              {{precio}} US$
+            </div>
+            <a href="/info_curso/{{url}}" class="btn btn-lg w-100">
+              Ver Mas
+            </a>
+          </div>
         </div>
       </div>
     {{/each}}
-  {{else}}
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">
-          Todavia no tienes ninguna leccion.
-        </h5>
-        <p class="card-text">
-          Se paciente, el docente agregara nuevas lecciones pronto.
-        </p>
-      </div>
-    </div>
-  {{/if}}
-</div>
-<h3>
-  Comentarios
-</h3>
-<div class="card">
-  <div class="card-body">
-    {{#if comentarios}}
-      {{#each comentarios}}
-        <div>
-          {{dataValues.usuario.dataValues.nombre}}
-          {{dataValues.usuario.dataValues.apellido}}
-          <input
-            type="number"
-            name="puntaje"
-            id="rating-readonly"
-            class="rating text-warning"
-            data-clearable="remove"
-            value="{{dataValues.puntaje}}"
-            data-readonly
-          />
-        </div>
-        <div>
-          {{dataValues.comentario}}
-        </div>
-      {{/each}}
-    {{else}}
-      <div>
-        Todavia no hay comentarios
-      </div>
-    {{/if}}
   </div>
 </div>

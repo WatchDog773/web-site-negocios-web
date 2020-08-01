@@ -2,7 +2,7 @@
   {{#if cursosArrayView}}
     <div class="row">
       {{#each cursosArrayView}}
-        <div class="col-lg-4 col-md-6 pt-5">
+        <div class="col-lg-4 col-md-6">
           <div class="card h-100">
             <img
               src="/uploads/{{imagen}}"
@@ -27,7 +27,7 @@
               <div class="card-precio">
                 {{precio}} US$
               </div>
-              <a href="/admin_curso/{{url}}" class="mt-auto btn btn-lg">
+              <a href="/admin_curso/{{url}}" class="mt-auto btn">
                 Administrar
               </a>
             </div>
@@ -47,7 +47,7 @@
       </div>
     </div>
   {{/if}}
-  <a href="/agregar_curso" class="leccion-btn btn mt-5 btn-lg">
+  <a href="/agregar_curso" class="btn mt-5 btn-opt">
     Agregar Curso
   </a>
 </div>
