@@ -17,6 +17,15 @@ body {
   letter-spacing: 0.1em;
   background-color: var(--nav-color);
 }
+.btn {
+  background-color: var(--dark-button-color);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--dark-button-color-hover);
+  color: white;
+}
 
 .navbar .btn {
   background-color: var(--dark-button-color);

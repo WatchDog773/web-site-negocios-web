@@ -166,6 +166,9 @@ module.exports = function () {
     authController.userVerifyAuth,
     comentarioController.publicarComentario
   );
+
+  // Buscar un curso
+  routes.post("/busqueda", cursoController.buscarCurso);
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;

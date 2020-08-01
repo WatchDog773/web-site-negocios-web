@@ -1,6 +1,7 @@
 // Importar controlador de cursos
 const Curso = require("../models/Curso");
 const Inscripcion = require("../models/Inscripcion");
+const Usuario = require("../models/Usuario");
 const { Op } = require("sequelize");
 
 const routes = require("../routes");
@@ -43,6 +44,12 @@ exports.home = async (req, res, next) => {
   }
 };
 
-exports.inicio = (req, res, next) => {
-  res.render("inicio", { layout: "layout_inicio" });
+exports.inicio = async (req, res, next) => {
+  const usuario_locals = res.locals.usuario;
+  try {
+    const usuario = await Usuario.findByPk(usuario_locals.id);
+    res.render("inicio", { usuario });
+  } catch (error) {
+    console.log(error);
+  }
 };
