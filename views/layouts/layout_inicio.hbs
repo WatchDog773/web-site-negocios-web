@@ -157,5 +157,13 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    <script src="/src/tagsinput.js"></script>
+    <script src="/js/bootstrap4-rating-input.js"></script>
+    <script>
+      $("#categoria").tagsinput({
+        maxTags: 15,
+      });
+      CKEDITOR.replace("informacion");
+    </script>
   </body>
 </html>

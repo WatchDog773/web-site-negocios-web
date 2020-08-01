@@ -8,6 +8,9 @@ const Curso = require("../models/Curso");
 const Sequelice = require("sequelize");
 
 exports.leccionInfoInscrito = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
+
   const urlLeccion = req.params.url;
   const mensajes = [];
   try {
@@ -18,36 +21,46 @@ exports.leccionInfoInscrito = async (req, res, next) => {
     });
     res.render("leccion_info_ins", {
       leccion: leccion.dataValues,
+      usuario,
+      verifyAuth,
     });
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error.",
       type: "alert-danger",
     });
+    res.render("leccion_info_ins", { mensajes, usuario, verifyAuth });
   }
 };
 
 exports.cargarFormularioInsertarLeccion = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
+  const mensajes = [];
   /* res.send(req.params.id); */
   try {
-    usuario = res.locals.usuario;
     const curso = await Curso.findOne({
       where: { id: req.params.id },
     });
 
     // Solo el usuario propietario del curso puede agregar lecciones
     if (usuario.id == curso.usuarioId) {
-      res.render("agregar_leccion", { curso: curso.dataValues });
+      res.render("agregar_leccion", {
+        curso: curso.dataValues,
+        usuario,
+        verifyAuth,
+      });
     } else {
-      res.send("Lo sentimos, no se pudo cargar");
+      res.redirect("/");
     }
   } catch (error) {
-    res.send("Ocurrio un error, contacta con el administrador (consola)");
-    console.log(error);
+    res.render("agregar_leccion", { mensajes, usuario, verifyAuth });
   }
 };
 
 exports.insertarLeccion = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const mensajes = [];
   const cursoId = req.params.id;
   const video = req.files.video[0].filename;
@@ -55,20 +68,20 @@ exports.insertarLeccion = async (req, res, next) => {
 
   if (!nombre) {
     mensajes.push({
-      error: "La leccion debe tener un nombre",
+      mensaje: "La leccion debe tener un nombre",
       type: "alert-danger",
     });
   }
   if (!descripcion) {
     mensajes.push({
-      error: "La leccion debe tener una descripcion",
+      mensaje: "La leccion debe tener una descripcion",
       type: "alert-danger",
     });
   }
 
   // Si hay mensajes
   if (mensajes.length) {
-    res.render("agregar_leccion", { mensajes });
+    res.render("agregar_leccion", { mensajes, usuario, verifyAuth });
   } else {
     try {
       await Leccion.create({
@@ -78,7 +91,7 @@ exports.insertarLeccion = async (req, res, next) => {
         cursoId: cursoId,
       });
       mensajes.push({
-        error: "Leccion Guardada",
+        mensaje: "Leccion Guardada",
         type: "alert-success",
       });
 
@@ -91,11 +104,15 @@ exports.insertarLeccion = async (req, res, next) => {
       res.redirect(`/admin_curso/${curso.url}`);
     } catch (error) {
       mensajes.push({
-        error: "Ha ocurrido un error con la base de datos",
+        mensaje: "Ha ocurrido un error con la base de datos",
         type: "alert-danger",
       });
 
-      res.render("agregar_leccion", { mensajes });
+      res.render("agregar_leccion", {
+        mensajes,
+        usuario,
+        verifyAuth,
+      });
     }
   }
 };
@@ -118,9 +135,11 @@ exports.eliminarLeccion = async (req, res, next) => {
 
 // Cargar formulario de Actualizar leccion
 exports.cargarFormularioactualizarLeccion = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
+  const mensajes = [];
   /* res.send(req.params.cursoId); */
   try {
-    const usuario = res.locals.usuario;
     const leccion = await Leccion.findOne({
       where: { url: req.params.url },
     });
@@ -134,18 +153,30 @@ exports.cargarFormularioactualizarLeccion = async (req, res, next) => {
       res.render("actualizar_leccion", {
         leccion: leccion.dataValues,
         curso: curso.dataValues,
+        usuario,
+        verifyAuth,
       });
     } else {
-      res.send("Lo sentimos, no se pudo cargar");
+      res.redirect("/");
     }
   } catch (error) {
-    res.send("Ocurrio un error, contacta con el administrador (consola)");
-    console.log(error);
+    mensajes.push({
+      mensaje: "Ha ocurrido un error con la base de datos",
+      type: "alert-danger",
+    });
+
+    res.render("actualizar_leccion", {
+      mensajes,
+      usuario,
+      verifyAuth,
+    });
   }
 };
 
 exports.actualizarLeccion = async (req, res, next) => {
   /* res.send(req.params.cursoUrl); */
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const { nombre, descripcion } = req.body;
   const mensajes = [];
 
@@ -166,19 +197,19 @@ exports.actualizarLeccion = async (req, res, next) => {
 
     if (!nombre) {
       mensajes.push({
-        error: "La leccion debe tener un nombre",
+        mensaje: "La leccion debe tener un nombre",
         type: "alert-danger",
       });
     }
     if (!descripcion) {
       mensajes.push({
-        error: "La leccion debe tener una descripcion",
+        mensaje: "La leccion debe tener una descripcion",
         type: "alert-danger",
       });
     }
     // Si hay mensajes
     if (mensajes.length) {
-      res.render("actualiza_leccion", { mensajes });
+      res.render("actualizar_leccion", { mensajes, usuario, verifyAuth });
     } else {
       await Leccion.update(
         {
@@ -192,7 +223,7 @@ exports.actualizarLeccion = async (req, res, next) => {
       );
 
       mensajes.push({
-        error: "Leccion Actualizado correctamente",
+        mensaje: "Leccion Actualizado correctamente",
         type: "alert-success",
       });
 
@@ -200,8 +231,11 @@ exports.actualizarLeccion = async (req, res, next) => {
       res.redirect(`/admin_curso/${req.params.cursoUrl}`);
     }
   } catch (error) {
-    res.send("Ocurrio un error, contacta con el administrador (consola)");
-    console.log(error);
+    mensajes.push({
+      mensaje: "Ha ocurrido un error con la base de datos",
+      type: "alert-danger",
+    });
+    res.render("actualizar_leccion", { mensajes, usuario, verifyAuth });
   }
 
   // Verificar si el usuario subio un video

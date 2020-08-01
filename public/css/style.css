@@ -11,6 +11,9 @@ body {
   background-color: var(--back-color);
 }
 
+main .container {
+  padding: 2em 0;
+}
 /* Estilos de Nav Bar */
 .navbar {
   font-size: 1em;
@@ -108,9 +111,6 @@ body {
   background-color: #ffffff;
 }
 
-.prom-alumno {
-  margin-top: 10em;
-}
 .ser-instructor .container .row .col-md-6 p,
 .prom-alumno .container .row .col-md-6 p {
   font-size: 1.5em;
@@ -126,6 +126,25 @@ body {
   background-color: var(--dark-button-color-hover);
 }
 /* Aqui terminan los Estilos para instructor y promocion alumno */
+
+/* Estilos para las tarjetas */
+.card .btn {
+  background-color: var(--dark-button-color);
+  color: white;
+}
+.card .btn:hover {
+  background-color: var(--dark-button-color-hover);
+  color: white;
+}
+
+.btn-opt {
+  background-color: var(--dark-button-color);
+  color: white;
+}
+.btn-opt:hover {
+  background-color: var(--dark-button-color-hover);
+  color: white;
+}
 
 /* Estilos para el pie de pagina */
 .footer {

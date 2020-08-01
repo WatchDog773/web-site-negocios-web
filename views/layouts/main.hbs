@@ -1,157 +1,208 @@
 <!DOCTYPE html>
 <html lang="es" class="h-100">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dev-Acad</title>
-    
-        {{!-- CDN DE CSS BOOTSTRAP --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/src/tagsinput.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/src/tagsinput.css" />
+    <script
+      src="https://kit.fontawesome.com/0cece189ec.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>
-    
-</head>
 
-<body class="d-flex flex-column h-100 ">
-
-
+    <title>Inicio</title>
+  </head>
+  <body class="d-flex flex-column h-100">
     <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <img src="/img/Logo2.png" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light back-color">
-            <a class="navbar-brand" href="/"><img class="logo" src="/src/Logo2.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >Inicio <span class="sr-only">(current)</span></a
+              >
+            </li>
+
+            <li class="nav-item">
+              {{#if verifyAuth}}
+              <a class="nav-link" href="/lista_curso_inscrito">Mis Cursos</a>
+              {{else}}
+              <a class="nav-link" href="#">Cursos</a>
+              {{/if}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/lista_curso_doc">Instructor</a>
+            </li>
+          </ul>
+          <form method="POST" 
+          {{#if verifyAuth}}
+          action="/busqueda"
+          {{else}}
+          action="/busqueda_general" 
+          {{/if}}
+           
+          class="form-inline my-2 my-lg-0 ml-lg-2">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="submit"
+                  id="button-addon1"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+              <input
+                type="text"
+                name="busqueda"
+                class="form-control"
+                placeholder="Buscar Cursos"
+                aria-label="Example text with button addon"
+                aria-describedby="button-addon1"
+              />
+            </div>
+          </form>
+          {{#if verifyAuth}}
+          <div class="nav-perfil ml-auto">
+            <div class="dropdown show">
+              <a
+                class="btn dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {{ usuario.nombre }}
+                {{ usuario.apellido }}
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/actualizar_perfil">Ver Perfil</a>
+                <a class="dropdown-item" href="/cerrar_sesion">Cerrar Sesion</a>
+              </div>
+            </div>
+          </div>
+          {{else}}
+          <div class="inicio-botones ml-auto">
+            <a href="/iniciar_sesion" class="btn">Iniciar Sesión</a>
+            <a href="/registrate" class="btn">Regístrate</a>
+          </div>
+          {{/if}}
+
+          <!-- <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">              
-                    <li class="nav-item">
-                        <a class="nav-link paragraph " href="/lista_curso_inscrito"><strong>Mis Cursos</strong></a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link paragraph" href="/lista_curso_doc">Docente</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle paragraph" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Usuario
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item paragraph" href="/actualizar_perfil">Perfil</a>
-                            <a class="dropdown-item paragraph" href="/cerrar_sesion">Cerrar sesion</a>                         
-                        </div>
-                    </li>                
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="¿Que estas buscando?" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
-            </div>
-        </nav>
-
-    </header>
-
-
-
-
-    {{!-- Inicio del contenido --}}
-    <main class="flex-shrink-0">
-        <div class="container pt-5">
-            {{{body}}}
+          </form> -->
         </div>
-    </main>
-
-    <!-- Footer -->
+      </nav>
+    </header>
+    <main class="flex-shrink-0">{{{body}}}</main>
     <footer class="page-footer font-small footer mt-5">
-
-
-        <div class="container">
-            <div class="row text-center d-flex justify-content-center pt-4 mb-3">
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="/">Inicio</a>
-                    </h6>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="/lista_curso_inscrito">Mis Cursos</a>
-                    </h6>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="/lista_curso_doc">Docente</a>
-                    </h6>
-                </div>
-
-
-            </div>
-
-
-            <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
-                <div class="col-md-8 col-12 mt-5">
-                    <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo.
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur.</p>
-                </div>
-            </div>
-            <br></br>
-
-            <div class="col-md-12">
-                <div class="mb-5 flex-center">
-                    <a class="fa fa-facebook"></a>
-                    <a class="fa fa-google"></a>
-                    <a class="fa fa-trello"></a>
-                    <a class="fa fa-github"></a>
-                </div>
-            </div>
-
-
-
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="#"> Dev-Acad</a>
-            </div>
-
-
+      <div class="container">
+        <div class="row text-center d-flex justify-content-center pt-4 mb-3">
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="/">Inicio</a>
+            </h6>
+          </div>
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="/lista_curso_inscrito">Mis Cursos</a>
+            </h6>
+          </div>
+          <div class="col-md-2 mb-3">
+            <h6 class="text-uppercase font-weight-bold">
+              <a href="/lista_curso_doc">Docente</a>
+            </h6>
+          </div>
+        </div>
+        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+          <div class="col-md-8 col-12 mt-5">
+            <p style="line-height: 1.7rem;">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="mb-5 flex-center">
+            <a class="fa fa-facebook"></a>
+            <a class="fa fa-google"></a>
+            <a class="fa fa-trello"></a>
+            <a class="fa fa-github"></a>
+          </div>
+        </div>
+        <div class="footer-copyright text-center py-3">
+          © 2020 Copyright:
+          <a href="#"> Dev-Acad</a>
+        </div>
+      </div>
     </footer>
-    <!-- Footer -->
-
-    {{!-- Final de contenido --}}
-
-    {{!-- NO TOCAR SCRIPTS DE BOOTSTRAP --}}
-    <!-- JS, Popper.js, and jQuery -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/bundle.js"></script>
     <script src="/src/tagsinput.js"></script>
     <script src="/js/bootstrap4-rating-input.js"></script>
     <script>
-        $('#categoria').tagsinput({
-            maxTags: 15});
-        CKEDITOR.replace("informacion");
+      $("#categoria").tagsinput({
+        maxTags: 15,
+      });
+      CKEDITOR.replace("informacion");
     </script>
-
-</body>
-
+  </body>
 </html>

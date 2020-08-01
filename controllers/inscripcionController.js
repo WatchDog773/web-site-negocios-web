@@ -21,6 +21,8 @@ moment.locale("es");
 // Esta insercion apunta a la tabla de inscripciones
 exports.inscripcionCurso = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = res.locals.usuario;
+
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
@@ -28,14 +30,16 @@ exports.inscripcionCurso = async (req, res, next) => {
     res.redirect("/lista_curso_inscrito");
   } catch {
     mensajes.push({ mensaje: "Ha ocurrido un error", type: "alert-danger" });
-    res.render("info_curso", { mensajes });
+    res.render("info_curso", { mensajes, usuario, verifyAuth });
   }
 };
 
 // Mostrar la lista de los cursos inscritos
 exports.listaInscrito = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const usuarioInscripcion = [];
+  const mensajes = [];
   try {
     Inscripcion.findAll({
       where: {
@@ -140,17 +144,26 @@ exports.listaInscrito = async (req, res, next) => {
 
         console.log(JSON.stringify(cursosArrayView));
 
-        res.render("lista_curso_inscrito", { cursosArrayView });
+        res.render("lista_curso_inscrito", {
+          cursosArrayView,
+          usuario,
+          verifyAuth,
+        });
       })
       .catch();
   } catch (error) {
-    console.log(error);
+    mensajes.push({
+      mensaje: "No se han logrado cargar los datos",
+      type: "alert-danger",
+    });
+    res.render("lista_curso_inscrito", { mensajes, usuario, verifyAuth });
   }
 };
 
 // Mostrar la informacion del curso inscrito
 exports.infoCursoInscrito = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const mensajes = [];
   try {
     // Obtener la informacion del curso inscrito
@@ -214,12 +227,14 @@ exports.infoCursoInscrito = async (req, res, next) => {
       comentarioUsuario,
       puntajePromedio,
       hace,
+      usuario,
+      verifyAuth,
     });
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error, el curso no se encuentra disponible",
       type: "alert-danger",
     });
-    res.render("lista_curso_inscrito", { mensajes });
+    res.render("lista_curso_inscrito", { mensajes, usuario, verifyAuth });
   }
 };

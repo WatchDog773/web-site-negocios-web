@@ -1,38 +1,53 @@
-<div class="row">
-  {{#each cursosArrayView}}
-    <div class="col-lg-4 col-md-6 pt-5">
-      <div class="card h-100">
-        <img
-          src="/uploads/img/{{imagen}}"
-          class="card-img-top img-fluid"
-          alt="..."
-        />
-        <div class="card-body d-flex flex-column">
-          <div class="card-titulo-curso">
-            {{nombreCurso}}
-          </div>
-          <div class="card-autor-curso">
-            {{nombre}} {{apellido}}
-          </div>
-          <div class="card-puntaje-curso">
-            <input
-              type="number"
-              name="puntaje"
-              id="rating-readonly"
-              class="rating text-warning"
-              data-clearable="remove"
-              value="{{puntaje}}"
-              data-readonly
+<div class="container">
+  {{#if cursosArrayView}}
+    <div class="row">
+      {{#each cursosArrayView}}
+        <div class="col-lg-4 col-md-6 pt-5">
+          <div class="card h-100">
+            <img
+              src="/uploads/img/{{imagen}}"
+              class="card-img-top img-fluid"
+              alt="..."
             />
+            <div class="card-body d-flex flex-column">
+              <div class="card-titulo-curso">
+                {{nombreCurso}}
+              </div>
+              <div class="card-autor-curso">
+                {{nombre}} {{apellido}}
+              </div>
+              <div class="card-puntaje-curso">
+                <input
+                  type="number"
+                  name="puntaje"
+                  id="rating-readonly"
+                  class="rating text-warning"
+                  data-clearable="remove"
+                  value="{{puntaje}}"
+                  data-readonly
+                />
+              </div>
+              <div class="card-precio">
+                {{precio}} US$
+              </div>
+              <a href="/info_curso/{{url}}" class="btn btn-lg w-100">
+                Ver Mas
+              </a>
+            </div>
           </div>
-          <div class="card-precio">
-            {{precio}} US$
-          </div>
-          <a href="/info_curso/{{url}}" class="btn btn-lg w-100">
-            Ver Mas
-          </a>
         </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="card card-null-message">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">
+          Todavia no hay cursos para inscribirte.
+        </h5>
+        <p class="card-text">
+          Se paciente, nuestros instructuroes estan haciendo nuevos cursos para ti.
+        </p>
       </div>
     </div>
-  {{/each}}
+  {{/if}}
 </div>
