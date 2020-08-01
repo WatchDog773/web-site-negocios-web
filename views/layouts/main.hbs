@@ -52,7 +52,7 @@
             </li>
 
             <li class="nav-item">
-              {{#if usuario}}
+              {{#if verifyAuth}}
               <a class="nav-link" href="/lista_curso_inscrito">Mis Cursos</a>
               {{else}}
               <a class="nav-link" href="#">Cursos</a>
@@ -62,12 +62,19 @@
               <a class="nav-link" href="/lista_curso_doc">Instructor</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0 ml-lg-2">
+          <form method="POST" 
+          {{#if verifyAuth}}
+          action="/busqueda"
+          {{else}}
+          action="/busqueda_general" 
+          {{/if}}
+           
+          class="form-inline my-2 my-lg-0 ml-lg-2">
             <div class="input-group">
               <div class="input-group-prepend">
                 <button
                   class="btn btn-outline-secondary"
-                  type="button"
+                  type="submit"
                   id="button-addon1"
                 >
                   <i class="fas fa-search"></i>
@@ -75,6 +82,7 @@
               </div>
               <input
                 type="text"
+                name="busqueda"
                 class="form-control"
                 placeholder="Buscar Cursos"
                 aria-label="Example text with button addon"
@@ -82,12 +90,11 @@
               />
             </div>
           </form>
-
-          {{#if usuario}}
+          {{#if verifyAuth}}
           <div class="nav-perfil ml-auto">
             <div class="dropdown show">
               <a
-                class="btn btn-secondary dropdown-toggle"
+                class="btn dropdown-toggle"
                 href="#"
                 role="button"
                 id="dropdownMenuLink"
@@ -95,12 +102,12 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                {{ usuario.dataValues.nombre }}
-                {{ usuario.dataValues.apellido }}
+                {{ usuario.nombre }}
+                {{ usuario.apellido }}
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Ver Perfil</a>
+                <a class="dropdown-item" href="/actualizar_perfil">Ver Perfil</a>
                 <a class="dropdown-item" href="/cerrar_sesion">Cerrar Sesion</a>
               </div>
             </div>

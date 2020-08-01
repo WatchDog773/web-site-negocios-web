@@ -31,7 +31,7 @@ exports.autenticarUsuario = passport.authenticate("local", {
 exports.logout = (req, res, next) => {
   // Al cerrar sesion redirigir el usuario al login
   req.session.destroy(() => {
-    res.redirect("/iniciar_sesion");
+    res.redirect("/");
   });
 };
 
@@ -43,7 +43,7 @@ exports.userVerifyAuth = (req, res, next) => {
   }
 
   // Si el usuario no esta autenticado
-  return res.redirect("/");
+  return res.redirect("/iniciar_sesion");
 };
 
 // Ruta que genera un token que le permite al usuario restablecer la contraseña mediante un enlace

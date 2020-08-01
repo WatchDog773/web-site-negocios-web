@@ -44,12 +44,13 @@ exports.home = async (req, res, next) => {
   }
 };
 
-exports.inicio = async (req, res, next) => {
-  const usuario_locals = res.locals.usuario;
-  try {
-    const usuario = await Usuario.findByPk(usuario_locals.id);
-    res.render("inicio", { usuario });
-  } catch (error) {
-    console.log(error);
+exports.inicio = (req, res, next) => {
+  const usuario = res.locals.usuario;
+  let verifyAuth = false;
+  console.log(Object.keys(usuario).length);
+  if (Object.keys(usuario).length != 0) {
+    verifyAuth = true;
   }
+  console.log(usuario);
+  res.render("inicio", { usuario, verifyAuth });
 };

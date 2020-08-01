@@ -22,12 +22,16 @@ moment.locale("es");
 
 // Renderizar la vista de agregar curso
 exports.agregarCurso = (req, res, next) => {
-  res.render("agregar_curso");
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
+  res.render("agregar_curso", { usuario, verifyAuth });
 };
 
 // Insertar el curso a la bd
 exports.insertarCurso = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
+
   const imagen = req.files.image[0].filename;
   /*   console.log(req.body);
       console.log(imagen); */
@@ -65,7 +69,7 @@ exports.insertarCurso = async (req, res, next) => {
     });
   }
   if (mensajes.length) {
-    res.render("agregar_curso", { mensajes });
+    res.render("agregar_curso", { mensajes, usuario, verifyAuth });
   } else {
     try {
       await Curso.create({
@@ -87,7 +91,7 @@ exports.insertarCurso = async (req, res, next) => {
         mensaje: "Ha ocurrido un error con la base de datos",
         type: "alert-danger",
       });
-      res.render("agregar_curso", { mensajes });
+      res.render("agregar_curso", { mensajes, usuario, verifyAuth });
     }
   }
 };
@@ -95,6 +99,7 @@ exports.insertarCurso = async (req, res, next) => {
 // Mostrar los cursos del docente
 exports.listaCursoDoc = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const mensajes = [];
   try {
     const cursos = await Curso.findAll({ where: { usuarioId: usuario.id } });
@@ -169,19 +174,20 @@ exports.listaCursoDoc = async (req, res, next) => {
       cantidad = 0;
       acumulador = 0;
     }
-    res.render("lista_curso_doc", { cursosArrayView });
+    res.render("lista_curso_doc", { cursosArrayView, usuario, verifyAuth });
   } catch {
     mensajes.push({
       mensaje: "No se han logrado cargar los datos",
       type: "alert-danger",
     });
-    res.render("lista_curso_doc", { mensajes });
+    res.render("lista_curso_doc", { mensajes, usuario, verifyAuth });
   }
 };
 
 // Mostrar los cursos para inscribirse
 exports.listaCursoAlu = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const usuarioInscripcion = [];
   const mensajes = [];
   try {
@@ -287,7 +293,7 @@ exports.listaCursoAlu = async (req, res, next) => {
           acumulador = 0;
         }
         /* console.log(JSON.stringify(cursos, null, 2)); */
-        res.render("lista_curso_alu", { cursosArrayView });
+        res.render("lista_curso_alu", { cursosArrayView, usuario, verifyAuth });
       })
       .catch();
   } catch {
@@ -295,12 +301,20 @@ exports.listaCursoAlu = async (req, res, next) => {
       mensaje: "No se han logrado cargar los datos",
       type: "alert-danger",
     });
-    res.render("lita_curso_alu", { mensajes });
+    res.render("lita_curso_alu", { mensajes, usuario, verifyAuth });
   }
 };
 
 // Mostrar la informacion para cada curso si somos alumnos
 exports.infoCurso = async (req, res, next) => {
+  // Verificar si el usuario inicio sesion
+  const usuario = res.locals.usuario;
+  let verifyAuth = false;
+  console.log(Object.keys(usuario).length);
+  if (Object.keys(usuario).length != 0) {
+    verifyAuth = true;
+  }
+
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
@@ -349,18 +363,22 @@ exports.infoCurso = async (req, res, next) => {
       cantidadInscritos,
       hace,
       puntajePromedio,
+      usuario,
+      verifyAuth,
     });
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error al momento de cargar los cursos",
       type: "alert-danger",
     });
+    res.render("info_curso", { mensajes, usuario, verifyAuth });
   }
 };
 
 // Mostrar la informacion para cada curso si somos docentes
 exports.infoCursoDoc = async (req, res, next) => {
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const mensajes = [];
   try {
     const curso = await Curso.findOne({ where: { url: req.params.url } });
@@ -403,6 +421,8 @@ exports.infoCursoDoc = async (req, res, next) => {
         hace,
         cantidadInscritos,
         puntajePromedio,
+        usuario,
+        verifyAuth,
       });
     }
   } catch (error) {
@@ -410,20 +430,27 @@ exports.infoCursoDoc = async (req, res, next) => {
       mensaje: "Ha ocurrido un error al momento de administrar el curso",
       type: "alert-danger",
     });
-    res.render("lista_curso_doc", { mensajes });
+    res.render("lista_curso_doc", { mensajes, usuario, verifyAuth });
   }
 };
 // Mostrar la vista para editar los campos
 exports.cargarActualizarCurso = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const mensajes = [];
   try {
     const curso = await Curso.findByPk(req.params.id);
-    res.render("actualizar_curso", { curso: curso.dataValues });
+    res.render("actualizar_curso", {
+      curso: curso.dataValues,
+      usuario,
+      verifyAuth,
+    });
   } catch (error) {
     mensajes.push({
       mensaje: "Ha ocurrido un error, el curso no puede actualizarse",
       type: "alert-danger",
     });
+    res.render("actualizar_curso", { mensajes, usuario, verifyAuth });
   }
 };
 
@@ -431,6 +458,7 @@ exports.cargarActualizarCurso = async (req, res, next) => {
 exports.actualizarCurso = async (req, res, nex) => {
   const mensajes = [];
   const usuario = res.locals.usuario;
+  const verifyAuth = true;
   const { nombre, descripcion, informacion, precio, categoria } = req.body;
   try {
     // Obtener los datos del curso por actualizarse
@@ -480,6 +508,8 @@ exports.actualizarCurso = async (req, res, nex) => {
       res.render("actualizar_curso", {
         mensajes,
         curso: curso.dataValues,
+        usuario,
+        verifyAuth,
       });
     } else {
       // Actualizamos los valores del curso
@@ -508,17 +538,24 @@ exports.actualizarCurso = async (req, res, nex) => {
     });
     res.render("actualizar_curso", {
       mensajes,
+      usuario,
+      verifyAuth,
     });
   }
 };
 
 // Buscar curso
 exports.buscarCurso = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  let verifyAuth = false;
+  if (Object.keys(usuario).length != 0) {
+    verifyAuth = true;
+  }
+
   // Obtenemos la busqueda por destructuring
   const { busqueda } = req.body;
   console.log(busqueda);
   // Realizamos la busqueda
-  const usuario = res.locals.usuario;
   const usuarioInscripcion = [];
   const mensajes = [];
   try {
@@ -627,7 +664,7 @@ exports.buscarCurso = async (req, res, next) => {
           acumulador = 0;
         }
         /* console.log(JSON.stringify(cursos, null, 2)); */
-        res.render("busqueda", { cursosArrayView });
+        res.render("busqueda", { cursosArrayView, usuario, verifyAuth });
       })
       .catch();
   } catch {
@@ -635,6 +672,107 @@ exports.buscarCurso = async (req, res, next) => {
       mensaje: "No se han logrado cargar los datos",
       type: "alert-danger",
     });
-    res.render("busqueda", { mensajes });
+    res.render("busqueda", { mensajes, usuario, verifyAuth });
+  }
+};
+exports.buscarCursoGeneral = async (req, res, next) => {
+  const usuario = res.locals.usuario;
+  const verifyAuth = false;
+  const mensajes = [];
+  const { busqueda } = req.body;
+  try {
+    const cursos = await Curso.findAll({
+      where: {
+        categoria: {
+          [Op.like]: `%${busqueda}%`,
+        },
+      },
+      include: {
+        model: Usuario,
+        required: true,
+      },
+    });
+    const cursosArray = [];
+    // Definr un arreglo en donde se guardaran los id's de cada uno de los cursos
+    const cursosId = [];
+    // Mapear la constante de cursos definida previamente
+    cursos.map((curso) => {
+      cursosArray.push({
+        idCurso: curso.dataValues.id,
+        nombreCurso: curso.dataValues.nombre,
+        descripcion: curso.dataValues.descripcion,
+        precio: curso.dataValues.precio,
+        url: curso.dataValues.url,
+        nombreUsuario: curso.dataValues.usuario.dataValues.nombre,
+        apellidoUsuario: curso.dataValues.usuario.dataValues.apellido,
+        imagen: curso.dataValues.imagen,
+      });
+      // Hacemos un push de los id's en el arreglo de cursosId,
+      // Esto funcionara para buscar los comentarios de acuerdo a los id's
+      cursosId.push(curso.dataValues.id);
+    });
+    console.log(cursosId);
+
+    // Buscamos los comentarios de la base de datos de acuerdo a los id's de cursosId
+    const comentarios = await Comentario.findAll({
+      where: {
+        cursoId: {
+          [Op.in]: cursosId,
+        },
+      },
+    });
+
+    // Definir un arreglo en donde se guardaran los comentarios
+    const comentariosArray = [];
+    comentarios.map((comentario) => {
+      comentariosArray.push({
+        cursoId: comentario.dataValues.cursoId,
+        puntaje: comentario.dataValues.puntaje,
+      });
+    });
+
+    // definir un variable acumuladora y otra para determinar la cantidad
+    //de comentarios por curso
+    let acumulador = 0;
+    let cantidad = 0;
+    let promedio = 0;
+    // Definir un arreglo para guardar los datos que seran mostrados en la vista
+    const cursosArrayView = [];
+    for (let x = 0; x < cursosArray.length; x++) {
+      const element = cursosArray[x];
+      for (let y = x; y < comentariosArray.length; y++) {
+        const element2 = comentariosArray[y];
+        if (element.idCurso == element2.cursoId) {
+          acumulador = acumulador + element2.puntaje;
+          cantidad++;
+        }
+      }
+      // Verificar si el curso tiene comentarios, esto para evitar una division entre 0
+      if (cantidad == 0) {
+        promedio = 0;
+      } else {
+        promedio = Math.round(acumulador / cantidad);
+      }
+      // Agregar los datos que seran mostrados a la vista
+      cursosArrayView.push({
+        nombreCurso: element.nombreCurso,
+        descripcion: element.descripcion,
+        precio: element.precio,
+        url: element.url,
+        imagen: element.imagen,
+        nombre: element.nombreUsuario,
+        apellido: element.apellidoUsuario,
+        puntaje: promedio,
+      });
+      cantidad = 0;
+      acumulador = 0;
+    }
+    res.render("busqueda", { cursosArrayView, usuario, verifyAuth });
+  } catch (error) {
+    mensajes.push({
+      mensaje: "No se han logrado cargar los datos",
+      type: "alert-danger",
+    });
+    res.render("busqueda", { mensajes, usuario, verifyAuth });
   }
 };

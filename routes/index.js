@@ -168,7 +168,13 @@ module.exports = function () {
   );
 
   // Buscar un curso
-  routes.post("/busqueda", cursoController.buscarCurso);
+  routes.post(
+    "/busqueda",
+    authController.userVerifyAuth,
+    cursoController.buscarCurso
+  );
+
+  routes.post("/busqueda_general", cursoController.buscarCursoGeneral);
   // Cerrar sesion
   routes.get("/cerrar_sesion", authController.logout);
   return routes;
