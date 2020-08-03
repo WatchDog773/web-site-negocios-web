@@ -250,4 +250,19 @@ p {
   text-align: center;
   width: 10em;
 }
+.theme-card__body {
+  position: relative;
+  display: block;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  height: 2em;
+  padding-bottom: 15%;
+  background-color:   #ececb7 !important;
+  ;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.06);
+  -webkit-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
 
