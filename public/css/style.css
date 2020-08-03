@@ -5,6 +5,7 @@
   --dark-button-color: #388087;
   --dark-button-color-hover: #285e63;
   --footer-color: #003a40;
+  --font-color: #212529;
 }
 
 body {
@@ -103,6 +104,15 @@ main .container {
   text-align: center;
   margin-top: 0.2em;
 }
+
+.card-link {
+  text-decoration: none;
+  color: var(--font-color);
+}
+.card-link:hover {
+  color: var(--font-color);
+}
+
 /* Aqui terminan los Estilos para las tarjetas */
 
 /* Estilos para instructor y promocion alumno */

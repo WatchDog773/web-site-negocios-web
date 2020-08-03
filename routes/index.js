@@ -173,6 +173,8 @@ module.exports = function () {
     authController.userVerifyAuth,
     cursoController.buscarCurso
   );
+  // Buscar un curso de acuerdo a la categoria principal
+  routes.get("/categoria/:categoria", cursoController.cursoCategoria);
 
   routes.post("/busqueda_general", cursoController.buscarCursoGeneral);
   // Cerrar sesion
