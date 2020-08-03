@@ -114,7 +114,7 @@ exports.listaInscrito = async (req, res, next) => {
         const cursosArrayView = [];
         for (let x = 0; x < cursosArray.length; x++) {
           const element = cursosArray[x];
-          for (let y = x; y < comentariosArray.length; y++) {
+          for (let y = 0; y < comentariosArray.length; y++) {
             const element2 = comentariosArray[y];
             if (element.idCurso == element2.cursoId) {
               acumulador = acumulador + element2.puntaje;

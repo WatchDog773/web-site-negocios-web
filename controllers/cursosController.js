@@ -149,7 +149,7 @@ exports.listaCursoDoc = async (req, res, next) => {
     const cursosArrayView = [];
     for (let x = 0; x < cursosArray.length; x++) {
       const element = cursosArray[x];
-      for (let y = x; y < comentariosArray.length; y++) {
+      for (let y = 0; y < comentariosArray.length; y++) {
         const element2 = comentariosArray[y];
         if (element.idCurso == element2.cursoId) {
           acumulador = acumulador + element2.puntaje;
@@ -265,7 +265,7 @@ exports.listaCursoAlu = async (req, res, next) => {
         const cursosArrayView = [];
         for (let x = 0; x < cursosArray.length; x++) {
           const element = cursosArray[x];
-          for (let y = x; y < comentariosArray.length; y++) {
+          for (let y = 0; y < comentariosArray.length; y++) {
             const element2 = comentariosArray[y];
             if (element.idCurso == element2.cursoId) {
               acumulador = acumulador + element2.puntaje;
@@ -604,7 +604,7 @@ exports.listaCursos = async (req, res, next) => {
     const cursosArrayView = [];
     for (let x = 0; x < cursosArray.length; x++) {
       const element = cursosArray[x];
-      for (let y = x; y < comentariosArray.length; y++) {
+      for (let y = 0; y < comentariosArray.length; y++) {
         const element2 = comentariosArray[y];
         if (element.idCurso == element2.cursoId) {
           acumulador = acumulador + element2.puntaje;
@@ -732,7 +732,7 @@ exports.buscarCurso = async (req, res, next) => {
         const cursosArrayView = [];
         for (let x = 0; x < cursosArray.length; x++) {
           const element = cursosArray[x];
-          for (let y = x; y < comentariosArray.length; y++) {
+          for (let y = 0; y < comentariosArray.length; y++) {
             const element2 = comentariosArray[y];
             if (element.idCurso == element2.cursoId) {
               acumulador = acumulador + element2.puntaje;
@@ -836,7 +836,7 @@ exports.buscarCursoGeneral = async (req, res, next) => {
     const cursosArrayView = [];
     for (let x = 0; x < cursosArray.length; x++) {
       const element = cursosArray[x];
-      for (let y = x; y < comentariosArray.length; y++) {
+      for (let y = 0; y < comentariosArray.length; y++) {
         const element2 = comentariosArray[y];
         if (element.idCurso == element2.cursoId) {
           acumulador = acumulador + element2.puntaje;
@@ -943,7 +943,7 @@ exports.cursoCategoria = async (req, res, next) => {
       const cursosArrayView = [];
       for (let x = 0; x < cursosArray.length; x++) {
         const element = cursosArray[x];
-        for (let y = x; y < comentariosArray.length; y++) {
+        for (let y = 0; y < comentariosArray.length; y++) {
           const element2 = comentariosArray[y];
           if (element.idCurso == element2.cursoId) {
             acumulador = acumulador + element2.puntaje;
@@ -1058,7 +1058,7 @@ exports.cursoCategoria = async (req, res, next) => {
           const cursosArrayView = [];
           for (let x = 0; x < cursosArray.length; x++) {
             const element = cursosArray[x];
-            for (let y = x; y < comentariosArray.length; y++) {
+            for (let y = 0; y < comentariosArray.length; y++) {
               const element2 = comentariosArray[y];
               if (element.idCurso == element2.cursoId) {
                 acumulador = acumulador + element2.puntaje;
