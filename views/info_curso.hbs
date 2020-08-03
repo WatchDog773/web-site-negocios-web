@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card mb-3" style="max-width: 1400px;">
+  <div class="card mb-5" style="max-width: 1400px;">
     {{! Centrar imagen verticalmente en la tarjeta: d-flex flex-wrap align-items-center }}
     <div class="row no-gutters d-flex flex-wrap align-items-center">
       <div class="col-lg-6">
@@ -50,16 +50,19 @@
       </div>
     </div>
   </div>
-  <h3 class="font-weight-bold">
-    Información
-  </h3>
-  <div class="card">
-    <div class="card-body">
-      {{{curso.informacion}}}
+  <div class="mb-5">
+    <h3 class="font-weight-bold">
+      Información
+    </h3>
+    <div class="card">
+      <div class="card-body">
+        {{{curso.informacion}}}
+      </div>
     </div>
   </div>
+
   {{! Contenedor para las lecciones }}
-  <div class="my-5">
+  <div class="mb-5">
     <h3 class="font-weight-bold">
       Contenido
     </h3>
@@ -80,7 +83,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title font-weight-bold">
-            Todavia no hay lecciones.
+            Todavía no hay lecciones.
           </h5>
           <p class="card-text">
             Se paciente, el docente agregara nuevas lecciones pronto.
@@ -89,35 +92,37 @@
       </div>
     {{/if}}
   </div>
-  <h3>
-    Comentarios
-  </h3>
-  <div class="card">
-    <div class="card-body">
-      {{#if comentarios}}
-        {{#each comentarios}}
+  <div class="mb-5">
+    <h3 class="font-weight-bold">
+      Comentarios
+    </h3>
+    <div class="card">
+      <div class="card-body">
+        {{#if comentarios}}
+          {{#each comentarios}}
+            <div>
+              {{dataValues.usuario.dataValues.nombre}}
+              {{dataValues.usuario.dataValues.apellido}}
+              <input
+                type="number"
+                name="puntaje"
+                id="rating-readonly"
+                class="rating text-warning"
+                data-clearable="remove"
+                value="{{dataValues.puntaje}}"
+                data-readonly
+              />
+            </div>
+            <div>
+              {{dataValues.comentario}}
+            </div>
+          {{/each}}
+        {{else}}
           <div>
-            {{dataValues.usuario.dataValues.nombre}}
-            {{dataValues.usuario.dataValues.apellido}}
-            <input
-              type="number"
-              name="puntaje"
-              id="rating-readonly"
-              class="rating text-warning"
-              data-clearable="remove"
-              value="{{dataValues.puntaje}}"
-              data-readonly
-            />
+            Todavía no hay comentarios
           </div>
-          <div>
-            {{dataValues.comentario}}
-          </div>
-        {{/each}}
-      {{else}}
-        <div>
-          Todavia no hay comentarios
-        </div>
-      {{/if}}
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>
