@@ -167,12 +167,17 @@ module.exports = function () {
     comentarioController.publicarComentario
   );
 
+  // cargar todos los cursos
+  routes.get("/lista_cursos", cursoController.listaCursos);
+
   // Buscar un curso
   routes.post(
     "/busqueda",
     authController.userVerifyAuth,
     cursoController.buscarCurso
   );
+  // Buscar un curso de acuerdo a la categoria principal
+  routes.get("/categoria/:categoria", cursoController.cursoCategoria);
 
   routes.post("/busqueda_general", cursoController.buscarCursoGeneral);
   // Cerrar sesion
