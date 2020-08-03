@@ -1,10 +1,11 @@
 {{! Formulario de registro }}
+
 <div id="registro">
   <div class="container">
     <div id="login-row" class="row justify-content-center align-items-center">
-      <div id="login-column" class="col-md-6">
+      <div id="login-column" class="col-md-12">
         <div id="login-box" class="col-md-12">
-          <form id="login-form" class="form" action="/registrate" method="post">
+          <form id="login-form" class="form" action="/registrate" method="post" enctype="multipart/form-data">
             <div class="logo-image pt-3">
               <img
                 src="https://trello-attachments.s3.amazonaws.com/5ee82d96e1be721fd7c55a82/591x687/2b9bc935c0034d515912db44c869779e/Logo.png"
@@ -13,61 +14,94 @@
             <h3 class="text-center text-black pt-5">
               Regístrate 😄
             </h3>
+            <br />
             {{>alertas}}
-            <div class="form-group">
-              <label for="email" class="text-black">
-                Nombre:
-              </label>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="email" class="text-black font-weight-bold">
+                  Nombre:
+                </label>
+                  {{!-- Poner un objeto en HBS
+                  https://www.it-swarm.dev/es/javascript/handlebars.js-parse-object-en-lugar-de-object-object/1067507694/ --}}
+                <input 
+                  type="text" 
+                  class="form-control m-1" 
+                  placeholder="Ejemplo: Candido" 
+                  name="nombre"
+                  id="exampleInputEmail1" 
+                  value="{{temp._nombre}}" required autofocus 
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="contrasena" class="text-black font-weight-bold">
+                  Apellido:
+                </label>
+                    <input type="text" 
+                      class="form-control m-1" 
+                      placeholder="Ejemplo: Panchame" 
+                      name="apellido"
+                      id="exampleInputEmail1"
+                      value="{{temp._apellido}}" required 
+                    />
+                </div>
+                <br />
+                <div class="form-group col-md-6">
+                  <label for="contrasena" class="text-black font-weight-bold">
+                      Nombre de usuario:
+                    </label>
+                    <input 
+                      value="{{temp._user}}" 
+                      type="text" 
+                      class="form-control m-1" 
+                      placeholder="Ejemplo: theSrAnderson"
+                      name="user" required 
+                    />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="contrasena" class="text-black font-weight-bold">
+                      E-mail:
+                    </label>
+                    <input 
+                      type="email" 
+                      class="form-control m-1" 
+                      placeholder="Ejemplo: mrRobot@funSociety.com" name="email"
+                      id="exampleInputEmail1" 
+                      aria-describedby="emailHelp" 
+                      value="{{temp._email}}" required 
+                    />
+                </div>
+              
               <br />
-              {{!-- Poner un objeto en HBS
-              https://www.it-swarm.dev/es/javascript/handlebars.js-parse-object-en-lugar-de-object-object/1067507694/ --}}
-              <input type="text" class="form-control m-1" placeholder="Ejemplo: Candido" name="nombre"
-                id="exampleInputEmail1" value="{{temp._nombre}}" required autofocus />
-            </div>
-            <div class="form-group">
-              <label for="contrasena" class="text-black">
-                Apellido:
-              </label>
+              <div class="form-group col-md-6">
+                <label for="contrasena" class="text-black font-weight-bold">
+                    Contraseña:
+                </label>
+                <input 
+                  type="password" 
+                  class="form-control m-1" 
+                  placeholder="Contraseña" 
+                  name="password"
+                  id="exampleInputEmail1" required 
+                />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="contrasena-verify" class="text-black font-weight-bold">
+                    Verificar contraseña:
+                  </label>
+                  <input 
+                    type="password" 
+                    class="form-control m-1" 
+                    placeholder="Confirmar contraseña" 
+                    name="password_verify"
+                    id="exampleInputEmail1" required 
+                  />
+                </div>
+              </div>
               <br />
-              <input type="text" class="form-control m-1" placeholder="Ejemplo: Panchame" name="apellido"
-                id="exampleInputEmail1" value="{{temp._apellido}}" required />
+              <button class="btn btn-lg leccion-btn mb-3 w-100" type="submit">
+                Regístrate
+              </button>
             </div>
-            <div class="form-group">
-              <label for="contrasena" class="text-black">
-                E-mail:
-              </label>
-              <br />
-              <input type="email" class="form-control m-1" placeholder="Ejemplo: mrRobot@funSociety.com" name="email"
-                id="exampleInputEmail1" aria-describedby="emailHelp" value="{{temp._email}}" required />
-            </div>
-            <div class="form-group">
-              <label for="contrasena" class="text-black">
-                Nombre de usuario:
-              </label>
-              <br />
-              <input value="{{temp._user}}" type="text" class="form-control m-1" placeholder="Ejemplo: theSrAnderson"
-                name="user" required />
-            </div>
-            <div class="form-group">
-              <label for="contrasena" class="text-black">
-                Contraseña:
-              </label>
-              <br />
-              <input type="password" class="form-control m-1" placeholder="Contraseña" name="password"
-                id="exampleInputEmail1" required />
-            </div>
-            {{! Verificar contraseña }}
-            <div class="form-group">
-              <label for="contrasena-verify" class="text-black">
-                Verificar contraseña:
-              </label>
-              <br />
-              <input type="password" class="form-control m-1" placeholder="Confirma contraseña" name="password_verify"
-                id="exampleInputEmail1" required />
-            </div>
-            <button class="btn btn-lg leccion-btn mb-3 w-100" type="submit">
-              Regístrate
-            </button>
             <br />
             <br />
           </form>
@@ -77,3 +111,112 @@
   </div>
 </div>
 {{! Formulario de registrarse }}
+<!-- 
+<div class="containerr">
+  <div class="tarjeta">
+    <div class="tarjeta-body">
+      <form method="POST" action="/agregar_curso" enctype="multipart/form-data">
+        
+        <div class="logo-image pt-3">
+              <img
+                src="https://trello-attachments.s3.amazonaws.com/5ee82d96e1be721fd7c55a82/591x687/2b9bc935c0034d515912db44c869779e/Logo.png"
+                alt="Logo" title="Logo" width="138" />
+            </div>
+        <h3 class="text-center font-weight-bold pt-5">
+          Regístrate 😄
+        </h3>
+        {{>alertas}}
+        <br />
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email" class="text-black font-weight-bold">
+              Nombre:
+            </label>
+              {{!-- Poner un objeto en HBS
+              https://www.it-swarm.dev/es/javascript/handlebars.js-parse-object-en-lugar-de-object-object/1067507694/ --}}
+            <input 
+              type="text" 
+              class="form-control m-1" 
+              placeholder="Ejemplo: Candido" 
+              name="nombre"
+              id="exampleInputEmail1" 
+              value="{{temp._nombre}}" required autofocus 
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="contrasena" class="text-black font-weight-bold">
+              Apellido:
+            </label>
+                <input type="text" 
+                  class="form-control m-1" 
+                  placeholder="Ejemplo: Panchame" 
+                  name="apellido"
+                  id="exampleInputEmail1"
+                  value="{{temp._apellido}}" required 
+                />
+            </div>
+            <br />
+            <div class="form-group col-md-6">
+              <label for="contrasena" class="text-black">
+                  Nombre de usuario:
+                </label>
+                <input 
+                  value="{{temp._user}}" 
+                  type="text" 
+                  class="form-control m-1" 
+                  placeholder="Ejemplo: theSrAnderson"
+                  name="user" required 
+                />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="contrasena" class="text-black">
+                  E-mail:
+                </label>
+                <input 
+                  type="email" 
+                  class="form-control m-1" 
+                  placeholder="Ejemplo: mrRobot@funSociety.com" name="email"
+                  id="exampleInputEmail1" 
+                  aria-describedby="emailHelp" 
+                  value="{{temp._email}}" required 
+                />
+            </div>
+          
+          <br />
+          <div class="form-group col-md-6">
+            <label for="contrasena" class="text-black">
+                Contraseña:
+            </label>
+            <input 
+              type="password" 
+              class="form-control m-1" 
+              placeholder="Contraseña" 
+              name="password"
+              id="exampleInputEmail1" required 
+            />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="contrasena-verify" class="text-black">
+                Verificar contraseña:
+              </label>
+              <input 
+                type="password" 
+                class="form-control m-1" 
+                placeholder="Confirmar contraseña" 
+                name="password_verify"
+                id="exampleInputEmail1" required 
+              />
+            </div>
+          </div>
+
+        </div>
+               
+        
+        <button type="submit" class="btn btn-lg leccion-btn w-100">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+-->
