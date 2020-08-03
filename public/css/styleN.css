@@ -50,4 +50,28 @@ p {
   text-align: center;
 }
 
+.tarjeta {
+  background-color: #eaeaea;
+  color: black;
+}
+
+.tarjeta-body .btn,
+.leccion-btn {
+  background-color: #388087;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+.tarjeta-body .btn:hover,
+.leccion-btn:hover {
+  background-color: #bbe0e7;
+  color: black;
+}
+.card-body .btn,
+.leccion-btn {
+  background-color: #388087;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
 
