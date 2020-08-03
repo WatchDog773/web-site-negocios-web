@@ -147,8 +147,8 @@ main .container {
   color: white;
 }
 
-.card-img-top {
-}
+/* .card-img-top {
+} */
 
 .btn-opt {
   background-color: var(--dark-button-color);
@@ -210,7 +210,6 @@ main .container {
   color: white;
 }
 
-
 #login .container #login-row #login-column #login-box {
   margin-top: 1em;
   max-width: 600em;
@@ -256,7 +255,6 @@ p {
   text-align: center;
 }
 
-
 .restablecer-btn {
   background-color: #378087;
   color: white;
@@ -266,16 +264,15 @@ p {
 .theme-card__body {
   position: relative;
   display: block;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   height: 2em;
   padding-bottom: 15%;
-  background-color:   #ececb7 !important;
-  ;
+  background-color: #ececb7 !important;
   border-radius: 8px;
-  -webkit-box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(0, 0, 0, 0.06);
   box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.06);
-  -webkit-transition: all .5s ease-out;
-  transition: all .5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
-
