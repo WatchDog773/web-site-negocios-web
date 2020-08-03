@@ -147,6 +147,9 @@ main .container {
   color: white;
 }
 
+.card-img-top {
+}
+
 .btn-opt {
   background-color: var(--dark-button-color);
   color: white;

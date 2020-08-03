@@ -167,6 +167,9 @@ module.exports = function () {
     comentarioController.publicarComentario
   );
 
+  // cargar todos los cursos
+  routes.get("/lista_cursos", cursoController.listaCursos);
+
   // Buscar un curso
   routes.post(
     "/busqueda",
