@@ -1,0 +1,376 @@
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide"
+  data-ride="carousel"
+  data-interval="7000"
+>
+  <ol class="carousel-indicators">
+    <li
+      data-target="#carouselExampleIndicators"
+      data-slide-to="0"
+      class="active"
+    ></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div
+      class="carousel-item active"
+      style="background-image: url(img/slide1.jpg);"
+    >
+      <div class="black-overlay"></div>
+      <div
+        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center"
+      >
+        <h1>
+          Aprende de los mejores
+        </h1>
+        <h3>
+          Desarrolla y adquiere nuevas habilidades con la ayuda de
+                instructores excepcionales: cursos de calidad desde sólo $10.99
+        </h3>
+
+        <a
+        {{#if verifyAuth}}
+        href="/lista_cursos"
+        {{else}}
+        href="/lista_curso_alu"
+        {{/if}} 
+         class="btn btn-outline-light btn-lg">
+          Ver Mas
+        </a>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url(img/slide2.jpg);">
+      <div class="black-overlay"></div>
+      <div
+        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center"
+      >
+        <h1>
+          Aprende a tu ritmo
+        </h1>
+        <h3>
+          Disfruta de los mejores cursos en el lugar y hora que quieras.
+                Tú marcas tu propia agenda.
+        </h3>
+        <a
+        {{#if verifyAuth}}
+        href="/lista_curso_alu"
+        {{else}}
+        href="/lista_cursos"
+        {{/if}} 
+         class="btn btn-outline-light btn-lg">
+          Ver Mas
+        </a>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url(img/slide3.jpg);">
+      <div class="black-overlay"></div>
+      <div
+        class="carousel-caption d-flex flex-column h-100 align-items-center justify-content-center"
+      >
+        <h1>
+          Instructores Expertos
+        </h1>
+        <h3>
+          Cada instructor imparte solo lo que mejor sabe hacer, asegurando
+                transmitir la pasión y los conocimientos de la mejor forma
+                posible.
+        </h3>
+        <a
+        {{#if verifyAuth}}
+        href="/lista_cursos"
+        {{else}}
+        href="/lista_curso_alu"
+        {{/if}} 
+         class="btn btn-outline-light btn-lg">
+          Ver Mas
+        </a>
+      </div>
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">
+      Previous
+    </span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">
+      Next
+    </span>
+  </a>
+</div>
+
+<div class="container mt-5 py-0">
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 card-inicio-icono">
+        <i class="fas fa-photo-video"></i>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title font-weight-bold text-center">
+            Material Audiovisual
+          </h1>
+          <p class="card-text text-center">
+            Te ofrecemos los mejores cursos para que puedas adquirir y
+                  desarrollar tus conocimientos por medio de videos de máxima
+                  calidad para que no pierdas el detalle. Y como el acceso es
+                  ilimitado puedes verlos una y otra vez.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 card-inicio-icono">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title font-weight-bold text-center">
+            Excelentes Instructores
+          </h1>
+          <p class="card-text text-center">
+            Contamos con los instructores mas capacitados para tu
+                  enseñanza. Al estar inscrito a cualquiera de nuestros cursos
+                  tendrás el derecho de realizar consultas a tu instructor para
+                  despejar todas las dudas que tengas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100 card-inicio-icono">
+        <i class="fas fa-home"></i>
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title font-weight-bold text-center">
+            Desde Cualquier Lugar
+          </h1>
+          <p class="card-text text-center">
+            Desde la comodidad de tu casa, oficina o donde sea. Tendrás la
+                  posibilidad de desarrollar tus conocimientos en el lugar donde
+                  te sientas más cómodo y en el horario que quieras.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 py-0">
+  <h3 class="mb-4 font-weight-bold">
+    CATEGORÍAS PRINCIPALES
+  </h3>
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/desarrollo" class="card-link">
+        <div class="card card-categoria">
+          <img
+            src="img/categorias/desarrollo.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              Desarrollo
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/diseño" class="card-link">
+        <div class="card card-categoria">
+          <img
+            src="img/categorias/disenio.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              Diseño
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/ti" class="card-link">
+        <div class="card card-categoria">
+          <img
+            src="img/categorias/it-software.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              TI y Software
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/marketing" class="card-link">
+        <div class="card card-categoria">
+          <img
+            src="img/categorias/marketing.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              Marketing
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/foto" class="card-link">
+        <div class="card card-categoria">
+          <img
+            src="img/categorias/fotografia.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              Fotografía
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4">
+      <a href="/categoria/musica" class="card-link">
+        <div class="card card-categoria">
+          <img src="img/categorias/musica.jpg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h4 class="font-weight-bold">
+              Música
+            </h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+{{#if verifyAuth}}
+  <div class="container">
+    <h3 class="font-weight-bold">
+      ÚLTIMOS CURSOS
+    </h3>
+    {{#if cursosArrayView}}
+      <div class="row">
+        {{#each cursosArrayView}}
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <img
+                src="/uploads/{{imagen}}"
+                class="card-img-top img-fluid"
+                alt="..."
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="font-weight-bold card-titulo-curso">
+                  {{nombreCurso}}
+                </h5>
+                <div class="card-autor-curso">
+                  {{nombre}} {{apellido}}
+                </div>
+                <div class="card-puntaje-curso">
+                  <input
+                    type="number"
+                    name="puntaje"
+                    id="rating-readonly"
+                    class="rating text-warning"
+                    data-clearable="remove"
+                    value="{{puntaje}}"
+                    data-readonly
+                  />
+                </div>
+                <h2 class="font-weight-bold card-precio">
+                  {{precio}} US$
+                </h2>
+                <a href="/info_curso/{{url}}" class="btn mt-auto">
+                  Ver Mas
+                </a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="card card-null-message">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            Todavía no hay cursos para inscribirte.
+          </h5>
+          <p class="card-text">
+            Se paciente, nuestros instructores están haciendo nuevos cursos para ti.
+          </p>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+{{else}}
+  <div class="container-fluid mt-5 ser-instructor">
+    <div class="container py-4 py-lg-0">
+      <div class="row flex-wrap align-items-center">
+        <div class="col-md-6">
+          <img src="img/ser-instructor.jpg" alt="" class="img-fluid" />
+        </div>
+        <div class="col-md-6 my-auto">
+          <div>
+            <h4 class="font-weight-bold">
+              Conviértete en instructor
+            </h4>
+            <p>
+              Únete a la comunidad de los mejores instructores.
+                  Proporcionamos las herramientas y recursos necesarios para que
+                  puedas enseñar lo que te apasiona.
+            </p>
+            <a href="/iniciar_sesion" class="btn">
+              Empieza hoy mismo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 prom-alumno">
+    <div class="container py-4 py-lg-0">
+      <div
+        class="row d-flex flex-wrap align-items-center flex-sm-row flex-sm-row-reverse"
+      >
+        <div class="col-md-6">
+          <img src="img/prom-alumno.jpg" alt="" class="img-fluid" />
+        </div>
+        <div class="col-md-6 my-auto">
+          <div>
+            <h4 class="font-weight-bold">
+              Transforma tu vida mediante la educación
+            </h4>
+            <p>
+              Muchas personas comienzan una prometedora carrera en el
+                  desarrollo de software realizando cursos en línea. ¿De qué
+                  serás capaz tú?
+            </p>
+            <a href="/iniciar_sesion" class="btn">
+              Empieza hoy mismo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,130 @@
+header {
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.back-color {
+  background-color: #ececb7 !important;
+}
+
+.search-button {
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.navbar .paragraph {
+  color: black !important;
+}
+
+.paragraph {
+  color: black !important;
+}
+
+.logo {
+  width: 5em;
+  padding-left: 2em;
+}
+
+.namanyay-search-btn {
+  background-color: #378087;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.3125em 0.625em;
+  border-radius: 0 0.625em 0.625em 0;
+  -moz-border-radius: 0 0.625em 0.625em 0;
+  -webkit-border-radius: 0 0.625em 0.625em 0;
+  -o-border-radius: 0 0.625em 0.625em 0;
+  border: 0 none;
+  font-weight: bold;
+}
+
+#namanyay-search-box {
+  background: #eee;
+  padding: 0.5em 0.6em;
+  border-radius: 0.625em 0 0 0.625em;
+  -moz-border-radius: 0.625em 0 0 0.625em;
+  -webkit-border-radius: 0.625em 0 0 0.625em;
+  -o-border-radius: 0.625em 0 0 0.625em;
+  border: 0 none;
+  width: 15em;
+}
+
+.footer {
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  background-color: #378087;
+  color: white;
+  padding-top: 1em;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer p {
+  color: white !important;
+}
+
+.fa {
+  padding: 1em;
+  font-size: 1.2em;
+  width: 3.3em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-trello {
+  background: #125688;
+  color: white;
+}
+
+.fa-github {
+  background: #430297;
+  color: white;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* Estilos para las tarjetas */
+.card {
+  background-color: #6fb3b8;
+  color: white;
+}
+
+.card-body .btn,
+.leccion-btn {
+  background-color: #388087;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card-body .btn:hover,
+.leccion-btn:hover {
+  background-color: #285e63;
+  color: white;
+}

@@ -1,0 +1,59 @@
+<div class="container">
+  {{#if cursosArrayView}}
+    <div class="row">
+      {{#each cursosArrayView}}
+        <div class="col-lg-4 col-md-6 mb-5">
+          <div class="card h-100">
+            <img
+              src="/uploads/{{imagen}}"
+              class="card-img-top img-fluid"
+              alt="..."
+            />
+            <div class="card-body d-flex flex-column">
+              <h5 class="font-weight-bold card-titulo-curso">
+                {{nombreCurso}}
+              </h5>
+              <div class="card-autor-curso">
+                {{nombre}} {{apellido}}
+              </div>
+              <div class="card-puntaje-curso">
+                <input
+                  type="number"
+                  name="puntaje"
+                  id="rating-readonly"
+                  class="rating text-warning"
+                  data-clearable="remove"
+                  value="{{puntaje}}"
+                  data-readonly
+                />
+              </div>
+              <h2 class="font-weight-bold card-precio">
+                {{precio}} US$
+              </h2>
+              <a
+                href="/info_curso_inscrito/{{url}}"
+                class="mt-auto btn btn-lg w-100"
+              >
+                Ver Mas
+              </a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">
+          Todavía no estas inscrito en ningún curso.
+        </h5>
+        <p class="card-text">
+          Que esperas para inscribirte y comenzar a aprender.
+        </p>
+      </div>
+    </div>
+    <a href="/lista_curso_alu" class="btn mt-5 btn-opt">
+      Buscar Cursos
+    </a>
+  {{/if}}
+</div>
