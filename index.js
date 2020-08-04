@@ -119,8 +119,11 @@ app.use((req, res, next) => {
 // Indicarle a express donde están las rutas del servidor
 app.use("/", routes());
 
+const host = "0.0.0.0";
+const port = process.env.PORT;
+
 // Inicializar el servidor en un puerto en especifico
-app.listen(7891, () => {
+app.listen(port, host, () => {
   console.log(
     "================== Servidor ejecutandose en el puerto 7891 ======================"
   );
