@@ -45,9 +45,9 @@
           <a href="/actualizar_curso/{{curso.id}}" class="btn">
             Editar Curso
           </a>
-          <a href="/actualizar_curso/{{curso.id}}" class="btn">
+          {{!-- <a href="/actualizar_curso/{{curso.id}}" class="btn">
             Eliminar Curso
-          </a>
+          </a> --}}
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
             <p class="card-text">
               {{dataValues.descripcion}}
             </p>
-            <a href="#" class="btn">
+            <a href="/leccion_info_ins/{{dataValues.url}}" class="btn">
               Ver Mas
             </a>
             <a
