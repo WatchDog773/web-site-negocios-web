@@ -37,7 +37,7 @@ exports.logout = (req, res, next) => {
 
 // Verifica si el usuario esta autenticado o no
 exports.userVerifyAuth = (req, res, next) => {
-  // Si el usuario se autentico que continue la peticion
+  // Si el usuario se autentico que continue la petición
   if (req.isAuthenticated()) {
     return next();
   }
