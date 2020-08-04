@@ -28,9 +28,6 @@ module.exports = function () {
         body("nombre").notEmpty().trim().escape(),
         body("apellido").notEmpty().trim().escape(),
         body("user").notEmpty().trim().escape(),
-        body("email").notEmpty().trim().escape(),
-        body("password").notEmpty().trim().escape(),
-        body("password_verify").notEmpty().trim().escape(),
         usersController.signUpVerify
     );
 
@@ -39,9 +36,6 @@ module.exports = function () {
 
     routes.post(
         "/iniciar_sesion",
-        // Sanitizando
-        body("email").notEmpty().trim().escape(),
-        body("password").notEmpty().trim().escape(),
         authController.autenticarUsuario,
     );
 
@@ -53,8 +47,6 @@ module.exports = function () {
 
     routes.post(
         "/restablecer_password",
-        // Sanitizando
-        body("email").notEmpty().trim().escape(),
         authController.enviarToken);
 
     // Reseteo de contraseña
@@ -62,9 +54,6 @@ module.exports = function () {
 
     routes.post(
         "/resetear_password/:token",
-        // Sanitizando
-        body("password").notEmpty().trim().escape(),
-        body("passwordVerify").notEmpty().trim().escape(),
         authController.actualizarContraseña);
 
     // Rutas para los cursos
@@ -159,10 +148,9 @@ module.exports = function () {
         "/actualizar_perfil",
         authController.userVerifyAuth,
         // Sanitizando
-        // body("").notEmpty().trim().escape(),
-        // body("").notEmpty().trim().escape(),
-        // body("").notEmpty().trim().escape(),
-        // body("").notEmpty().trim().escape(),
+        body("nombre").notEmpty().trim().escape(),
+        body("apellido").notEmpty().trim().escape(),
+        body("usuario").notEmpty().trim().escape(),
         usersController.actualizarPerfil
     );
 
@@ -181,6 +169,9 @@ module.exports = function () {
     routes.post(
         "/agregar_leccion/:id",
         authController.userVerifyAuth,
+        // Sanitizando
+        body("nombre").notEmpty().trim().escape(),
+        body("descripcion").notEmpty().trim().escape(),
         leccionController.insertarLeccion
     );
 
@@ -193,6 +184,9 @@ module.exports = function () {
     routes.post(
         "/actualizar_leccion/:id/:cursoUrl",
         authController.userVerifyAuth,
+        // Sanitizando
+        body("nombre").notEmpty().trim().escape(),
+        body("descripcion").notEmpty().trim().escape(),
         leccionController.actualizarLeccion
     );
 
@@ -207,6 +201,8 @@ module.exports = function () {
     routes.post(
         "/agregar_comentario/:url",
         authController.userVerifyAuth,
+        // Sanitizando
+        body("comentario").notEmpty().trim().escape(),
         comentarioController.publicarComentario
     );
 
@@ -217,12 +213,19 @@ module.exports = function () {
     routes.post(
         "/busqueda",
         authController.userVerifyAuth,
+        // Sanitizando
+        body("busqueda").notEmpty().trim().escape(),
         cursoController.buscarCurso
     );
     // Buscar un curso de acuerdo a la categoria principal
     routes.get("/categoria/:categoria", cursoController.cursoCategoria);
 
-    routes.post("/busqueda_general", cursoController.buscarCursoGeneral);
+    routes.post(
+        "/busqueda_general",
+        // Sanitizando
+        body("busqueda").notEmpty().trim().escape(),
+        cursoController.buscarCursoGeneral
+    );
     // Cerrar sesion
     routes.get("/cerrar_sesion", authController.logout);
     return routes;
