@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(#378087, #eaeaea);
-
 }
 
 #login .container #login-row #login-column #login-box {
@@ -64,8 +63,8 @@ p {
 }
 .tarjeta-body .btn:hover,
 .leccion-btn:hover {
-  background-color: #bbe0e7;
-  color: black;
+  background-color: #285e63;
+  color: white;
 }
 .card-body .btn,
 .leccion-btn {
@@ -74,4 +73,3 @@ p {
   font-weight: bold;
   text-decoration: none;
 }
-

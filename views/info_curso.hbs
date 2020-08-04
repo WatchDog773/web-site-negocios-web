@@ -17,27 +17,28 @@
           <p class="card-text">
             {{curso.descripcion}}
           </p>
-          <input
-            type="number"
-            name="puntaje"
-            id="rating-readonly"
-            class="rating text-warning"
-            data-clearable="remove"
-            value="{{puntajePromedio}}"
-            data-readonly
-          />
+          <div class="d-flex">
+            <input
+              type="number"
+              name="puntaje"
+              id="rating-readonly"
+              class="rating text-warning"
+              data-clearable="remove"
+              value="{{puntajePromedio}}"
+              data-readonly
+            />
+            <h5 class="ml-4">
+              <i class="fas fa-user"></i>
+              {{cantidadInscritos.count}}
+            </h5>
+          </div>
           <h1 class="card-title font-weight-bold">
             {{curso.precio}}
             US$
           </h1>
           <h6>
-            {{cantidadInscritos.count}}
-          </h6>
-          <h6>
             Creado por:
-            <a>
-              {{usuarioCreado.nombre}}
-            </a>
+            {{usuarioCreado.nombre}}
           </h6>
           <h6 class="card-title">
             Publicado:
@@ -100,9 +101,11 @@
       <div class="card-body">
         {{#if comentarios}}
           {{#each comentarios}}
-            <div>
-              {{dataValues.usuario.dataValues.nombre}}
-              {{dataValues.usuario.dataValues.apellido}}
+            <div class="my-4">
+              <h5 class="font-weight-bold">
+                {{dataValues.usuario.dataValues.nombre}}
+                {{dataValues.usuario.dataValues.apellido}}
+              </h5>
               <input
                 type="number"
                 name="puntaje"
@@ -112,10 +115,11 @@
                 value="{{dataValues.puntaje}}"
                 data-readonly
               />
+              <p class="mb-2">
+                {{dataValues.comentario}}
+              </p>
             </div>
-            <div>
-              {{dataValues.comentario}}
-            </div>
+            <hr />
           {{/each}}
         {{else}}
           <div>
