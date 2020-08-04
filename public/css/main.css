@@ -125,6 +125,6 @@ header {
 
 .card-body .btn:hover,
 .leccion-btn:hover {
-  background-color: #bbe0e7;
-  color: black;
+  background-color: #285e63;
+  color: white;
 }
