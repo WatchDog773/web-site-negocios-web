@@ -19,7 +19,7 @@ const Leccion = db.define(
     },
 
     nombre: {
-      type: Sequelize.STRING(30),
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: {
@@ -29,7 +29,7 @@ const Leccion = db.define(
     },
 
     descripcion: {
-      type: Sequelize.STRING(100),
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
         notEmpty: {
