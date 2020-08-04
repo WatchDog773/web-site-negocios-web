@@ -27,8 +27,9 @@
               value="{{puntajePromedio}}"
               data-readonly
             />
-            <h5 class="ml-2">
-              <i class="fas fa-user"></i>{{cantidadInscritos.count}}
+            <h5 class="ml-4">
+              <i class="fas fa-user"></i>
+              {{cantidadInscritos.count}}
             </h5>
           </div>
 
@@ -126,10 +127,11 @@
       <div class="card-body">
         {{#if comentarios}}
           {{#each comentarios}}
-            <div>
-              {{dataValues.usuario.dataValues.nombre}} {{
-                dataValues.usuario.dataValues.apellido
-              }}
+            <div class="my-4">
+              <h5 class="font-weight-bold">
+                {{dataValues.usuario.dataValues.nombre}}
+                {{dataValues.usuario.dataValues.apellido}}
+              </h5>
               <input
                 type="number"
                 name="puntaje"
@@ -139,15 +141,16 @@
                 value="{{dataValues.puntaje}}"
                 data-readonly
               />
+              <p class="mb-2">
+                {{dataValues.comentario}}
+              </p>
             </div>
-            <div>
-              {{dataValues.comentario}}
-            </div>
+            <hr />
           {{/each}}
         {{else}}
-          <div>
+          <h6 class="font-weight-bold">
             Todavía no hay comentarios
-          </div>
+          </h6>
         {{/if}}
       </div>
     </div>

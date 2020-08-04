@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/src/tagsinput.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     <script
       src="https://kit.fontawesome.com/0cece189ec.js"
       crossorigin="anonymous"
@@ -45,9 +46,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="/"
-                >Inicio <span class="sr-only">(current)</span></a
+                >Inicio </a
               >
             </li>
 
@@ -94,7 +95,7 @@
           <div class="nav-perfil ml-auto">
             <div class="dropdown show">
               <a
-                class="btn dropdown-toggle"
+                class="btn dropdown-toggle px-5"
                 href="#"
                 role="button"
                 id="dropdownMenuLink"
@@ -102,8 +103,9 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                {{ usuario.nombre }}
-                {{ usuario.apellido }}
+                <i class="fas fa-user"></i>
+                {{ usuario.usuario }}
+
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -144,12 +146,16 @@
           </div>
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
+              {{#if verifyAuth}}
               <a href="/lista_curso_inscrito">Mis Cursos</a>
+              {{else}}
+              <a href="/lista_cursos">Cursos</a>
+              {{/if}}
             </h6>
           </div>
           <div class="col-md-2 mb-3">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="/lista_curso_doc">Docente</a>
+              <a href="/lista_curso_doc">Instructor</a>
             </h6>
           </div>
         </div>

@@ -11,33 +11,31 @@
       </div>
       <div class="col-lg-6">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold">
+          <h3 class="card-title font-weight-bold">
             {{curso.nombre}}
-          </h5>
+          </h3>
           <p class="card-text">
             {{curso.descripcion}}
           </p>
-          <input
-            type="number"
-            name="puntaje"
-            id="rating-readonly"
-            class="rating text-warning"
-            data-clearable="remove"
-            value="{{puntajePromedio}}"
-            data-readonly
-          />
-          <h1 class="card-title font-weight-bold">
-            {{curso.precio}}
-            US$
-          </h1>
-          <h6>
-            {{cantidadInscritos.count}}
-          </h6>
+          <div class="d-flex">
+            <input
+              type="number"
+              name="puntaje"
+              id="rating-readonly"
+              class="rating text-warning"
+              data-clearable="remove"
+              value="{{puntajePromedio}}"
+              data-readonly
+            />
+            <h5 class="ml-4">
+              <i class="fas fa-user"></i>
+              {{cantidadInscritos.count}}
+            </h5>
+          </div>
           <h6>
             Creado por:
-            <a>
-              {{usuarioCreado.nombre}}
-            </a>
+
+            {{usuarioCreado.nombre}}
           </h6>
           <h6 class="card-title">
             Publicado:
@@ -99,9 +97,11 @@
       <div class="card-body">
         {{#if comentarios}}
           {{#each comentarios}}
-            <div>
-              {{dataValues.usuario.dataValues.nombre}}
-              {{dataValues.usuario.dataValues.apellido}}
+            <div class="my-4">
+              <h5 class="font-weight-bold">
+                {{dataValues.usuario.dataValues.nombre}}
+                {{dataValues.usuario.dataValues.apellido}}
+              </h5>
               <input
                 type="number"
                 name="puntaje"
@@ -111,20 +111,21 @@
                 value="{{dataValues.puntaje}}"
                 data-readonly
               />
+              <p class="mb-2">
+                {{dataValues.comentario}}
+              </p>
             </div>
-            <div>
-              {{dataValues.comentario}}
-            </div>
+            <hr />
           {{/each}}
         {{else}}
-          <div>
+          <h6 class="font-weight-bold">
             Todavía no hay comentarios
-          </div>
+          </h6>
         {{/if}}
         {{#if comentarioUsuario}}
-          <div>
+          <h6 class="font-weight-bold">
             Ya publicaste tu reseña
-          </div>
+          </h6>
         {{else}}
           <form method="POST" action="/agregar_comentario/{{curso.url}}">
             <div class="form-group">
