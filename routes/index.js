@@ -28,6 +28,8 @@ module.exports = function () {
         body("nombre").notEmpty().trim().escape(),
         body("apellido").notEmpty().trim().escape(),
         body("user").notEmpty().trim().escape(),
+        body("password").notEmpty().trim(),
+        body("password_verify").notEmpty().trim(),
         usersController.signUpVerify
     );
 
@@ -36,6 +38,9 @@ module.exports = function () {
 
     routes.post(
         "/iniciar_sesion",
+        // Sanitizando
+        body("email").notEmpty().trim(),
+        body("password").notEmpty().trim(),
         authController.autenticarUsuario,
     );
 
@@ -47,6 +52,8 @@ module.exports = function () {
 
     routes.post(
         "/restablecer_password",
+        // Sanitizando
+        body("email").notEmpty().trim(),
         authController.enviarToken);
 
     // Reseteo de contraseña
@@ -54,6 +61,9 @@ module.exports = function () {
 
     routes.post(
         "/resetear_password/:token",
+        // Sanitizando
+        body("password").notEmpty().trim(),
+        body("passwordVerify").notEmpty().trim(),
         authController.actualizarContraseña);
 
     // Rutas para los cursos
