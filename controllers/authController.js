@@ -93,6 +93,7 @@ exports.enviarToken = async (req, res, next) => {
 
 // Muestra el formulario de cambiar contraseña si existe un token valido
 exports.validarToken = async (req, res, next) => {
+  const verifyAuth = false;
   try {
     // Buscar  si el token enviado existe
     const { token } = req.params;
@@ -118,11 +119,11 @@ exports.validarToken = async (req, res, next) => {
         type: "alert-danger",
       });
 
-      res.render("restablecer_password", { layout: "layout_inicio", mensajes });
+      res.render("restablecer_password", { verifyAuth, mensajes });
       /* res.redirect("/restablecer_password"); */
     } else {
       // Si el usuario existe y su token no ha expirado, mostrar el formulario de generar nueva contraseña
-      res.render("resetear_password", { layout: "layout_inicio", token });
+      res.render("resetear_password", { verifyAuth, token });
     }
   } catch (error) {
     res.redirect("/iniciar_sesion");
@@ -131,6 +132,7 @@ exports.validarToken = async (req, res, next) => {
 
 // Permite cambiar la contraseña de un token valido
 exports.actualizarContraseña = async (req, res, next) => {
+  const verifyAuth = false;
   // Obtener al usuario mediante el token y verificar que el token no ha expirado, solo tiene 5 mins
   const usuario = await Usuario.findOne({
     where: {
@@ -178,7 +180,7 @@ exports.actualizarContraseña = async (req, res, next) => {
   // Si hay errores
   if (mensajes.length) {
     res.render("resetear_password", {
-      layout: "layout_inicio",
+      verifyAuth,
       mensajes,
       token,
     });
